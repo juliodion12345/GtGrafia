@@ -7,6 +7,8 @@ import android.view.MenuItem;
 
 public class StartActivity extends Activity {
 
+	//Codigo inicial, para abrir el layout de la actividad
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
