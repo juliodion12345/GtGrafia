@@ -31,10 +31,10 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	private static final int MNU_ACERCA = 2;
 	
 	/**
-     * Metodo que carga la pantalla principal
-     * 
-     * @param savedInstanceState savedInstanceState
-     */
+	 * Metodo que carga la pantalla principal
+	 * 
+	 * @param savedInstanceState savedInstanceState
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,8 +61,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	}
 	
 	/**
-     * Metodo que coloca los elementos en la lista de la pantalla principal
-     */
+	 * Metodo que coloca los elementos en la lista de la pantalla principal
+	 */
 	public void setListItems() {
 		
 		//Obtener los elementos
@@ -72,8 +72,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		 * el simple_list_item_1 (que es una lista simple)
 		 */
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				  android.R.layout.simple_list_item_1, android.R.id.text1, lista);
-		
+				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
 		
 		//Asignar el adaptador al listView
 		ListView listView = (ListView) findViewById(R.id.listStart);
@@ -84,13 +83,13 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	}
 
 	/**
-     * Metodo que se activa al seleccionar un elemento del listView
-     * 
-     * @param adapterView El adaptador de la vista
-     * @param view El adaptador de la vista
-     * @param index La posición del elemento cliqueado
-     * @param id El ID del elemento cliqueado
-     */
+	 * Metodo que se activa al seleccionar un elemento del listView
+	 * 
+	 * @param adapterView El adaptador de la vista
+	 * @param view El adaptador de la vista
+	 * @param index La posición del elemento cliqueado
+	 * @param id El ID del elemento cliqueado
+	 */
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int index, long id) {  
 		//Obtiene el elemento seleccionado
@@ -109,69 +108,69 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	//////////////////////////////////////////MENU/////////////////////////////////////////////////
 	
 	/**
-     * Metodo que se activa al crear el menu de la pantalla
-     * 
-     * @param menu El elemento menu
-     * 
-     * @return Si el elemento menu fue creado
-     */
+	 * Metodo que se activa al crear el menu de la pantalla
+	 * 
+	 * @param menu El elemento menu
+	 * 
+	 * @return Si el elemento menu fue creado
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		
 		//Agrega nuevos elementos al menu de la pantalla
 		menu.add(Menu.NONE, MNU_INICIAR, Menu.NONE, "Iniciar Juego");
-	    menu.add(Menu.NONE, MNU_ACERCA, Menu.NONE, "Acerca de");
+		menu.add(Menu.NONE, MNU_ACERCA, Menu.NONE, "Acerca de");
 		
 		return true;
 	}
 	
 	/**
-     * Metodo que se activa al selecionar un elemento del menu de la pantalla
-     * 
-     * @param item El elemento selecionado del menu
-     * 
-     * @return Si se encontro con el elemento seleccionado
-     */
+	 * Metodo que se activa al selecionar un elemento del menu de la pantalla
+	 * 
+	 * @param item El elemento selecionado del menu
+	 * 
+	 * @return Si se encontro con el elemento seleccionado
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    
 		//Redirige la aplicación al elemento seleccionado
 		switch (item.getItemId()) {
-	        case MNU_INICIAR:	            
-	        	iniciarJuego();
-	        	
-	            return true;
+				case MNU_INICIAR:	            
+				iniciarJuego();
+				
+				return true;
 	        case MNU_ACERCA:
-	        	iniciarAcercaDe();
-	            
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+				iniciarAcercaDe();
+				
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 	
 	/////////////////////////////////////////INICIAR///////////////////////////////////////////////
 
 	/**
-     * Metodo que inicia la pantalla de "Iniciar Juego"
-     */
+	 * Metodo que inicia la pantalla de "Iniciar Juego"
+	 */
 	private void iniciarJuego() {
 		//Inicia la actividad de "Iniciar Juego"
 		
 		//TODO Modificar las clases para iniciarlas
 		//Intent intent = new Intent(this, CLASE_NIVEL.class);
-        //startActivity(intent);
+		//startActivity(intent);
 	}
 	
 	/**
-     * Metodo que inicia la pantalla de "Acerca de"
-     */
+	 * Metodo que inicia la pantalla de "Acerca de"
+	 */
 	private void iniciarAcercaDe() {
 		//Inicia la actividad de "Acerca de"
 		
 		//TODO Modificar las clases para iniciarlas
 		//Intent intent = new Intent(this, CLASE_ACERCA_DE.class);
-        //startActivity(intent);
+		//startActivity(intent);
 	}
 	
 }
