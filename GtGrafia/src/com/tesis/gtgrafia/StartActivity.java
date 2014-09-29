@@ -47,11 +47,11 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	//////////////////////////////////////////LISTA////////////////////////////////////////////////
 
 	/**
-     * Metodo que devuelve un listado de elementos String[]
-     * necesario para colocar el listView de la pantalla.
-     * 
-     * @return Arreglo de String[] con los elementos de la lista
-     */
+	 * Metodo que devuelve un listado de elementos String[]
+	 * necesario para colocar el listView de la pantalla.
+	 * 
+	 * @return Arreglo de String[] con los elementos de la lista
+	 */
 	public String[] listItems() {
 		
 		return new String[] {
