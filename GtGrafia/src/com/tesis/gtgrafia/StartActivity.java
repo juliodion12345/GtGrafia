@@ -136,7 +136,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	    
 		//Redirige la aplicación al elemento seleccionado
 		switch (item.getItemId()) {
-				case MNU_INICIAR:	            
+			case MNU_INICIAR:
 				iniciarJuego();
 				
 				return true;
