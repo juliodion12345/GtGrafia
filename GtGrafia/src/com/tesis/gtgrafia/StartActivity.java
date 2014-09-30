@@ -10,6 +10,7 @@
 package com.tesis.gtgrafia;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,7 +56,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	public String[] listItems() {
 		
 		return new String[] {
-				"Iniciar Juego", "Acerca de"			
+				getString(R.string.str_iniciar_juego), getString(R.string.str_acerca_de)			
 		};
 				
 	}
@@ -96,10 +97,10 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		String fila = adapterView.getItemAtPosition(index).toString();
 		
 		//Redirige la aplicación al elemento seleccionado
-		if (fila.equals("Iniciar Juego")) {
+		if (fila.equals(getString(R.string.str_iniciar_juego))) {
 			iniciarJuego();
 		}
-		else if (fila.equals("Acerca de")) {
+		else if (fila.equals(getString(R.string.str_acerca_de))) {
 			iniciarAcercaDe();
 		}
 
@@ -118,8 +119,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		
 		//Agrega nuevos elementos al menu de la pantalla
-		menu.add(Menu.NONE, MNU_INICIAR, Menu.NONE, "Iniciar Juego");
-		menu.add(Menu.NONE, MNU_ACERCA, Menu.NONE, "Acerca de");
+		menu.add(Menu.NONE, MNU_INICIAR, Menu.NONE, getString(R.string.str_iniciar_juego));
+		menu.add(Menu.NONE, MNU_ACERCA, Menu.NONE, getString(R.string.str_acerca_de));
 		
 		return true;
 	}
@@ -169,8 +170,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		//Inicia la actividad de "Acerca de"
 		
 		//TODO Modificar las clases para iniciarlas
-		//Intent intent = new Intent(this, CLASE_ACERCA_DE.class);
-		//startActivity(intent);
+		Intent intent = new Intent(this, EvaluacionActivity.class);
+		startActivity(intent);
 	}
 	
 }

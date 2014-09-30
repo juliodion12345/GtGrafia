@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">GtGrafia</string>
+    <string name="app_name">GtGrafía</string>
     <string name="hello_world">Ibara Mayaka!</string>
-    <string name="saludo">Hola mundo D:</string>
+    <string name="title_activity_evaluacion">GtGrafía</string>
+    
+    <string name="str_iniciar_juego">Iniciar Juego</string>
+    <string name="str_acerca_de">Acerca de</string>
 
 </resources>
