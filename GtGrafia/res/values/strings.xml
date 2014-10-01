@@ -4,6 +4,7 @@
     <string name="app_name">GtGrafía</string>
     <string name="hello_world">Ibara Mayaka!</string>
     <string name="title_activity_evaluacion">GtGrafía</string>
+    <string name="title_activity_pregunta">GtGrafía</string>
     
     <string name="str_iniciar_juego">Iniciar Juego</string>
     <string name="str_acerca_de">Acerca de</string>

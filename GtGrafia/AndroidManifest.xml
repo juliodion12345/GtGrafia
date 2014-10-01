@@ -22,8 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.tesis.gtgrafia.evaluacion.EvaluacionActivity"
+            android:name=".evaluacion.EvaluacionActivity"
             android:label="@string/title_activity_evaluacion" >
+        </activity>
+        <activity
+            android:name=".PreguntaActivity"
+            android:label="@string/title_activity_pregunta" >
         </activity>
     </application>
 

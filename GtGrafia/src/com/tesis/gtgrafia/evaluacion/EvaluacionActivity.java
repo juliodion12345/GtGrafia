@@ -10,10 +10,12 @@
 
 package com.tesis.gtgrafia.evaluacion;
 
+import com.tesis.gtgrafia.PreguntaActivity;
 import com.tesis.gtgrafia.R;
 import com.tesis.gtgrafia.estructura.Evaluacion;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -27,6 +29,10 @@ public class EvaluacionActivity extends Activity {
 	 * Variable usada para almacenar el nivel a evaluar
 	 */
 	private int idNivel = 1;
+	/**
+	 * Etiqueta usada para almacenar el resultado de la evaluación
+	 */
+	private int VAR_EVALUACION = 7;
 	
 	/**
 	 * Metodo que carga la pantalla de la evaluacion
@@ -51,6 +57,8 @@ public class EvaluacionActivity extends Activity {
 			Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, idUsuario, idNivel);
 					
 			//Enviar evaluacion a Activity
+			Intent intent = new Intent(this,PreguntaActivity.class);    
+			startActivityForResult(intent, VAR_EVALUACION);
 		}
 		else {			
 			this.getMensaje("Aun no puede realizar esta evaluación");
@@ -68,6 +76,18 @@ public class EvaluacionActivity extends Activity {
 
 		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
 		toast.show();
+	}
+	
+	@Override 
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {     
+		super.onActivityResult(requestCode, resultCode, data); 
+		
+		if (requestCode == VAR_EVALUACION) { 
+			if (resultCode == Activity.RESULT_OK) { 
+				//String newText = data.getAlgo("Evaluacion");
+				// TODO Update your TextView.
+			} 
+		} 
 	}
 	
 }
