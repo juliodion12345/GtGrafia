@@ -30,8 +30,8 @@ public class Script {
 				+ "idPregunta INTEGER) ";
 
 		create_usuario_nivel = "CREATE TABLE usuario_nivel ("
-				+ "Usuario_id INTEGER NOT NULL ," 
-				+ "idNivel INTEGER NOT NULL "
+				+ "Usuario_id INTEGER NOT NULL 	," 
+				+ "idNivel INTEGER NOT NULL 	,"
 				+ "primary key (Usuario_id, idNivel))";
 
 		create_evaluacion = "CREATE TABLE evaluacion ("
