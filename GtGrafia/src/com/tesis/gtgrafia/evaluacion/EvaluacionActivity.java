@@ -1,7 +1,7 @@
 /**
  * EvaluacionActivity
  * Activity para cargar todas las preguntas de la evaluacion
- * creando una nueva activity para cada pregunta
+ * creando una nueva activity para la evaluacion
  * 
  * @author Mayaka
  * @version 0.1
@@ -10,9 +10,10 @@
 
 package com.tesis.gtgrafia.evaluacion;
 
-import com.tesis.gtgrafia.PreguntaActivity;
 import com.tesis.gtgrafia.R;
 import com.tesis.gtgrafia.estructura.Evaluacion;
+import com.tesis.gtgrafia.estructura.Pregunta;
+import com.tesis.gtgrafia.pregunta.PreguntaActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -30,9 +31,9 @@ public class EvaluacionActivity extends Activity {
 	 */
 	private int idNivel = 1;
 	/**
-	 * Etiqueta usada para almacenar el resultado de la evaluación
+	 * Etiqueta usada para almacenar los datos de la pregunta
 	 */
-	private int VAR_EVALUACION = 7;
+	private int VAR_PREGUNTA = 7;
 	
 	/**
 	 * Metodo que carga la pantalla de la evaluacion
@@ -54,11 +55,13 @@ public class EvaluacionActivity extends Activity {
 		if (EvaluacionFuncion.comprobarEvaluacion(this, idUsuario, idNivel)==true) {
 			
 			//Llenar evaluacion
-			Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, idUsuario, idNivel);
-					
+			Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, idUsuario, idNivel);			
+			
 			//Enviar evaluacion a Activity
-			Intent intent = new Intent(this,PreguntaActivity.class);    
-			startActivityForResult(intent, VAR_EVALUACION);
+			Intent intent = new Intent(this, PreguntaActivity.class);    
+			intent.putExtra("Pregunta", eval);
+			
+			startActivityForResult(intent, VAR_PREGUNTA);
 		}
 		else {			
 			this.getMensaje("Aun no puede realizar esta evaluación");
@@ -71,7 +74,7 @@ public class EvaluacionActivity extends Activity {
 	 * 
 	 * @param texto El texto a mostrar
 	 */
-	public void getMensaje(String texto) {
+	private void getMensaje(String texto) {
 		int duracion = Toast.LENGTH_SHORT;
 
 		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
@@ -82,10 +85,9 @@ public class EvaluacionActivity extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {     
 		super.onActivityResult(requestCode, resultCode, data); 
 		
-		if (requestCode == VAR_EVALUACION) { 
-			if (resultCode == Activity.RESULT_OK) { 
-				//String newText = data.getAlgo("Evaluacion");
-				// TODO Update your TextView.
+		if (requestCode == VAR_PREGUNTA) { 
+			if (resultCode == Activity.RESULT_OK) {						
+				//TODO: Saber que datos recibir				
 			} 
 		} 
 	}

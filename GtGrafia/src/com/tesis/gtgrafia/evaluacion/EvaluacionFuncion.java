@@ -15,6 +15,7 @@ import android.content.Context;
 import android.database.Cursor;
 import com.tesis.gtgrafia.SQLHelper;
 import com.tesis.gtgrafia.estructura.Evaluacion;
+import com.tesis.gtgrafia.estructura.Opcion;
 import com.tesis.gtgrafia.estructura.Pregunta;
 
 public class EvaluacionFuncion {
@@ -220,6 +221,23 @@ public class EvaluacionFuncion {
 		ArrayList<Pregunta> preguntas = new  ArrayList<Pregunta>();
 		
 		//TODO: Resolver problema de obtener preguntas
+		Pregunta p = new Pregunta();
+		p.setEnunciado("Enunciado 1");
+		p.setRespuesta("3");
+		
+		Opcion o1 = new Opcion();
+		o1.setOpcion("1");
+		Opcion o2= new Opcion();
+		o2.setOpcion("2");
+		Opcion o3 = new Opcion();
+		o3.setOpcion("3");
+		
+		p.getOpciones().add(o1);
+		p.getOpciones().add(o2);
+		p.getOpciones().add(o3);
+		
+		preguntas.add(p);
+		
 		return preguntas;
 	}
 	
