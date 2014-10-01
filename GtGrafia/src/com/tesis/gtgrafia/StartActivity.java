@@ -9,6 +9,8 @@
 
 package com.tesis.gtgrafia;
 
+import com.tesis.gtgrafia.evaluacion.EvaluacionActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -170,13 +172,13 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		//Inicia la actividad de "Acerca de"
 		
 		//TODO Modificar las clases para iniciarlas
-		Intent intent = new Intent(this, EvaluacionActivity.class);
+		Intent intent = new Intent(this.getApplicationContext(), EvaluacionActivity.class);
 		startActivity(intent);
 	}
 	
 	//TODO: Remover despues
 	protected void basePrueba() {
-		SQLHelper bd = new SQLHelper(this, 1);
+		SQLHelper bd = new SQLHelper(this.getApplicationContext(), 1);
 		bd.abrir();
 		bd.InsertUsuario(1,"Andrea Gonzalez");
 		android.database.Cursor usuario = bd.SelectUsuario();
