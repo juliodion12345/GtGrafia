@@ -176,21 +176,4 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		startActivity(intent);
 	}
 	
-	//TODO: Remover despues
-	protected void basePrueba() {
-		SQLHelper bd = new SQLHelper(this.getApplicationContext(), 1);
-		bd.abrir();
-		bd.InsertUsuario(1,"Andrea Gonzalez");
-		android.database.Cursor usuario = bd.SelectUsuario();
-		if (usuario != null && usuario.getCount() > 0) {
-			usuario.moveToFirst();
-			System.out.println(usuario.getString(0));
-			System.out.println(usuario.getString(1));
-			while (usuario.moveToNext()) {
-				System.out.println(usuario.getString(0));
-				System.out.println(usuario.getString(1));
-			}
-		}
-		bd.close();	
-	}
 }

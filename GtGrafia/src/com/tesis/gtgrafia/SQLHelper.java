@@ -97,7 +97,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 		//Cursor que obtiene la consulta
 		Cursor c = this.getReadableDatabase().rawQuery(consulta, null);
 		
-		//TODO: Analizar codigo
+		//Mueve el cursor al inicio
 		if (c!= null && c.getCount()>0){
 			c.moveToFirst();
 		}
@@ -118,7 +118,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 		//Cursor que obtiene la consulta
 		Cursor c = this.getReadableDatabase().rawQuery(consulta, args);
 		
-		//TODO: Analizar codigo
+		//Mueve el cursor al inicio
 		if (c!= null && c.getCount()>0){
 			c.moveToFirst();
 		}
@@ -211,23 +211,4 @@ public class SQLHelper extends SQLiteOpenHelper {
 		this.getWritableDatabase().endTransaction();
 	}	
     
-	//TODO: Remover despues    
-    public Cursor SelectUsuario(){
-  	   Cursor c = this.getReadableDatabase().rawQuery("select * from usuario", null);
-  	   if (c!= null && c.getCount()>0){
-  		   c.moveToFirst();
-  	   }
-  	   return c;
-     }
-    
-	//TODO: Remover despues
-    public void InsertUsuario (int id, String nombre){
-  	   this.getWritableDatabase().beginTransaction();
-  	   ContentValues valores = new ContentValues();
-  	   valores.put("Nombre", nombre);
-  	   if (this.getWritableDatabase().insert("usuario", null, valores) >=0){
-  		   this.getWritableDatabase().setTransactionSuccessful();
-  	   }
-  	   this.getWritableDatabase().endTransaction();
-     }
 }

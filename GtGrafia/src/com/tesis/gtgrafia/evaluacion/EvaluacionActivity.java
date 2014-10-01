@@ -22,11 +22,11 @@ public class EvaluacionActivity extends Activity {
 	/**
 	 * Variable usada para almacenar el idUsuario de la aplicación
 	 */
-	private int VAR_USUARIO = 0;
+	private int idUsuario = 2;
 	/**
 	 * Variable usada para almacenar el nivel a evaluar
 	 */
-	private int VAR_IDNIVEL = 0;
+	private int idNivel = 1;
 	
 	/**
 	 * Metodo que carga la pantalla de la evaluacion
@@ -45,16 +45,15 @@ public class EvaluacionActivity extends Activity {
 	 */
 	public void realizarEvaluacion() {	
 		//Comprobar usuario para el nivel de evaluacion
-		if (EvaluacionFuncion.comprobarEvaluacion(this, VAR_USUARIO, VAR_IDNIVEL)==true) {
+		if (EvaluacionFuncion.comprobarEvaluacion(this, idUsuario, idNivel)==true) {
 			
 			//Llenar evaluacion
-			Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, VAR_IDNIVEL);
+			Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, idUsuario, idNivel);
 					
 			//Enviar evaluacion a Activity
 		}
-		else {
-			//TODO: Mostrar mensaje de error
-			this.getMensaje("No puede realizar la evaluación");
+		else {			
+			this.getMensaje("Aun no puede realizar esta evaluación");
 		}		
 		
 	}	

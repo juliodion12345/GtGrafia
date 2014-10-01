@@ -71,6 +71,12 @@ public class Evaluacion {
 	}
 	public void setNombreNivel(String nombreNivel) {
 		this.nombreNivel = nombreNivel;
+	}
+	public ArrayList<Pregunta> getPreguntas() {
+		return preguntas;
+	}
+	public void setPreguntas(ArrayList<Pregunta> preguntas) {
+		this.preguntas = preguntas;
 	}		
 
 }
