@@ -161,8 +161,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		//Inicia la actividad de "Iniciar Juego"
 		
 		//TODO Modificar las clases para iniciarlas
-		//Intent intent = new Intent(this, CLASE_NIVEL.class);
-		//startActivity(intent);
+		Intent intent = new Intent(this, InicioActivity.class);
+		startActivity(intent);
 	}
 	
 	/**
@@ -174,6 +174,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		//TODO Modificar las clases para iniciarlas
 		Intent intent = new Intent(this.getApplicationContext(), EvaluacionActivity.class);
 		startActivity(intent);
+		
+		
 	}
 	
 	//TODO: Remover despues
