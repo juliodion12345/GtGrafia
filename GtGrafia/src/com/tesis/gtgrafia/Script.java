@@ -30,14 +30,15 @@ public class Script {
 				+ "idPregunta INTEGER) ";
 
 		create_usuario_nivel = "CREATE TABLE usuario_nivel ("
-				+ "Usuario_id INTEGER primary key	," 
-				+ "idNivel INTEGER)";
+				+ "Usuario_id INTEGER NOT NULL ," 
+				+ "idNivel INTEGER NOT NULL "
+				+ "primary key (Usuario_id, idNivel))";
 
 		create_evaluacion = "CREATE TABLE evaluacion ("
 				+ "idEvaluacion INTEGER NOT NULL	," 
 				+ "idPregunta INTEGER NOT NULL		,"
 				+ "Usuario_id INTEGER NOT NULL		," 
-				+ "primary key (idEvaluacion, Usuario_id))";
+				+ "primary key (idEvaluacion, idPregunta, Usuario_id))";
 		
 		index_usuario = "CREATE INDEX index_usuario" +
 				"ON usuario ( id COLLATE NOCASE );";
