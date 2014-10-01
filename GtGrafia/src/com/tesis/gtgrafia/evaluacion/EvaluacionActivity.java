@@ -52,7 +52,7 @@ public class EvaluacionActivity extends Activity {
 		if (EvaluacionFuncion.comprobarEvaluacion(this, VAR_USUARIO, VAR_IDNIVEL)==true) {
 			
 			//Llenar evaluacion
-			Evaluacion eval = this.getEvaluacion();
+			//Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, VAR_IDNIVEL);
 					
 			//Enviar evaluacion a Activity
 		}
@@ -62,17 +62,6 @@ public class EvaluacionActivity extends Activity {
 		}		
 		
 	}	
-	
-	/**
-	 * Metodo que devuelve la evaluacón a realizar
-	 * 
-	 * @return La evaluación a realizar
-	 */
-	public Evaluacion getEvaluacion() {
-		Evaluacion eval = new Evaluacion();	
-		
-		return eval;
-	}
 	
 	/**
 	 * Metodo que devuelve un mensaje corto de tipo Toast
