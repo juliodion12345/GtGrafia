@@ -11,13 +11,9 @@
 package com.tesis.gtgrafia.evaluacion;
 
 import com.tesis.gtgrafia.R;
-import com.tesis.gtgrafia.SQLHelper;
-import com.tesis.gtgrafia.R.layout;
 import com.tesis.gtgrafia.estructura.Evaluacion;
 
 import android.app.Activity;
-import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -52,7 +48,7 @@ public class EvaluacionActivity extends Activity {
 		if (EvaluacionFuncion.comprobarEvaluacion(this, VAR_USUARIO, VAR_IDNIVEL)==true) {
 			
 			//Llenar evaluacion
-			//Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, VAR_IDNIVEL);
+			Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, VAR_IDNIVEL);
 					
 			//Enviar evaluacion a Activity
 		}

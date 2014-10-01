@@ -75,7 +75,7 @@ public class EvaluacionFuncion {
 		bd.abrir();
 		
 		//La consulta a realizar
-		String consulta = 	"" ;
+		String consulta = 	"SELECT * FROM usuario" ;
 		
 		//Sustitución de parametros ?
 		String[] args = 	{ };
