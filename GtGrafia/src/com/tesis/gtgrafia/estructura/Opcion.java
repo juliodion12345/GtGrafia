@@ -20,43 +20,72 @@ public class Opcion implements Parcelable  {
 	private String opcion;
 	
 	///////////////////////////////////////CONSTRUCTOR/////////////////////////////////////////////
-		
+	
+	/**
+	 * Constructor principal
+	 */
 	public Opcion() {
 		this.opcion = "";
-	}
-
-	public String getOpcion() {
-		return opcion;
 	}
 	
 	/////////////////////////////////////////GET-SET///////////////////////////////////////////////
 
+	public String getOpcion() {
+		return opcion;
+	}
 	public void setOpcion(String opcion) {
 		this.opcion = opcion;
 	}
 
 	/////////////////////////////////////////PARCEL////////////////////////////////////////////////
 
+	/**
+	 * Describe contenido
+	 * 
+	 * @return id
+	 */
 	@Override
 	public int describeContents() {
 		return 0;
 	}
 	
+	/**
+	 * Escribe el nuevo objeto
+	 * 
+	 * @param dest Destino del Parcel
+	 * @param flags Etiquetas
+	 */
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		//Escribir los valores
 		dest.writeString(opcion);
 	}
 	
+	/**
+	 * Lee el nuevo objeto
+	 * 
+	 * @param in Parcel de entrada
+	 */
 	private void readFromParcel(Parcel in) {
+		//Leer los valores
 		this.opcion = in.readString();
 	}
 	
+	/**
+	 * Constructor que facilita la creación de nuevos Parcel
+	 * 
+	 * @param in Parcel de entrada
+	 */
 	public Opcion(Parcel in) {
+		//Inicializar objeto
 		this();
-
+		
 		readFromParcel(in);
 	}
 	
+	/**
+	 * CREATOR que facilita la creación de nuevos elementos
+	 */
 	public static final Parcelable.Creator<Opcion> CREATOR
 		= new Parcelable.Creator<Opcion>() {
 		public Opcion createFromParcel(Parcel in) {

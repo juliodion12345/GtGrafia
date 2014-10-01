@@ -44,6 +44,7 @@ public class EvaluacionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_evaluacion);
+		
 		this.realizarEvaluacion();
 	}
 	
@@ -59,7 +60,7 @@ public class EvaluacionActivity extends Activity {
 			
 			//Enviar evaluacion a Activity
 			Intent intent = new Intent(this, PreguntaActivity.class);    
-			intent.putExtra("Pregunta", eval);
+			intent.putExtra("Evaluacion", eval);
 			
 			startActivityForResult(intent, VAR_PREGUNTA);
 		}

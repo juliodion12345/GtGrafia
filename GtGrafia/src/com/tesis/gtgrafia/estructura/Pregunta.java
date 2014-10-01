@@ -43,6 +43,9 @@ public class Pregunta implements Parcelable {
 
 	///////////////////////////////////////CONSTRUCTOR/////////////////////////////////////////////
 	
+	/**
+	 * Constructor principal
+	 */
 	public Pregunta() {
 		this.idPregunta 		= 0;
 		this.enunciado 			= "";
@@ -93,13 +96,25 @@ public class Pregunta implements Parcelable {
 	
 	/////////////////////////////////////////PARCEL////////////////////////////////////////////////
 	
+	/**
+	 * Describe contenido
+	 * 
+	 * @return id
+	 */
 	@Override
 	public int describeContents() {
 		return 0;
 	}
 	
+	/**
+	 * Escribe el nuevo objeto
+	 * 
+	 * @param dest Destino del Parcel
+	 * @param flags Etiquetas
+	 */
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		//Escribir los valores
 		dest.writeInt(idPregunta);
 		dest.writeString(enunciado);
 		dest.writeString(respuesta);
@@ -108,21 +123,38 @@ public class Pregunta implements Parcelable {
 		dest.writeTypedList(opciones);
 	}
 	
+	/**
+	 * Lee el nuevo objeto
+	 * 
+	 * @param in Parcel de entrada
+	 */
 	private void readFromParcel(Parcel in) {
+		//Leer los valores
 		this.idPregunta = in.readInt();
 		this.enunciado = in.readString();
 		this.respuesta = in.readString();
 		this.respuestaUsuario = in.readString();
 		this.tipoPregunta = in.readInt();
+		
+		//Leer el ArrayList de tipo Opcion
 		in.readTypedList(opciones, Opcion.CREATOR);
 	}
 	
+	/**
+	 * Constructor que facilita la creación de nuevos Parcel
+	 * 
+	 * @param in Parcel de entrada
+	 */
 	public Pregunta(Parcel in) {
+		//Inicializar objeto
 		this();
-	
+		
 		readFromParcel(in);
 	}
 	
+	/**
+	 * CREATOR que facilita la creación de nuevos elementos
+	 */
 	public static final Parcelable.Creator<Pregunta> CREATOR
 		= new Parcelable.Creator<Pregunta>() {
 		public Pregunta createFromParcel(Parcel in) {

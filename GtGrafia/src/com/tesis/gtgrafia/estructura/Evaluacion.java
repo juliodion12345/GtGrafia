@@ -42,6 +42,9 @@ public class Evaluacion implements Parcelable {
 
 	///////////////////////////////////////CONSTRUCTOR/////////////////////////////////////////////
 	
+	/**
+	 * Constructor principal
+	 */
 	public Evaluacion() {
 		this.idEvaluacion 	= 0;
 		this.idUsuario 		= 0;
@@ -92,11 +95,22 @@ public class Evaluacion implements Parcelable {
 	
 	/////////////////////////////////////////PARCEL////////////////////////////////////////////////
 
+	/**
+	 * Describe contenido
+	 * 
+	 * @return id
+	 */
 	@Override
     public int describeContents() {
         return 0;
     }
  
+	/**
+	 * Escribe el nuevo objeto
+	 * 
+	 * @param dest Destino del Parcel
+	 * @param flags Etiquetas
+	 */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     	dest.writeInt(idEvaluacion);
@@ -107,23 +121,40 @@ public class Evaluacion implements Parcelable {
     	dest.writeTypedList(preguntas);
     }
     
+    /**
+	 * Lee el nuevo objeto
+	 * 
+	 * @param in Parcel de entrada
+	 */
     private void readFromParcel(Parcel in) {
+    	//Leer los valores
     	this.idEvaluacion = in.readInt();
     	this.idUsuario = in.readInt();
     	this.idNivel = in.readInt();
     	this.tipoEvaluacion = in.readInt();
     	this.nombreNivel = in.readString();
+    	
+    	//Leer el ArrayList de tipo Pregunta
     	in.readTypedList(preguntas, Pregunta.CREATOR);
     }
     
+    /**
+	 * Constructor que facilita la creación de nuevos Parcel
+	 * 
+	 * @param in Parcel de entrada
+	 */
     public Evaluacion(Parcel in) {
+    	//Inicializar objeto
     	this();
-		
+    	
         readFromParcel(in);
     }
     
+    /**
+	 * CREATOR que facilita la creación de nuevos elementos
+	 */
     public static final Parcelable.Creator<Evaluacion> CREATOR
-    = new Parcelable.Creator<Evaluacion>() {
+    	= new Parcelable.Creator<Evaluacion>() {
         public Evaluacion createFromParcel(Parcel in) {
             return new Evaluacion(in);
         }
