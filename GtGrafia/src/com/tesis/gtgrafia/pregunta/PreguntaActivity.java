@@ -37,13 +37,16 @@ public class PreguntaActivity extends Activity {
 		Log.i("evaluacion", ""+evaluacion.getIdEvaluacion());		
 		Log.i("evaluacion", ""+evaluacion.getIdNivel());
 		Log.i("evaluacion", ""+evaluacion.getIdUsuario());
-		Log.i("evaluacion", evaluacion.getNombreNivel());
+		Log.i("evaluacion", ""+evaluacion.getNombreNivel());
 		Log.i("evaluacion", ""+evaluacion.getTipoEvaluacion());
 		
 		//TODO: Remover despues
 		System.out.println("********************************");
 		Pregunta p = evaluacion.getPreguntas().get(0);
-		Log.i("p", ""+p.getOpciones().get(0).getOpcion());	
-		Log.i("p", ""+p.getOpciones().get(1).getOpcion());	
+		Log.i("p", "*"+p.getEnunciado());
+		Log.i("p", "*"+p.getRespuesta());
+		Log.i("p", "**"+p.getOpciones().get(0).getOpcion());	
+		Log.i("p", "**"+p.getOpciones().get(1).getOpcion());
+		Log.i("p", "**"+p.getOpciones().get(2).getOpcion());
 	}
 }

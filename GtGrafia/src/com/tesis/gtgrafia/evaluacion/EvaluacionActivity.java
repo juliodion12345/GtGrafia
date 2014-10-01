@@ -12,7 +12,6 @@ package com.tesis.gtgrafia.evaluacion;
 
 import com.tesis.gtgrafia.R;
 import com.tesis.gtgrafia.estructura.Evaluacion;
-import com.tesis.gtgrafia.estructura.Pregunta;
 import com.tesis.gtgrafia.pregunta.PreguntaActivity;
 
 import android.app.Activity;

@@ -86,7 +86,7 @@ public class EvaluacionFuncion {
 		eval.setNombreNivel(getNombreNivel(context, idNivel));
 		
 		//Colocar valor preguntas
-		eval.setPreguntas(getPreguntas(context, idUsuario, idNivel));
+		eval.setPreguntas(getPreguntas(context, idUsuario, idNivel, 10));
 		
 		//Retornar la evaluación	
 		return eval;
@@ -116,7 +116,7 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Colocar ultimo valor
-				idEvaluacion = cursor.getInt(0) + 1;
+				idEvaluacion = cursor.getInt(cursor.getColumnIndex("Ultimo")) + 1;
 			}
 			else {
 				//Colocar valor inicial
@@ -160,7 +160,7 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Asigna el resultado
-				tipoEvaluacion = cursor.getInt(0);
+				tipoEvaluacion = cursor.getInt(cursor.getColumnIndex("idtipo_pregunta"));
 			}
 			
 			cursor.close();
@@ -199,7 +199,7 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Asigna el resultado
-				nombreNivel = cursor.getString(0);
+				nombreNivel = cursor.getString(cursor.getColumnIndex("Nombre"));
 			}
 			
 			cursor.close();
@@ -214,31 +214,107 @@ public class EvaluacionFuncion {
 	 * @param context El contexto de la actividad
 	 * @param idUsuario El idUsuario del usuario
 	 * @param idNivel El idNivel del nivel
+	 * @param count Cantidad de preguntas
 	 * 
 	 * @return Un ArrayList con las preguntas de la evaluación
 	 */
-	public static ArrayList<Pregunta> getPreguntas(Context context, int idUsuario, int idNivel) {
+	public static ArrayList<Pregunta> getPreguntas(Context context, 
+													int idUsuario, 
+													int idNivel, 
+													int count) {
+		
 		ArrayList<Pregunta> preguntas = new  ArrayList<Pregunta>();
 		
-		//TODO: Resolver problema de obtener preguntas
-		Pregunta p = new Pregunta();
-		p.setEnunciado("Enunciado 1");
-		p.setRespuesta("3");
+		//La consulta para obtener las preguntas
+		String consulta = 	"SELECT idPregunta, enunciado, respuesta, idtipo_pregunta, idNivel " +
+							"FROM pregunta " +
+							"WHERE idNivel = ? " +
+							"ORDER BY RANDOM() " +
+							"LIMIT ?" ;
+
+		//Sustitución de parametros ?
+		String[] args = 	{String.valueOf(idNivel), String.valueOf(count)};
 		
-		Opcion o1 = new Opcion();
-		o1.setOpcion("1");
-		Opcion o2= new Opcion();
-		o2.setOpcion("2");
-		Opcion o3 = new Opcion();
-		o3.setOpcion("3");
+		Cursor cursor = getCursor(context, consulta, args);
 		
-		p.getOpciones().add(o1);
-		p.getOpciones().add(o2);
-		p.getOpciones().add(o3);
-		
-		preguntas.add(p);
+		//Verificar que no sea nulo
+		if (cursor != null) {
+					
+			//Verificar por al menos un resultado
+			if (cursor.getCount() > 0) {
+				cursor.moveToFirst();
+				
+				boolean mover = true;
+				while(mover==true) {
+					Pregunta p = new Pregunta();
+					//Colocar atributos
+					p.setIdPregunta(cursor.getInt(cursor.getColumnIndex("idPregunta")));
+					p.setEnunciado(cursor.getString(cursor.getColumnIndex("enunciado")));
+					p.setRespuesta(cursor.getString(cursor.getColumnIndex("respuesta")));
+					p.setTipoPregunta(cursor.getInt(cursor.getColumnIndex("idtipo_pregunta")));
+					
+					if(p.getTipoPregunta()==1) {
+						p.setOpciones(getOpciones(context, p.getIdPregunta()));						
+					}
+					
+					//Agregar al ArrayList
+					preguntas.add(p);
+					mover = cursor.moveToNext();
+				}
+
+			}
+			
+			cursor.close();
+		}
 		
 		return preguntas;
+	}
+	
+	/**
+	 * Metodo que devuelve las preguntas de la evaluación
+	 * @param context El contexto de la actividad
+	 * @param idPregunta El idPregunta de las opciones
+	 * 
+	 * @return Un ArrayList con las opciones de la pregunta
+	 */
+	public static ArrayList<Opcion> getOpciones(Context context, int idPregunta) {
+		
+		ArrayList<Opcion> opciones = new  ArrayList<Opcion>();
+		
+		//La consulta para obtener el idEvaluacion
+		String consulta = 	"SELECT idOpcion, palabra " +
+							"FROM opcion " +
+							"WHERE idPregunta = ?" ;
+
+		//Sustitución de parametros ?
+		String[] args = 	{String.valueOf(idPregunta)};
+		
+		Cursor cursor = getCursor(context, consulta, args);
+		
+		//Verificar que no sea nulo
+		if (cursor != null) {
+					
+			//Verificar por al menos un resultado
+			if (cursor.getCount() > 0) {
+				cursor.moveToFirst();
+				
+				boolean mover = true;
+				while(mover==true) {
+					Opcion o = new Opcion();
+					//Colocar atributos
+					o.setIdOpcion(cursor.getInt(cursor.getColumnIndex("idOpcion")));
+					o.setOpcion(cursor.getString(cursor.getColumnIndex("palabra")));
+					
+					//Agregar al ArrayList
+					opciones.add(o);
+					mover = cursor.moveToNext();
+				}
+			}
+			
+			cursor.close();
+		}
+		
+		return opciones;		
 	}
 	
 	/**

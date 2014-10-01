@@ -94,6 +94,13 @@ public class Pregunta implements Parcelable {
 		this.opciones = opciones;
 	}
 	
+	public void insertarOpcion(Opcion o) {
+		this.opciones.add(o);		
+	}
+	public Opcion leerOpcion(int index) {		
+		return this.opciones.get(index);
+	}
+	
 	/////////////////////////////////////////PARCEL////////////////////////////////////////////////
 	
 	/**

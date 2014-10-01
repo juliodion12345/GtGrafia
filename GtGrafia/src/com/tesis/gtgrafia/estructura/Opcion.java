@@ -15,6 +15,10 @@ import android.os.Parcelable;
 public class Opcion implements Parcelable  {
 	
 	/**
+	 * Variable usada para almacenar el idOpcion
+	 */
+	private int idOpcion;
+	/**
 	 * Variable usada para almacenar la opcion
 	 */
 	private String opcion;
@@ -25,11 +29,18 @@ public class Opcion implements Parcelable  {
 	 * Constructor principal
 	 */
 	public Opcion() {
+		this.idOpcion = 0;
 		this.opcion = "";
 	}
 	
 	/////////////////////////////////////////GET-SET///////////////////////////////////////////////
 
+	public int getIdOpcion() {
+		return idOpcion;
+	}
+	public void setIdOpcion(int idOpcion) {
+		this.idOpcion = idOpcion;
+	}
 	public String getOpcion() {
 		return opcion;
 	}
@@ -58,6 +69,7 @@ public class Opcion implements Parcelable  {
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		//Escribir los valores
+		dest.writeInt(idOpcion);
 		dest.writeString(opcion);
 	}
 	
@@ -68,6 +80,7 @@ public class Opcion implements Parcelable  {
 	 */
 	private void readFromParcel(Parcel in) {
 		//Leer los valores
+		this.idOpcion = in.readInt();
 		this.opcion = in.readString();
 	}
 	
