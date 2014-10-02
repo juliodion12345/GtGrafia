@@ -50,7 +50,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-		bd = new SQLHelper (this, 1);
+		bd = new SQLHelper (this, SQLHelper.DATABASE_VERSION);
 		//llenar el listView con los items
 		
 		this.setListItems();

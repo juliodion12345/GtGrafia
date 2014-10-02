@@ -329,7 +329,7 @@ public class EvaluacionFuncion {
 	 * @return El cursor de la consulta
 	 */
 	public static Cursor getCursor(Context context, String consulta, String[] args) {
-		SQLHelper bd = new SQLHelper(context.getApplicationContext(), 1);
+		SQLHelper bd = new SQLHelper(context.getApplicationContext(), SQLHelper.DATABASE_VERSION);
 		bd.abrir();
 			
 		//Consultar

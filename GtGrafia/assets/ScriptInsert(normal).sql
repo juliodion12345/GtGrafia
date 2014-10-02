@@ -1,3 +1,15 @@
+-- ------------------------------------------------------------------------------------------------
+-- ScriptInsert.sql
+-- Carga de datos inicial
+-- 
+-- @author Andrea
+-- @version 0.1
+-- ------------------------------------------------------------------------------------------------
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla usuario
+-- ------------------------------------------------------------------------------------------------
+
 INSERT INTO usuario (Nombre) VALUES ('Mayaka');
 INSERT INTO usuario (Nombre) VALUES ('Nagato');
 INSERT INTO usuario (Nombre) VALUES ('Matsuri');
@@ -5,9 +17,24 @@ INSERT INTO usuario (Nombre) VALUES ('Victorique');
 INSERT INTO usuario (Nombre) VALUES ('Nadeko');
 INSERT INTO usuario (Nombre) VALUES ('Carlos');
 INSERT INTO usuario (Nombre) VALUES ('Julio');
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla nivel
+-- -------------------------------------------------------------------------------------------------
 INSERT INTO nivel (dir_contenido, nombre) VALUES ('/Lecciones/LAS_PALABRAS_AGUDAS.pdf', 'Palabras Agudas');
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla tipo_pregunta
+-- ------------------------------------------------------------------------------------------------
 INSERT INTO tipo_pregunta (descripcion) VALUES ('Seleccion multiple');
 INSERT INTO tipo_pregunta (descripcion) VALUES ('Escrita');
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla pregunta y opcion
+-- ------------------------------------------------------------------------------------------------
+-- ----------------------------------------------
+-- Nivel 1
+-- ----------------------------------------------
 INSERT INTO pregunta (enunciado, respuesta, idtipo_pregunta, idNivel) VALUES ('Seleccione la palabra que está escrita correctamente', 'Ladrón', 1, 1);
 INSERT INTO pregunta (enunciado, respuesta, idtipo_pregunta, idNivel) VALUES ('Seleccione la palabra que está escrita correctamente', 'Colibrí', 1, 1);
 INSERT INTO pregunta (enunciado, respuesta, idtipo_pregunta, idNivel) VALUES ('Seleccione la palabra que está escrita correctamente', 'Fatal', 1, 1);
@@ -28,6 +55,7 @@ INSERT INTO pregunta (enunciado, respuesta, idtipo_pregunta, idNivel) VALUES ('S
 INSERT INTO pregunta (enunciado, respuesta, idtipo_pregunta, idNivel) VALUES ('Seleccione la palabra que está escrita correctamente', 'País', 1, 1);
 INSERT INTO pregunta (enunciado, respuesta, idtipo_pregunta, idNivel) VALUES ('Seleccione la palabra que está escrita correctamente', 'Capaz', 1, 1);
 INSERT INTO pregunta (enunciado, respuesta, idtipo_pregunta, idNivel) VALUES ('Seleccione la palabra que está escrita correctamente', 'Virtud', 1, 1);
+
 INSERT INTO opcion (palabra, idPregunta) VALUES ('Ladrón', 1);
 INSERT INTO opcion (palabra, idPregunta) VALUES ('Ladron', 1);
 INSERT INTO opcion (palabra, idPregunta) VALUES ('Ninguna', 1);
@@ -88,6 +116,10 @@ INSERT INTO opcion (palabra, idPregunta) VALUES ('Ninguna', 19);
 INSERT INTO opcion (palabra, idPregunta) VALUES ('Virtúd', 20);
 INSERT INTO opcion (palabra, idPregunta) VALUES ('Virtud', 20);
 INSERT INTO opcion (palabra, idPregunta) VALUES ('Ninguna', 20);
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla usuario_nivel
+-- ------------------------------------------------------------------------------------------------
 INSERT INTO usuario_nivel (Usuario_id, idNivel) VALUES (1, 1);
 INSERT INTO usuario_nivel (Usuario_id, idNivel) VALUES (2, 1);
 INSERT INTO usuario_nivel (Usuario_id, idNivel) VALUES (3, 1);

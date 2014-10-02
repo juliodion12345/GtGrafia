@@ -19,7 +19,7 @@ public class InicioActivity extends Activity  {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inicio);
-		bd = new SQLHelper (this, 1);
+		bd = new SQLHelper (this, SQLHelper.DATABASE_VERSION);
 
 		final Button button1 = (Button) this.findViewById(R.id.button1);
 		button1.setOnClickListener(new View.OnClickListener() {
