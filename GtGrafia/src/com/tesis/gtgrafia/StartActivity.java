@@ -52,7 +52,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		setContentView(R.layout.activity_start);
 		bd = new SQLHelper (this, 1);
 		//llenar el listView con los items
-		System.out.println("holaaaaaa");
+		
 		this.setListItems();
 	}
 	
@@ -70,7 +70,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		lista.add(getString(R.string.str_acerca_de));
 		//tomar nombres de la base de datos 
 				bd.abrir();
-		Cursor usuario = bd.Select("Select * from usuarios;");
+		Cursor usuario = bd.Select("Select * from usuario;");
 		
 		if (usuario != null && usuario.getCount() > 0) {
 			usuario.moveToFirst();

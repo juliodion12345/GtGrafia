@@ -62,7 +62,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 		
 		InputStream is = null;
 	    try {
-	         is = contexto.getAssets().open("/StartActivity/src/com/tesis/gtgrafia/ScriptInsert.sql");
+	         is = contexto.getAssets().open("ScriptInsert.sql");
 	         if (is != null) {
 	             db.beginTransaction();
 	             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
