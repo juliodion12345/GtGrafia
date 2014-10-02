@@ -11,5 +11,7 @@
     <string name="title_activity_iinicio">IinicioActivity</string>
     <string name="IngreseNombre">Ingrese su nombre</string>
     <string name="jugar">Jugar</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_leccion">LeccionActivity</string>
 
 </resources>

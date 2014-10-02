@@ -2,7 +2,8 @@ package com.tesis.gtgrafia;
 
 public class Script {
 	String create_usuario, create_tipo_pregunta, create_nivel, create_pregunta, create_opcion, 
-	create_usuario_nivel, create_evaluacion, index_usuario;
+	create_usuario_nivel, create_evaluacion;
+	
 	public Script(){
 		create_usuario = "CREATE TABLE usuario ( "
 				+ "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
@@ -40,8 +41,7 @@ public class Script {
 				+ "Usuario_id INTEGER NOT NULL		," 
 				+ "primary key (idEvaluacion, idPregunta, Usuario_id))";
 		
-		index_usuario = "CREATE INDEX index_usuario" +
-				"ON usuario ( id COLLATE NOCASE );";
+		
 		
 	}
 

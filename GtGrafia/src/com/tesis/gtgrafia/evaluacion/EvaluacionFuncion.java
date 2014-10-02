@@ -10,6 +10,7 @@
 package com.tesis.gtgrafia.evaluacion;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import com.tesis.gtgrafia.SQLHelper;
 import com.tesis.gtgrafia.estructura.Evaluacion;

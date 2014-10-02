@@ -9,10 +9,14 @@
 
 package com.tesis.gtgrafia;
 
+import java.util.ArrayList;
+
 import com.tesis.gtgrafia.evaluacion.EvaluacionActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,12 +42,17 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	 * 
 	 * @param savedInstanceState savedInstanceState
 	 */
+	
+	//variable conectora con la base de datos
+	public SQLHelper bd = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-		
+		bd = new SQLHelper (this, 1);
 		//llenar el listView con los items
+		System.out.println("holaaaaaa");
 		this.setListItems();
 	}
 	
@@ -55,11 +64,28 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	 * 
 	 * @return Arreglo de String[] con los elementos de la lista
 	 */
-	public String[] listItems() {
+	public ArrayList<String> listItems() {
+		ArrayList<String> lista = new ArrayList<String>();
+		lista.add(getString(R.string.str_iniciar_juego));
+		lista.add(getString(R.string.str_acerca_de));
+		//tomar nombres de la base de datos 
+				bd.abrir();
+		Cursor usuario = bd.SelectUsuario();
 		
-		return new String[] {
-				getString(R.string.str_iniciar_juego), getString(R.string.str_acerca_de)			
-		};
+		if (usuario != null && usuario.getCount() > 0) {
+			usuario.moveToFirst();
+			lista.add(usuario.getString(1));
+			while (usuario.moveToNext()) {	
+				lista.add(usuario.getString(1));
+			}
+		}
+		
+		bd.cerrar();
+		
+		
+		
+		
+		return lista;
 				
 	}
 	
@@ -69,11 +95,12 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	public void setListItems() {
 		
 		//Obtener los elementos
-		String[] lista = listItems();
+		ArrayList<String> lista = listItems();
 		
 		/*Llenar un nuevo adaptador con los elementos obtenidos, usando como plantilla
 		 * el simple_list_item_1 (que es una lista simple)
 		 */
+				
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
 		
@@ -104,6 +131,9 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		}
 		else if (fila.equals(getString(R.string.str_acerca_de))) {
 			iniciarAcercaDe();
+		}else{
+			
+			irMenu();
 		}
 
 	}
@@ -174,7 +204,14 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		//TODO Modificar las clases para iniciarlas
 		Intent intent = new Intent(this.getApplicationContext(), EvaluacionActivity.class);
 		startActivity(intent);
+			
+	}
+	private void irMenu() {
+		//Inicia la actividad de "Acerca de"
 		
+		//TODO Modificar las clases para iniciarlas
+		Intent intent = new Intent(this.getApplicationContext(), MenuActivity.class);
+		startActivity(intent);
 		
 	}
 	

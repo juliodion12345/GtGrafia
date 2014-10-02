@@ -1,11 +1,19 @@
 package com.tesis.gtgrafia;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 
 public class SQLHelper extends SQLiteOpenHelper {
 	
@@ -22,15 +30,17 @@ public class SQLHelper extends SQLiteOpenHelper {
 	 * Variable que almacena el script de la base de datos
 	 */
 	private Script script = new Script();
+	Context contexto ;
 	
 	/**
 	 * Constructor que crea el SqlHelper
 	 * 
 	 * @param contexto Contexto de la aplicación
-	 * @param version Version de la base de datos
+	 * @param version Version de la base de datos 
 	 */
 	public SQLHelper(Context contexto, int version) {
 		super(contexto, DATABASE_NAME, null, version);
+		contexto = contexto;
 		script = new Script();
 	}
     
@@ -48,6 +58,34 @@ public class SQLHelper extends SQLiteOpenHelper {
 		db.execSQL(script.create_opcion);
 		db.execSQL(script.create_usuario_nivel);
 		db.execSQL(script.create_evaluacion);
+		//llenar base de datos!
+		
+		InputStream is = null;
+	    try {
+	         is = contexto.getAssets().open("/StartActivity/src/com/tesis/gtgrafia/ScriptInsert.sql");
+	         if (is != null) {
+	             db.beginTransaction();
+	             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+	             String line = reader.readLine();
+	             while (!TextUtils.isEmpty(line)) {
+	                 db.execSQL(line);
+	                 line = reader.readLine();
+	             }
+	             db.setTransactionSuccessful();
+	         }
+	    } catch (Exception ex) {
+	        System.out.println(ex);            
+	    } finally {
+	        db.endTransaction();
+	        if (is != null) {
+	            try {
+	                is.close();
+	            } catch (IOException e) {
+	                // Muestra log
+	            }                
+	        }
+	    }
+		
 	}
  
     /**

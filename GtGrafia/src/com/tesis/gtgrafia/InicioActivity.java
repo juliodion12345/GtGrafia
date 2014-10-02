@@ -2,6 +2,8 @@ package com.tesis.gtgrafia;
 
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,8 +18,7 @@ public class InicioActivity extends Activity  {
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_inicio);		
-		
+		setContentView(R.layout.activity_inicio);
 		bd = new SQLHelper (this, 1);
 
 		final Button button1 = (Button) this.findViewById(R.id.button1);
@@ -39,6 +40,8 @@ public class InicioActivity extends Activity  {
 					}
 				}
 				bd.close();
+			
+				abrir_menu();
 			}
 		});
 
@@ -63,5 +66,8 @@ public class InicioActivity extends Activity  {
 		return super.onOptionsItemSelected(item);
 	}
 
-	
+	public void abrir_menu(){
+		Intent intent = new Intent(this, MenuActivity.class);
+		startActivity(intent);		
+	}
 }
