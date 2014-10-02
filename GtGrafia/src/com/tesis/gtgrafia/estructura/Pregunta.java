@@ -103,17 +103,39 @@ public class Pregunta implements Parcelable {
 		this.opciones = opciones;
 	}
 	
+	/**
+	 * Metodo que inserta una Opción
+	 * 
+	 * @param o La Opción a insertar
+	 */
 	public void insertOpcion(Opcion o) {
 		this.opciones.add(o);		
 	}
+	
+	/**
+	 * Metodo que devuelve la opción segun el indice
+	 * 
+	 * @param index Indice de la opción
+	 * @return La opción segun el indice
+	 */
 	public Opcion getOpcion(int index) {		
 		return this.opciones.get(index);
 	}
 	
+	/**
+	 * Metodo que devuelve la cantidad de opciones de la pregunta
+	 * 
+	 * @return La cantidad de opciones de la pregunta
+	 */
 	public int getCountOpciones() {
 		return this.opciones.size();
 	}
 	
+	/**
+	 * Metodo que devuelve las opciones como Array de String
+	 * 
+	 * @return Devuelve las opciones como Array de String
+	 */
 	public String[] getOpcionesArray() {
 		int conteo = this.getCountOpciones();
 		String[] array = new String[conteo];

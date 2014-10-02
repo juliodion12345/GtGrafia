@@ -6,13 +6,12 @@
     <string name="title_activity_evaluacion">GtGrafía</string>
     <string name="str_iniciar_juego">Iniciar Juego</string>
     <string name="str_acerca_de">Acerca de</string>
-    <string name="title_activity_inicio">InicioActivity</string>
+    <string name="title_activity_inicio">GtGrafía</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_iinicio">IinicioActivity</string>
     <string name="IngreseNombre">Ingrese su nombre</string>
     <string name="jugar">Jugar</string>
-    <string name="title_activity_menu">MenuActivity</string>
-    <string name="title_activity_leccion">LeccionActivity</string>
+    <string name="title_activity_menu">GtGrafía</string>
+    <string name="title_activity_leccion">GtGrafía</string>
 	<string name="button_aceptar">Aceptar</string>
     <string name="hint_respuesta">Respuesta</string>
 	<string name="title_activity_pregunta">GtGrafía</string>

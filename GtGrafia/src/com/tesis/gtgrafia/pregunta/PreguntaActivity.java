@@ -10,17 +10,13 @@
 package com.tesis.gtgrafia.pregunta;
 
 import com.tesis.gtgrafia.R;
-import com.tesis.gtgrafia.estructura.Evaluacion;
-import com.tesis.gtgrafia.estructura.Opcion;
 import com.tesis.gtgrafia.estructura.Pregunta;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -66,8 +62,12 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 		setResult(Activity.RESULT_OK, resultIntent);
 	}
 	
+	/**
+	 * Metodo que coloca la información de una pregunta multiple
+	 */
 	public void setPreguntaMultiple() {
 		
+		//Colocar el enunciado
 		TextView labelPregunta = (TextView)findViewById(R.id.labelPregunta);
 		labelPregunta.setText(pregunta.getEnunciado());
 		
@@ -106,26 +106,56 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 		sendRespuesta(fila);
 	}
 	
+	/**
+	 * Metodo que coloca la información de una pregunta escrita
+	 */
 	public void setPreguntaEscrita() {
 		
+		//Colocar el enunciado
 		TextView labelPregunta = (TextView)findViewById(R.id.labelPregunta);
 		labelPregunta.setText(pregunta.getEnunciado());	
 		
 	}
 	
+	/**
+	 * Metodo que se llama al presionar el boton de Aceptar
+	 * 
+	 * @param v Referencia a la vista actual
+	 */
 	public void setRespuestaButton(View v) {
+		
+		//Obtener y enviar la respuesta
 		EditText textRespuesta = (EditText)findViewById(R.id.textRespuesta);
 		this.sendRespuesta(textRespuesta.getText().toString());
 	}
 	
+	/**
+	 * Metodo que finaliza la actividad y envia los resultados
+	 * 
+	 * @param respuesta La respuesta seleccionada
+	 */
 	public void sendRespuesta(String respuesta) {
 		//Enviamos los datos de regreso
 		Intent resultIntent = new Intent();
 		resultIntent.putExtra("Respuesta", respuesta);
 		resultIntent.putExtra("idPregunta", pregunta.getIdPregunta());
+		resultIntent.putExtra("Indice", 0);
 		
 		//Aceptamos el resultado y finalizamos
 		setResult(Activity.RESULT_OK, resultIntent);
+		this.finish();
+	}
+	
+	/**
+	 * Metodo que finaliza la actividad debido a presionar el boton de Atras
+	 */
+	@Override
+	public void onBackPressed() {
+		//Enviamos los datos de regreso
+		Intent resultIntent = new Intent();
+				
+		//Aceptamos el resultado y finalizamos
+		setResult(Activity.RESULT_CANCELED, resultIntent);
 		this.finish();
 	}
 	

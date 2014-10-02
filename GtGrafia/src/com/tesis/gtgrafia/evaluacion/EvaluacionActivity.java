@@ -30,13 +30,17 @@ public class EvaluacionActivity extends Activity {
 	 */
 	private int idNivel = 1;
 	/**
-	 * Etiqueta usada para reconocer la respuesta
+	 * Variable usada para almacenar localmente el indice de la pregunta actual
 	 */
-	public static int RESPUESTA_OK = 1;
+	private int indexPregunta = 0;
 	/**
 	 * Variable usada para almacenar localmente la evaluación
 	 */
 	Evaluacion evaluacion = null;
+	/**
+	 * Etiqueta usada para reconocer la respuesta
+	 */
+	public static int RESPUESTA_OK = 1;
 	
 	/**
 	 * Metodo que carga la pantalla de la evaluacion
@@ -74,7 +78,8 @@ public class EvaluacionActivity extends Activity {
 			this.evaluacion = EvaluacionFuncion.getEvaluacion(this, idUsuario, idNivel);			
 			
 			//Llamar a las actividades
-			this.llamarActividades();			
+			this.indexPregunta = 0;
+			this.llamarActividades(indexPregunta);			
 			
 		}
 		else {			
@@ -83,29 +88,45 @@ public class EvaluacionActivity extends Activity {
 		
 	}	
 	
-	private void llamarActividades() {
+	/**
+	 * Metodo que llama una actividad, dependiendo del indice
+	 */
+	private void llamarActividades(int index) {
 
-		int conteo = this.evaluacion.getCountPreguntas();
+		//Enviar evaluacion a Activity
+		Intent intent = new Intent(this, PreguntaActivity.class);    
+		intent.putExtra("Pregunta", this.evaluacion.getPregunta(index));
 		
-		for (int i=0; i<conteo; i++) {
-			//Enviar evaluacion a Activity
-			Intent intent = new Intent(this, PreguntaActivity.class);    
-			intent.putExtra("Pregunta", this.evaluacion.getPregunta(i));
-			
-			startActivityForResult(intent, RESPUESTA_OK);
-		}		
+		//Llamar a la actividad con resultados
+		startActivityForResult(intent, RESPUESTA_OK);
 		
 	}
 	
+	/**
+	 * Metodo que obtiene las respuestas de la actividad PreguntaActivity
+	 * 
+	 * @param requestCode Codigo de estado de pregunta
+	 * @param resultCode Codigo de estado de la actividad
+	 * @param data Intent con la información obtenida
+	 */
 	@Override 
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {     
 		super.onActivityResult(requestCode, resultCode, data); 
 		
+		//Si el codigo de respuesta es de una pregunta
 		if (requestCode == RESPUESTA_OK) { 
+			
+			//Si el codigo de respuesta es OK
 			if (resultCode == Activity.RESULT_OK) {						
-				//TODO: Saber que datos recibir y como manejarlos
-				System.out.println(data.getIntExtra("idPregunta", 0) + "-" +data.getStringExtra("Respuesta"));
+				//TODO: Asignar valores de respuesta
 				
+				//Aumentar el indice y evaluar nueva actividad
+				indexPregunta++;
+				if (indexPregunta < evaluacion.getCountPreguntas()) {
+					
+					//Lamar a nueva actividad
+					this.llamarActividades(indexPregunta);
+				}
 			} 
 		} 
 	}

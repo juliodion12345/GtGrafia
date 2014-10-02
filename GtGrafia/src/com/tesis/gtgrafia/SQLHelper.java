@@ -58,33 +58,45 @@ public class SQLHelper extends SQLiteOpenHelper {
 		db.execSQL(script.create_opcion);
 		db.execSQL(script.create_usuario_nivel);
 		db.execSQL(script.create_evaluacion);
-		//llenar base de datos!
 		
+		//llenar base de datos!
 		InputStream is = null;
-	    try {
-	         is = contexto.getAssets().open("ScriptInsert.sql");
-	         if (is != null) {
-	             db.beginTransaction();
-	             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-	             String line = reader.readLine();
-	             while (!TextUtils.isEmpty(line)) {
-	                 db.execSQL(line);
-	                 line = reader.readLine();
-	             }
-	             db.setTransactionSuccessful();
-	         }
-	    } catch (Exception ex) {
-	        System.out.println(ex);            
-	    } finally {
-	        db.endTransaction();
-	        if (is != null) {
-	            try {
-	                is.close();
-	            } catch (IOException e) {
-	                // Muestra log
-	            }                
-	        }
-	    }
+		try {
+			//Leer Archivo desde Assets usando el contexto
+			is = contexto.getAssets().open("ScriptInsert.sql");
+			
+			if (is != null) {
+				db.beginTransaction();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+				String line = reader.readLine();
+				
+				//Ejecutar cada linea
+				while (!TextUtils.isEmpty(line)) {
+					db.execSQL(line);
+					line = reader.readLine();
+				}
+				
+				//Marcar la transacción como exitosa
+				db.setTransactionSuccessful();
+			}
+		} 
+		catch (Exception ex) {
+			System.out.println(ex);            
+		} 
+		finally {
+			//Finalizar la transacción
+			db.endTransaction();
+			
+			//Cerrar archivo
+			if (is != null) {
+				try {
+					is.close();
+				} 
+				catch (IOException e) {
+					System.out.println(e);
+				}                
+			}
+		}
 		
 	}
  

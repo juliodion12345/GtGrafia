@@ -130,8 +130,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		}
 		else if (fila.equals(getString(R.string.str_acerca_de))) {
 			iniciarAcercaDe();
-		}else{
-			
+		}
+		else{			
 			irMenu();
 		}
 
