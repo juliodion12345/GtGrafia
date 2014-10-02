@@ -1,7 +1,7 @@
 /**
  * EvaluacionActivity
  * Activity para cargar todas las preguntas de la evaluacion
- * creando una nueva activity para la evaluacion
+ * creando una nueva activity para cada pregunta
  * 
  * @author Mayaka
  * @version 0.1
@@ -30,9 +30,13 @@ public class EvaluacionActivity extends Activity {
 	 */
 	private int idNivel = 1;
 	/**
-	 * Etiqueta usada para almacenar los datos de la pregunta
+	 * Etiqueta usada para reconocer la respuesta
 	 */
-	private int VAR_PREGUNTA = 7;
+	public static int RESPUESTA_OK = 1;
+	/**
+	 * Variable usada para almacenar localmente la evaluación
+	 */
+	Evaluacion evaluacion = null;
 	
 	/**
 	 * Metodo que carga la pantalla de la evaluacion
@@ -48,28 +52,6 @@ public class EvaluacionActivity extends Activity {
 	}
 	
 	/**
-	 * Metodo que redirige las preguntas de la evaluacion
-	 */
-	public void realizarEvaluacion() {	
-		//Comprobar usuario para el nivel de evaluacion
-		if (EvaluacionFuncion.comprobarEvaluacion(this, idUsuario, idNivel)==true) {
-			
-			//Llenar evaluacion
-			Evaluacion eval = EvaluacionFuncion.getEvaluacion(this, idUsuario, idNivel);			
-			
-			//Enviar evaluacion a Activity
-			Intent intent = new Intent(this, PreguntaActivity.class);    
-			intent.putExtra("Evaluacion", eval);
-			
-			startActivityForResult(intent, VAR_PREGUNTA);
-		}
-		else {			
-			this.getMensaje("Aun no puede realizar esta evaluación");
-		}		
-		
-	}	
-	
-	/**
 	 * Metodo que devuelve un mensaje corto de tipo Toast
 	 * 
 	 * @param texto El texto a mostrar
@@ -81,13 +63,49 @@ public class EvaluacionActivity extends Activity {
 		toast.show();
 	}
 	
+	/**
+	 * Metodo que redirige las preguntas de la evaluacion
+	 */
+	private void realizarEvaluacion() {	
+		//Comprobar usuario para el nivel de evaluacion
+		if (EvaluacionFuncion.comprobarEvaluacion(this, idUsuario, idNivel)==true) {
+			
+			//Llenar evaluacion
+			this.evaluacion = EvaluacionFuncion.getEvaluacion(this, idUsuario, idNivel);			
+			
+			//Llamar a las actividades
+			this.llamarActividades();			
+			
+		}
+		else {			
+			this.getMensaje("Aun no puede realizar esta evaluación");
+		}		
+		
+	}	
+	
+	private void llamarActividades() {
+
+		int conteo = this.evaluacion.getCountPreguntas();
+		
+		for (int i=0; i<conteo; i++) {
+			//Enviar evaluacion a Activity
+			Intent intent = new Intent(this, PreguntaActivity.class);    
+			intent.putExtra("Pregunta", this.evaluacion.getPregunta(i));
+			
+			startActivityForResult(intent, RESPUESTA_OK);
+		}		
+		
+	}
+	
 	@Override 
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {     
 		super.onActivityResult(requestCode, resultCode, data); 
 		
-		if (requestCode == VAR_PREGUNTA) { 
+		if (requestCode == RESPUESTA_OK) { 
 			if (resultCode == Activity.RESULT_OK) {						
-				//TODO: Saber que datos recibir				
+				//TODO: Saber que datos recibir y como manejarlos
+				System.out.println(data.getIntExtra("idPregunta", 0) + "-" +data.getStringExtra("Respuesta"));
+				
 			} 
 		} 
 	}

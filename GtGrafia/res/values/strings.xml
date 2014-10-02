@@ -8,5 +8,8 @@
     
     <string name="str_iniciar_juego">Iniciar Juego</string>
     <string name="str_acerca_de">Acerca de</string>
+    
+    <string name="button_aceptar">Aceptar</string>
+    <string name="hint_respuesta">Respuesta</string>
 
 </resources>

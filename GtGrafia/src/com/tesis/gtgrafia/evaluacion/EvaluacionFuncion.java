@@ -20,6 +20,8 @@ import com.tesis.gtgrafia.estructura.Pregunta;
 
 public class EvaluacionFuncion {
 	
+	
+	
 	/**
 	 * Metodo que comprueba si el usuario puede acceder al nivel
 	 * 

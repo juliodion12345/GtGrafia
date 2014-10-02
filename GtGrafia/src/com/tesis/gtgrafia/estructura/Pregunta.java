@@ -41,6 +41,15 @@ public class Pregunta implements Parcelable {
 	 */
 	private ArrayList<Opcion> opciones = null;
 
+	/**
+	 * Etiqueta usada para almacenar el tipoPregunta "Selección multiple"
+	 */
+	public static final int TIPO_SELECCION_MULTIPLE = 1;
+	/**
+	 * Etiqueta usada para almacenar el tipoPregunta "Escrita"
+	 */
+	public static final int TIPO_SELECCION_ESCRITA = 2;
+	
 	///////////////////////////////////////CONSTRUCTOR/////////////////////////////////////////////
 	
 	/**
@@ -94,11 +103,26 @@ public class Pregunta implements Parcelable {
 		this.opciones = opciones;
 	}
 	
-	public void insertarOpcion(Opcion o) {
+	public void insertOpcion(Opcion o) {
 		this.opciones.add(o);		
 	}
-	public Opcion leerOpcion(int index) {		
+	public Opcion getOpcion(int index) {		
 		return this.opciones.get(index);
+	}
+	
+	public int getCountOpciones() {
+		return this.opciones.size();
+	}
+	
+	public String[] getOpcionesArray() {
+		int conteo = this.getCountOpciones();
+		String[] array = new String[conteo];
+		
+		for (int i=0; i<conteo; i++) {
+			array[i] = this.getOpcion(i).getOpcion();
+		}
+		
+		return array;
 	}
 	
 	/////////////////////////////////////////PARCEL////////////////////////////////////////////////

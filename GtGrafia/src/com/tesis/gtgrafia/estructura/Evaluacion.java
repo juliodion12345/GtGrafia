@@ -93,11 +93,15 @@ public class Evaluacion implements Parcelable {
 		this.preguntas = preguntas;
 	}
 	
-	public void insertarPregunta(Pregunta p) {
+	public void insertPregunta(Pregunta p) {
 		this.preguntas.add(p);		
 	}
-	public Pregunta leerPregunta(int index) {		
+	public Pregunta getPregunta(int index) {		
 		return this.preguntas.get(index);
+	}
+	
+	public int getCountPreguntas() {
+		return this.preguntas.size();		
 	}
 	
 	/////////////////////////////////////////PARCEL////////////////////////////////////////////////

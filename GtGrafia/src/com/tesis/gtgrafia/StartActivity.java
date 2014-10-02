@@ -78,7 +78,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
 		
 		//Asignar el adaptador al listView
-		ListView listView = (ListView) findViewById(R.id.listStart);
+		ListView listView = (ListView) findViewById(R.id.listOpciones);
 		listView.setAdapter(adapter); 	
 		
 		//Colocarle el listener (esta clase) para seleccionar elementos
