@@ -15,7 +15,6 @@ import com.tesis.gtgrafia.evaluacion.EvaluacionActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -38,14 +37,15 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	private static final int MNU_ACERCA = 2;
 	
 	/**
+	 * Variable conectora con la base de datos
+	 */
+	public SQLHelper bd = null;
+	
+	/**
 	 * Metodo que carga la pantalla principal
 	 * 
 	 * @param savedInstanceState savedInstanceState
 	 */
-	
-	//variable conectora con la base de datos
-	public SQLHelper bd = null;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,8 +68,10 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		ArrayList<String> lista = new ArrayList<String>();
 		lista.add(getString(R.string.str_iniciar_juego));
 		lista.add(getString(R.string.str_acerca_de));
+		
 		//tomar nombres de la base de datos 
-				bd.abrir();
+		bd.abrir();
+		
 		Cursor usuario = bd.Select("Select * from usuario;");
 		
 		if (usuario != null && usuario.getCount() > 0) {
@@ -81,9 +83,6 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		}
 		
 		bd.cerrar();
-		
-		
-		
 		
 		return lista;
 				
@@ -207,9 +206,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 			
 	}
 	private void irMenu() {
-		//Inicia la actividad de "Acerca de"
+		//Inicia la actividad
 		
-		//TODO Modificar las clases para iniciarlas
 		Intent intent = new Intent(this.getApplicationContext(), MenuActivity.class);
 		startActivity(intent);
 		

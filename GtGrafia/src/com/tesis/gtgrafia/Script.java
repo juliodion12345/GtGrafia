@@ -28,9 +28,9 @@ public class Script {
 				+ "FOREIGN KEY (idNivel) REFERENCES nivel(idNivel) )";
 
 		create_opcion = "CREATE TABLE opcion ("
-				+ "idOpcion INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
-				+ "palabra TEXT NOT NULL								,"
-				+ "idPregunta INTEGER									,"
+				+ "idOpcion INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 			," 
+				+ "palabra TEXT NOT NULL										,"
+				+ "idPregunta INTEGER											,"
 				+ "FOREIGN KEY (idPregunta) REFERENCES pregunta(idPregunta) )";
 
 		create_usuario_nivel = "CREATE TABLE usuario_nivel ("
@@ -47,8 +47,6 @@ public class Script {
 				+ "primary key (idEvaluacion, idPregunta, Usuario_id)		,"
 				+ "FOREIGN KEY (idPregunta) REFERENCES pregunta(idPregunta) ,"
 				+ "FOREIGN KEY (Usuario_id) REFERENCES usuario(Usuario_id) )";
-		
-		
 		
 	}
 
