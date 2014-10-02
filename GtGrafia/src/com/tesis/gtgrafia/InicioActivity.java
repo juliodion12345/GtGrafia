@@ -28,8 +28,8 @@ public class InicioActivity extends Activity  {
 				bd.abrir();
 				EditText nombre = (EditText) findViewById(R.id.editText1);
 				String textonombre = nombre.getText().toString();
-				bd.InsertUsuario(1, textonombre);
-				Cursor usuario = bd.SelectUsuario();
+				bd.InsertUsuario(textonombre);
+				Cursor usuario = bd.Select("Select * from usuarios;");
 				if (usuario != null && usuario.getCount() > 0) {
 					usuario.moveToFirst();
 					System.out.println(usuario.getString(0));

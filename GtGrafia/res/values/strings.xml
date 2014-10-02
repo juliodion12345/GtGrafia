@@ -13,5 +13,8 @@
     <string name="jugar">Jugar</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_leccion">LeccionActivity</string>
+	<string name="button_aceptar">Aceptar</string>
+    <string name="hint_respuesta">Respuesta</string>
+	<string name="title_activity_pregunta">GtGrafía</string>
 
 </resources>

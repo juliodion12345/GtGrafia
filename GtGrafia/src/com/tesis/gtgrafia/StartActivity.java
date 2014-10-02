@@ -70,7 +70,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		lista.add(getString(R.string.str_acerca_de));
 		//tomar nombres de la base de datos 
 				bd.abrir();
-		Cursor usuario = bd.SelectUsuario();
+		Cursor usuario = bd.Select("Select * from usuarios;");
 		
 		if (usuario != null && usuario.getCount() > 0) {
 			usuario.moveToFirst();
@@ -105,7 +105,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
 		
 		//Asignar el adaptador al listView
-		ListView listView = (ListView) findViewById(R.id.listStart);
+		ListView listView = (ListView) findViewById(R.id.listOpciones);
 		listView.setAdapter(adapter); 	
 		
 		//Colocarle el listener (esta clase) para seleccionar elementos
@@ -215,21 +215,4 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		
 	}
 	
-	//TODO: Remover despues
-	protected void basePrueba() {
-		SQLHelper bd = new SQLHelper(this.getApplicationContext(), 1);
-		bd.abrir();
-		bd.InsertUsuario(1,"Andrea Gonzalez");
-		android.database.Cursor usuario = bd.SelectUsuario();
-		if (usuario != null && usuario.getCount() > 0) {
-			usuario.moveToFirst();
-			System.out.println(usuario.getString(0));
-			System.out.println(usuario.getString(1));
-			while (usuario.moveToNext()) {
-				System.out.println(usuario.getString(0));
-				System.out.println(usuario.getString(1));
-			}
-		}
-		bd.close();	
-	}
 }

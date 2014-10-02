@@ -10,35 +10,49 @@
 package com.tesis.gtgrafia.estructura;
 
 import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Evaluacion {
+public class Evaluacion implements Parcelable {
 	
 	/**
 	 * Variable usada para almacenar el idEvaluacion
 	 */
-	public int idEvaluacion = 0;
+	private int idEvaluacion;
 	/**
 	 * Variable usada para almacenar el idUsuario
 	 */
-	public int idUsuario	= 0;
+	private int idUsuario;
 	/**
 	 * Variable usada para almacenar el idNivel
 	 */
-	public int idNivel = 0;
+	private int idNivel;
 	/**
 	 * Variable usada para almacenar el tipoEvaluacion
 	 */
-	public int tipoEvaluacion = 0;	
+	private int tipoEvaluacion;	
 	/**
 	 * Variable usada para almacenar el tipoEvaluacion
 	 */
-	public String nombreNivel = "";
+	private String nombreNivel;
 	/**
 	 * Variable usada para almacenar las preguntas
 	 */
-	public ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
+	private ArrayList<Pregunta> preguntas = null;
 
+	///////////////////////////////////////CONSTRUCTOR/////////////////////////////////////////////
 	
+	/**
+	 * Constructor principal
+	 */
+	public Evaluacion() {
+		this.idEvaluacion 	= 0;
+		this.idUsuario 		= 0;
+		this.idNivel 		= 0;
+		this.tipoEvaluacion = 0;
+		this.nombreNivel 	= "";
+		this.preguntas 		= new ArrayList<Pregunta>();
+	}
 	
 	/////////////////////////////////////////GET-SET///////////////////////////////////////////////
 
@@ -71,6 +85,94 @@ public class Evaluacion {
 	}
 	public void setNombreNivel(String nombreNivel) {
 		this.nombreNivel = nombreNivel;
-	}		
+	}
+	public ArrayList<Pregunta> getPreguntas() {
+		return preguntas;
+	}
+	public void setPreguntas(ArrayList<Pregunta> preguntas) {
+		this.preguntas = preguntas;
+	}
+	
+	public void insertPregunta(Pregunta p) {
+		this.preguntas.add(p);		
+	}
+	public Pregunta getPregunta(int index) {		
+		return this.preguntas.get(index);
+	}
+	
+	public int getCountPreguntas() {
+		return this.preguntas.size();		
+	}
+	
+	/////////////////////////////////////////PARCEL////////////////////////////////////////////////
+
+	/**
+	 * Describe contenido
+	 * 
+	 * @return id
+	 */
+	@Override
+    public int describeContents() {
+        return 0;
+    }
+ 
+	/**
+	 * Escribe el nuevo objeto
+	 * 
+	 * @param dest Destino del Parcel
+	 * @param flags Etiquetas
+	 */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    	dest.writeInt(idEvaluacion);
+    	dest.writeInt(idUsuario);
+    	dest.writeInt(idNivel);
+    	dest.writeInt(tipoEvaluacion);
+    	dest.writeString(nombreNivel);
+    	dest.writeTypedList(preguntas);
+    }
+    
+    /**
+	 * Lee el nuevo objeto
+	 * 
+	 * @param in Parcel de entrada
+	 */
+    private void readFromParcel(Parcel in) {
+    	//Leer los valores
+    	this.idEvaluacion = in.readInt();
+    	this.idUsuario = in.readInt();
+    	this.idNivel = in.readInt();
+    	this.tipoEvaluacion = in.readInt();
+    	this.nombreNivel = in.readString();
+    	
+    	//Leer el ArrayList de tipo Pregunta
+    	in.readTypedList(preguntas, Pregunta.CREATOR);
+    }
+    
+    /**
+	 * Constructor que facilita la creación de nuevos Parcel
+	 * 
+	 * @param in Parcel de entrada
+	 */
+    public Evaluacion(Parcel in) {
+    	//Inicializar objeto
+    	this();
+    	
+        readFromParcel(in);
+    }
+    
+    /**
+	 * CREATOR que facilita la creación de nuevos elementos
+	 */
+    public static final Parcelable.Creator<Evaluacion> CREATOR
+    	= new Parcelable.Creator<Evaluacion>() {
+        public Evaluacion createFromParcel(Parcel in) {
+            return new Evaluacion(in);
+        }
+ 
+        public Evaluacion[] newArray(int size) {
+            return new Evaluacion[size];
+        }
+    };
 
 }

@@ -37,6 +37,11 @@
             android:name="com.tesis.gtgrafia.leccion.LeccionActivity"
             android:label="@string/title_activity_leccion" >
         </activity>
+        <activity
+            android:name="com.tesis.gtgrafia.pregunta.PreguntaActivity"
+            android:label="@string/title_activity_pregunta" >
+        </activity>
+       
     </application>
 
 </manifest>
