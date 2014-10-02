@@ -1,5 +1,5 @@
 package com.tesis.gtgrafia;
-
+ 
 public class Script {
 	String create_usuario, create_tipo_pregunta, create_nivel, create_pregunta, create_opcion, 
 	create_usuario_nivel, create_evaluacion;
