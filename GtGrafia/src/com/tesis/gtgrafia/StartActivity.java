@@ -52,7 +52,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		setContentView(R.layout.activity_start);
 		bd = new SQLHelper (this, 1);
 		//llenar el listView con los items
-		System.out.println("holaaaaaa");
+		
 		this.setListItems();
 	}
 	
