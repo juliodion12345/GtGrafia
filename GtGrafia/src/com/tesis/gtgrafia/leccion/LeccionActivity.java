@@ -1,15 +1,24 @@
 package com.tesis.gtgrafia.leccion;
  
 import com.tesis.gtgrafia.R;
-import com.tesis.gtgrafia.R.layout;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
+/**
+ * LeccionActivity
+ * Activity para cargar la lección de un nivel
+ * 
+ * @author Andrea
+ * @version 0.1
+ * 
+ */
 public class LeccionActivity extends Activity {
 
+	/**
+	 * Metodo que carga la pantalla principal
+	 * 
+	 * @param savedInstanceState savedInstanceState
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

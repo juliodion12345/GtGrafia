@@ -1,18 +1,22 @@
 package com.tesis.gtgrafia;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ListView;
 
+/**
+ * MenuActivity
+ * Activity para cargar la pantalla con los niveles
+ * 
+ * @author Andrea
+ * @version 0.1
+ * 
+ */
 public class MenuActivity extends Activity implements OnItemClickListener{
 
 	

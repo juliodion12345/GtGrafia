@@ -1,10 +1,49 @@
 package com.tesis.gtgrafia;
- 
+
+/**
+ * Script
+ * Clase que se encarga de almacenar el script inicial del modelo de la base de datos
+ * 
+ * @author Andrea
+ * @version 0.1
+ * 
+ */
 public class Script {
-	String create_usuario, create_tipo_pregunta, create_nivel, create_pregunta, create_opcion, 
-	create_usuario_nivel, create_evaluacion;
 	
+	/**
+	 * Variable que almacena el script de la tabla usuario
+	 */
+	protected final String create_usuario;
+	/**
+	 * Variable que almacena el script de la tabla tipo_pregunta
+	 */
+	protected final String create_tipo_pregunta;
+	/**
+	 * Variable que almacena el script de la tabla nivel
+	 */
+	protected final String create_nivel;
+	/**
+	 * Variable que almacena el script de la tabla pregunta
+	 */
+	protected final String create_pregunta;
+	/**
+	 * Variable que almacena el script de la tabla opcion
+	 */
+	protected final String create_opcion;
+	/**
+	 * Variable que almacena el script de la tabla usuario_nivel
+	 */
+	protected final String create_usuario_nivel;
+	/**
+	 * Variable que almacena el script de la tabla evaluacion
+	 */
+	protected final String create_evaluacion;
+	
+	/**
+	 * Constructor principal que inicializa las variables con los scripts
+	 */
 	public Script(){
+		
 		create_usuario = "CREATE TABLE usuario ( "
 				+ "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
 				+ "Nombre TEXT NOT NULL	)";

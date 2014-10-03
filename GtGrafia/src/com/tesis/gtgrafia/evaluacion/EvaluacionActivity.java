@@ -1,13 +1,3 @@
-/**
- * EvaluacionActivity
- * Activity para cargar todas las preguntas de la evaluacion
- * creando una nueva activity para cada pregunta
- * 
- * @author Mayaka
- * @version 0.1
- * 
- */
-
 package com.tesis.gtgrafia.evaluacion;
 
 import com.tesis.gtgrafia.R;
@@ -19,6 +9,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+/**
+ * EvaluacionActivity
+ * Activity para cargar todas las preguntas de la evaluacion
+ * creando una nueva activity para cada pregunta
+ * 
+ * @author Mayaka
+ * @version 0.1
+ * 
+ */
 public class EvaluacionActivity extends Activity {
 	
 	/**

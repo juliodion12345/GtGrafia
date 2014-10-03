@@ -1,12 +1,3 @@
-/**
- * EvaluacionFuncion
- * Clase estatica que se encarga de juntar algunas funciones necesarias para Evaluacion
- * 
- * @author Mayaka
- * @version 0.1
- * 
- */
-
 package com.tesis.gtgrafia.evaluacion;
 
 import java.util.ArrayList;
@@ -18,6 +9,14 @@ import com.tesis.gtgrafia.estructura.Evaluacion;
 import com.tesis.gtgrafia.estructura.Opcion;
 import com.tesis.gtgrafia.estructura.Pregunta;
 
+/**
+ * EvaluacionFuncion
+ * Clase estatica que se encarga de juntar algunas funciones necesarias para Evaluacion
+ * 
+ * @author Mayaka
+ * @version 0.1
+ * 
+ */
 public class EvaluacionFuncion {
 	
 	

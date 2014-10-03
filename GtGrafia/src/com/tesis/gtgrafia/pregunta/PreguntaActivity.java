@@ -1,12 +1,3 @@
-/**
- * PreguntaActivity
- * Activity para realizar una pregunta y esperar la respuesta
- * 
- * @author Mayaka
- * @version 0.1
- * 
- */
-
 package com.tesis.gtgrafia.pregunta;
 
 import com.tesis.gtgrafia.R;
@@ -22,6 +13,14 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
+/**
+ * PreguntaActivity
+ * Activity para realizar una pregunta y esperar la respuesta
+ * 
+ * @author Mayaka
+ * @version 0.1
+ * 
+ */
 public class PreguntaActivity extends Activity implements OnItemClickListener {
 
 	/**

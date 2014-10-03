@@ -1,9 +1,7 @@
 package com.tesis.gtgrafia;
 
-
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * InicioActivity
+ * Activity para cargar la pantalla de selección de nombre
+ * 
+ * @author Andrea
+ * @version 0.1
+ * 
+ */
 public class InicioActivity extends Activity  {
 
 	SQLHelper bd = null;

@@ -1,3 +1,8 @@
+package com.tesis.gtgrafia.estructura;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Opcion
  * Clase que se encarga de almacenar una opcion
@@ -6,12 +11,6 @@
  * @version 0.1
  * 
  */
-
-package com.tesis.gtgrafia.estructura;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class Opcion implements Parcelable  {
 	
 	/**

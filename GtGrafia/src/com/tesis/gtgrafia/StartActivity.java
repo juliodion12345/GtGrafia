@@ -1,12 +1,3 @@
-/**
- * StartActivity
- * Activity para cargar el menu principal (pantalla principal de la aplicación)
- * 
- * @author Mayaka
- * @version 0.1
- * 
- */
-
 package com.tesis.gtgrafia;
 
 import java.util.ArrayList;
@@ -25,6 +16,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * StartActivity
+ * Activity para cargar el menu principal (pantalla principal de la aplicación)
+ * 
+ * @author Mayaka
+ * @version 0.1
+ * 
+ */
 public class StartActivity extends Activity implements OnItemClickListener {
 
 	/**

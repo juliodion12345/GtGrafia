@@ -1,3 +1,10 @@
+package com.tesis.gtgrafia.estructura;
+
+import java.util.ArrayList;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Pregunta
  * Clase que se encarga de almacenar los campos de una pregunta
@@ -6,14 +13,6 @@
  * @version 0.1
  * 
  */
-
-package com.tesis.gtgrafia.estructura;
-
-import java.util.ArrayList;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class Pregunta implements Parcelable {
 
 	/**

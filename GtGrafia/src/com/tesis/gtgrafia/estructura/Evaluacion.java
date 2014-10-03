@@ -1,3 +1,9 @@
+package com.tesis.gtgrafia.estructura;
+
+import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Evaluacion
  * Clase que se encarga de almacenar los campos de una evaluacion
@@ -6,13 +12,6 @@
  * @version 0.1
  * 
  */
-
-package com.tesis.gtgrafia.estructura;
-
-import java.util.ArrayList;
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class Evaluacion implements Parcelable {
 	
 	/**

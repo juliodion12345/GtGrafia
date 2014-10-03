@@ -1,20 +1,24 @@
 package com.tesis.gtgrafia;
 
-
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 
+/**
+ * SQLHelper
+ * Clase que se encarga de comunicarse a la base de datos
+ * 
+ * @author Andrea
+ * @version 0.1
+ * 
+ */
 public class SQLHelper extends SQLiteOpenHelper {
 	
 	/**
@@ -24,13 +28,15 @@ public class SQLHelper extends SQLiteOpenHelper {
 	/**
 	 * Etiqueta que almacena la version de la base de datos
 	 */
-	public static final int DATABASE_VERSION = 2;
-	
+	public static final int DATABASE_VERSION = 2;	
 	/**
 	 * Variable que almacena el script de la base de datos
 	 */
-	private Script script = new Script();
-	Context contexto ;
+	private Script script = new Script();	
+	/**
+	 * Variable que almacena el contexto de la aplicación
+	 */
+	private Context contexto = null;
 	
 	/**
 	 * Constructor que crea el SqlHelper
@@ -59,18 +65,33 @@ public class SQLHelper extends SQLiteOpenHelper {
 		db.execSQL(script.create_usuario_nivel);
 		db.execSQL(script.create_evaluacion);
 		
-		//llenar base de datos!
-		InputStream is = null;
+		//Insertar los datos iniciales
+		insertarDatosIniciales(db);		
+	}
+	
+	/**
+	 * Metodo que inserta los datos iniciales a la base de datos
+	 * 
+	 * @param db La base de datos
+	 */
+	private void insertarDatosIniciales(SQLiteDatabase db) {
+		
 		try {
-			//Leer Archivo desde Assets usando el contexto
-			is = contexto.getAssets().open("ScriptInsert.sql");
 			
+			//Leer Archivo desde Assets usando el contexto
+			InputStream is = contexto.getAssets().open("ScriptInsert.sql");
+			
+			//Si encontró el archivo
 			if (is != null) {
+				
+				//Iniciar la transacción
 				db.beginTransaction();
+				
+				//Leer linea por linea
 				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 				String line = reader.readLine();
 				
-				//Ejecutar cada linea
+				//Ejecutar cada linea si no esta vacia
 				while (!TextUtils.isEmpty(line)) {
 					db.execSQL(line);
 					line = reader.readLine();
@@ -78,7 +99,11 @@ public class SQLHelper extends SQLiteOpenHelper {
 				
 				//Marcar la transacción como exitosa
 				db.setTransactionSuccessful();
-			}
+				
+				//Cerrar el archivo
+				is.close();
+			}			
+			
 		} 
 		catch (Exception ex) {
 			System.out.println(ex);            
@@ -86,20 +111,9 @@ public class SQLHelper extends SQLiteOpenHelper {
 		finally {
 			//Finalizar la transacción
 			db.endTransaction();
-			
-			//Cerrar archivo
-			if (is != null) {
-				try {
-					is.close();
-				} 
-				catch (IOException e) {
-					System.out.println(e);
-				}                
-			}
 		}
-		
 	}
- 
+	
     /**
 	 * Metodo que actualiza la base de datos
 	 * 
