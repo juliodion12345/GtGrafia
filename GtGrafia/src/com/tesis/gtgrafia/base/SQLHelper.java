@@ -1,4 +1,4 @@
-package com.tesis.gtgrafia;
+package com.tesis.gtgrafia.base;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

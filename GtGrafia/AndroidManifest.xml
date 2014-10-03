@@ -26,19 +26,19 @@
             android:label="@string/title_activity_evaluacion" >
         </activity>
         <activity
-            android:name=".InicioActivity"
+            android:name="com.tesis.gtgrafia.inicio.InicioActivity"
             android:label="@string/title_activity_inicio" >
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name="com.tesis.gtgrafia.menu.MenuActivity"
             android:label="@string/title_activity_menu" >
         </activity>
         <activity
-            android:name="com.tesis.gtgrafia.leccion.LeccionActivity"
+            android:name=".leccion.LeccionActivity"
             android:label="@string/title_activity_leccion" >
         </activity>
         <activity
-            android:name="com.tesis.gtgrafia.pregunta.PreguntaActivity"
+            android:name=".pregunta.PreguntaActivity"
             android:label="@string/title_activity_pregunta" >
         </activity>
        

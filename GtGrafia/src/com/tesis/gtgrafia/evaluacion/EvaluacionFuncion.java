@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.database.Cursor;
-import com.tesis.gtgrafia.SQLHelper;
+
+import com.tesis.gtgrafia.base.SQLHelper;
 import com.tesis.gtgrafia.estructura.Evaluacion;
 import com.tesis.gtgrafia.estructura.Opcion;
 import com.tesis.gtgrafia.estructura.Pregunta;

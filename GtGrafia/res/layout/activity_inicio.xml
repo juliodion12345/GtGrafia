@@ -5,38 +5,42 @@
     android:background="#B03060"
     tools:context="${relativePackage}.${activityClass}" >
 
-	<EditText
-	    android:id="@+id/editText1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentTop="true"
-	    android:layout_centerHorizontal="true"
-	    android:layout_marginTop="178dp"
-	    android:ems="10"
-	    android:inputType="none" >
-
-	    <requestFocus />
-	</EditText>
-
-	<Button
-	    android:id="@+id/button1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/textView1"
-	    android:layout_centerHorizontal="true"
-	    android:layout_marginTop="95dp"
-	    android:text="@string/str_jugar" />
-	
 	<TextView
-	    android:id="@+id/textView1"
+	    android:id="@+id/labelIngreso"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_alignBottom="@+id/editText1"
-	    android:layout_centerHorizontal="true"
-	    android:layout_marginBottom="64dp"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
 	    android:gravity="center"
 	    android:text="@string/str_ingreso_nombre"
 	    android:textAppearance="?android:attr/textAppearanceLarge"
 	    android:textSize="30sp" />
+
+	<EditText
+	    android:id="@+id/textNombre"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/labelIngreso"
+	    android:layout_centerHorizontal="true"
+	    android:ems="10"
+	    android:inputType="none" />
+
+	<Button
+	    android:id="@+id/buttonJugar"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/textNombre"
+	    android:layout_centerHorizontal="true"
+	    android:text="@string/str_jugar"
+	    android:onClick="insertarNombre" />
+
+	<ListView
+	    android:id="@+id/listUsuarios"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/buttonJugar" >
+
+	</ListView>
 
 </RelativeLayout>

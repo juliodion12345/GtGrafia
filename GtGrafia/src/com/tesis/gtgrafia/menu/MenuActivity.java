@@ -1,6 +1,11 @@
-package com.tesis.gtgrafia;
+package com.tesis.gtgrafia.menu;
 
 import java.util.ArrayList;
+
+import com.tesis.gtgrafia.R;
+import com.tesis.gtgrafia.R.id;
+import com.tesis.gtgrafia.R.layout;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;

@@ -1,20 +1,18 @@
 package com.tesis.gtgrafia;
 
-import java.util.ArrayList;
-
+import com.tesis.gtgrafia.base.SQLHelper;
 import com.tesis.gtgrafia.evaluacion.EvaluacionActivity;
+import com.tesis.gtgrafia.inicio.InicioActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * StartActivity
@@ -25,15 +23,6 @@ import android.widget.ListView;
  * 
  */
 public class StartActivity extends Activity implements OnItemClickListener {
-
-	/**
-	 * Etiqueta usada para diferenciar el elemento "Iniciar Juego" del menu (1)
-	 */
-	private static final int MNU_INICIAR = 1;
-	/**
-	 * Etiqueta usada para diferenciar el elemento "Acerca de" (2)
-	 */
-	private static final int MNU_ACERCA = 2;
 	
 	/**
 	 * Variable conectora con la base de datos
@@ -49,67 +38,12 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-		bd = new SQLHelper (this, SQLHelper.DATABASE_VERSION);
-		//llenar el listView con los items
-		
-		this.setListItems();
-	}
 	
-	//////////////////////////////////////////LISTA////////////////////////////////////////////////
-
-	/**
-	 * Metodo que devuelve un listado de elementos String[]
-	 * necesario para colocar el listView de la pantalla.
-	 * 
-	 * @return Arreglo de String[] con los elementos de la lista
-	 */
-	public ArrayList<String> listItems() {
-		ArrayList<String> lista = new ArrayList<String>();
-		lista.add(getString(R.string.str_iniciar_juego));
-		lista.add(getString(R.string.str_acerca_de));
-		
-		//tomar nombres de la base de datos 
-		bd.abrir();
-		
-		Cursor usuario = bd.Select("Select * from usuario;");
-		
-		if (usuario != null && usuario.getCount() > 0) {
-			usuario.moveToFirst();
-			lista.add(usuario.getString(1));
-			while (usuario.moveToNext()) {	
-				lista.add(usuario.getString(1));
-			}
-		}
-		
-		bd.cerrar();
-		
-		return lista;
-				
-	}
-	
-	/**
-	 * Metodo que coloca los elementos en la lista de la pantalla principal
-	 */
-	public void setListItems() {
-		
-		//Obtener los elementos
-		ArrayList<String> lista = listItems();
-		
-		/*Llenar un nuevo adaptador con los elementos obtenidos, usando como plantilla
-		 * el simple_list_item_1 (que es una lista simple)
-		 */
-				
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
-		
-		//Asignar el adaptador al listView
-		ListView listView = (ListView) findViewById(R.id.listOpciones);
-		listView.setAdapter(adapter); 	
-		
 		//Colocarle el listener (esta clase) para seleccionar elementos
-		listView.setOnItemClickListener(this);		
+		ListView listView = (ListView) findViewById(R.id.listStart);
+		listView.setOnItemClickListener(this);
 	}
-
+	
 	/**
 	 * Metodo que se activa al seleccionar un elemento del listView
 	 * 
@@ -130,10 +64,6 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		else if (fila.equals(getString(R.string.str_acerca_de))) {
 			iniciarAcercaDe();
 		}
-		else{			
-			irMenu();
-		}
-
 	}
 	
 	//////////////////////////////////////////MENU/////////////////////////////////////////////////
@@ -147,10 +77,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
-		//Agrega nuevos elementos al menu de la pantalla
-		menu.add(Menu.NONE, MNU_INICIAR, Menu.NONE, getString(R.string.str_iniciar_juego));
-		menu.add(Menu.NONE, MNU_ACERCA, Menu.NONE, getString(R.string.str_acerca_de));
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_start, menu);
 		
 		return true;
 	}
@@ -164,20 +92,17 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    
 		//Redirige la aplicación al elemento seleccionado
-		switch (item.getItemId()) {
-			case MNU_INICIAR:
-				iniciarJuego();
-				
-				return true;
-	        case MNU_ACERCA:
-				iniciarAcercaDe();
-				
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
+		if (item.getTitle().equals(getString(R.string.str_iniciar_juego))) {
+			iniciarJuego();
+			return true;
 		}
+		else if (item.getTitle().equals(getString(R.string.str_acerca_de))) {
+			iniciarAcercaDe();
+			return true;
+		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 	
 	/////////////////////////////////////////INICIAR///////////////////////////////////////////////
@@ -203,13 +128,6 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		Intent intent = new Intent(this.getApplicationContext(), EvaluacionActivity.class);
 		startActivity(intent);
 			
-	}
-	private void irMenu() {
-		//Inicia la actividad
-		
-		Intent intent = new Intent(this.getApplicationContext(), MenuActivity.class);
-		startActivity(intent);
-		
 	}
 	
 }

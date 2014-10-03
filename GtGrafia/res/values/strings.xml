@@ -16,6 +16,11 @@
     <string name="str_iniciar_juego">Iniciar Juego</string>
     <string name="str_acerca_de">Acerca de</string>
     
+    <string-array name="array_start">
+        <item>Iniciar Juego</item>
+        <item>Acerca de</item>
+    </string-array>
+    
     <!-- String de InicioActivity --> 
     <string name="str_configuracion">Configuración</string>
     <string name="str_ingreso_nombre">Ingrese su nombre</string>

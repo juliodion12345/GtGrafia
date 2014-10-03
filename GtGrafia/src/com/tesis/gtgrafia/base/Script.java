@@ -1,4 +1,4 @@
-package com.tesis.gtgrafia;
+package com.tesis.gtgrafia.base;
 
 /**
  * Script
