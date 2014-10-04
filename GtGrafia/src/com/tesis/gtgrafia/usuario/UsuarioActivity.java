@@ -54,9 +54,9 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 		ArrayList<String> lista = new ArrayList<String>();
 			
 		//La consulta a realizar
-		String consulta = 	"SELECT Nombre " +
-							"FROM usuario " +
-							"ORDER BY id";
+		String consulta = 	"SELECT nombre " +
+							"FROM Usuario " +
+							"ORDER BY idUsuario";
 		
 		//Tomar nombres de la base de datos		
 		Cursor usuario = SQLFuncion.getConsulta(this, consulta, null);
@@ -71,7 +71,7 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 				boolean mover = true;
 				while(mover==true) {					
 					//Agregar al ArrayList
-					lista.add(usuario.getString(usuario.getColumnIndex("Nombre")));
+					lista.add(usuario.getString(usuario.getColumnIndex("nombre")));
 					mover = usuario.moveToNext();
 				}
 			}

@@ -44,48 +44,48 @@ public class Script {
 	 */
 	public Script(){
 		
-		create_usuario = "CREATE TABLE usuario ( "
-				+ "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
-				+ "Nombre TEXT NOT NULL	)";
+		create_usuario = "CREATE TABLE Usuario ( "
+				+ "idUsuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
+				+ "nombre TEXT NOT NULL	)";
 
-		create_tipo_pregunta = "CREATE TABLE tipo_pregunta ("
-				+ "idtipo_pregunta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
-				+ "descripcion TEXT NOT NULL)";
+		create_tipo_pregunta = "CREATE TABLE TipoPregunta ("
+				+ "idTipoPregunta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
+				+ "descripcion TEXT NOT NULL )";
 
-		create_nivel = "CREATE TABLE nivel ("
+		create_nivel = "CREATE TABLE Nivel ("
 				+ "idNivel INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
-				+ "dir_contenido TEXT 									,"
-				+ "Nombre TEXT NOT NULL)";
+				+ "dirContenido TEXT NOT NULL							,"
+				+ "nombre TEXT NOT NULL )";
 
-		create_pregunta = "CREATE TABLE pregunta ("
+		create_pregunta = "CREATE TABLE Pregunta ("
 				+ "idPregunta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 					," 
 				+ "enunciado TEXT NOT NULL													,"
 				+ "respuesta TEXT NOT NULL													," 
-				+ "idtipo_pregunta INTEGER NOT NULL											,"
+				+ "idTipoPregunta INTEGER NOT NULL											,"
 				+ "idNivel INTEGER NOT NULL													,"
-				+ "FOREIGN KEY (idtipo_pregunta) REFERENCES tipo_pregunta(idtipo_pregunta)	,"
-				+ "FOREIGN KEY (idNivel) REFERENCES nivel(idNivel) )";
+				+ "FOREIGN KEY (idTipoPregunta) REFERENCES TipoPregunta(idTipoPregunta)	,"
+				+ "FOREIGN KEY (idNivel) REFERENCES Nivel(idNivel) )";
 
-		create_opcion = "CREATE TABLE opcion ("
+		create_opcion = "CREATE TABLE Opcion ("
 				+ "idOpcion INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 			," 
 				+ "palabra TEXT NOT NULL										,"
-				+ "idPregunta INTEGER											,"
-				+ "FOREIGN KEY (idPregunta) REFERENCES pregunta(idPregunta) )";
+				+ "idPregunta INTEGER NOT NULL									,"
+				+ "FOREIGN KEY (idPregunta) REFERENCES Pregunta(idPregunta) )";
 
-		create_usuario_nivel = "CREATE TABLE usuario_nivel ("
-				+ "Usuario_id INTEGER NOT NULL 								," 
+		create_usuario_nivel = "CREATE TABLE UsuarioNivel ("
+				+ "idUsuario INTEGER NOT NULL 								," 
 				+ "idNivel INTEGER NOT NULL 								,"
-				+ "primary key (Usuario_id, idNivel) 						,"
-				+ "FOREIGN KEY (Usuario_id) REFERENCES usuario(Usuario_id) 	,"
-				+ "FOREIGN KEY (idNivel) REFERENCES nivel(idNivel) )";
+				+ "PRIMARY KEY (idUsuario, idNivel) 						,"
+				+ "FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) 	,"
+				+ "FOREIGN KEY (idNivel) REFERENCES Nivel(idNivel) )";
 
-		create_evaluacion = "CREATE TABLE evaluacion ("
+		create_evaluacion = "CREATE TABLE Evaluacion ("
 				+ "idEvaluacion INTEGER NOT NULL							," 
 				+ "idPregunta INTEGER NOT NULL								,"
-				+ "Usuario_id INTEGER NOT NULL								," 
-				+ "primary key (idEvaluacion, idPregunta, Usuario_id)		,"
-				+ "FOREIGN KEY (idPregunta) REFERENCES pregunta(idPregunta) ,"
-				+ "FOREIGN KEY (Usuario_id) REFERENCES usuario(Usuario_id) )";
+				+ "idUsuario INTEGER NOT NULL								," 
+				+ "PRIMARY KEY (idEvaluacion, idPregunta, idUsuario)		,"
+				+ "FOREIGN KEY (idPregunta) REFERENCES Pregunta(idPregunta) ,"
+				+ "FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) )";
 		
 	}
 

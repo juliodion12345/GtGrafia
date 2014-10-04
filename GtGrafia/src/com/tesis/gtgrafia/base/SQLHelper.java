@@ -28,7 +28,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 	/**
 	 * Etiqueta que almacena la version de la base de datos
 	 */
-	public static final int DATABASE_VERSION = 2;	
+	public static final int DATABASE_VERSION = 3;	
 	/**
 	 * Variable que almacena el script de la base de datos
 	 */
@@ -124,15 +124,15 @@ public class SQLHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) {
        
-		db.execSQL("DROP TABLE IF EXISTS usuario");
-		db.execSQL("DROP TABLE IF EXISTS tipo_pregunta");
-		db.execSQL("DROP TABLE IF EXISTS nivel");
-		db.execSQL("DROP TABLE IF EXISTS pregunta");
-		db.execSQL("DROP TABLE IF EXISTS opcion");
-		db.execSQL("DROP TABLE IF EXISTS usuario_nivel");
-		db.execSQL("DROP TABLE IF EXISTS evaluacion");
+		db.execSQL("DROP TABLE IF EXISTS Usuario");
+		db.execSQL("DROP TABLE IF EXISTS TipoPregunta");
+		db.execSQL("DROP TABLE IF EXISTS Nivel");
+		db.execSQL("DROP TABLE IF EXISTS Pregunta");
+		db.execSQL("DROP TABLE IF EXISTS Opcion");
+		db.execSQL("DROP TABLE IF EXISTS UsuarioNivel");
+		db.execSQL("DROP TABLE IF EXISTS Evaluacion");
  
-		//Se crea la nueva versi�n de la tablas
+		//Se crea la nueva versión de la base de datos
 		onCreate(db);
     }
     	
@@ -204,10 +204,10 @@ public class SQLHelper extends SQLiteOpenHelper {
 		ContentValues valores = new ContentValues();
 		
 		//Insertar valores en el contenedor
-		valores.put("Nombre", nombre);
+		valores.put("nombre", nombre);
 		
 		//Realizar la inserción y verificar
-		if (this.getWritableDatabase().insert("usuario", null, valores) >=0){
+		if (this.getWritableDatabase().insert("Usuario", null, valores) >=0){
 			
 			//Colocar la transacción como exitosa
 			this.getWritableDatabase().setTransactionSuccessful();
@@ -231,11 +231,11 @@ public class SQLHelper extends SQLiteOpenHelper {
 		ContentValues valores = new ContentValues();
 		
 		//Insertar valores en el contenedor
-		valores.put("Usuario_id", idUsuario);
+		valores.put("idUsuario", idUsuario);
 		valores.put("idNivel", idNivel);
 		
 		//Realizar la inserción y verificar
-		if (this.getWritableDatabase().insert("usuario_nivel", null, valores) >=0){
+		if (this.getWritableDatabase().insert("UsuarioNivel", null, valores) >=0){
 			
 			//Colocar la transacción como exitosa
 			this.getWritableDatabase().setTransactionSuccessful();
@@ -262,10 +262,10 @@ public class SQLHelper extends SQLiteOpenHelper {
 		//Insertar valores en el contenedor
 		valores.put("idEvaluacion", idEvaluacion);
 		valores.put("idPregunta", idPregunta);
-		valores.put("Usuario_id", idUsuario);
+		valores.put("idUsuario", idUsuario);
 		
 		//Realizar la inserción y verificar
-		if (this.getWritableDatabase().insert("evaluacion", null, valores) >=0){
+		if (this.getWritableDatabase().insert("Evaluacion", null, valores) >=0){
 			
 			//Colocar la transacción como exitosa
 			this.getWritableDatabase().setTransactionSuccessful();

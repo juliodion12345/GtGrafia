@@ -21,8 +21,6 @@ import com.tesis.gtgrafia.estructura.Pregunta;
  */
 public class EvaluacionFuncion {
 	
-	
-	
 	/**
 	 * Metodo que comprueba si el usuario puede acceder al nivel
 	 * 
@@ -37,8 +35,8 @@ public class EvaluacionFuncion {
 		boolean resultado = false;
 		
 		//La consulta a realizar
-		String consulta = 	"SELECT Usuario_id FROM usuario_nivel " +
-							"WHERE Usuario_id = ? AND " +
+		String consulta = 	"SELECT idUsuario FROM UsuarioNivel " +
+							"WHERE idUsuario = ? AND " +
 							"idNivel = ?" ;
 		
 		//Sustitución de parametros ?
@@ -107,8 +105,8 @@ public class EvaluacionFuncion {
 		int idEvaluacion = 0;
 						
 		//La consulta para obtener el idEvaluacion
-		String consulta = 	"SELECT MAX(idEvaluacion) as 'Ultimo' " +
-							"FROM evaluacion" ;
+		String consulta = 	"SELECT MAX(idEvaluacion) as 'ultimo' " +
+							"FROM Evaluacion" ;
 
 		//Consultar
 		Cursor cursor = SQLFuncion.getConsulta(context, consulta, null);
@@ -119,7 +117,7 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Colocar ultimo valor
-				idEvaluacion = cursor.getInt(cursor.getColumnIndex("Ultimo")) + 1;
+				idEvaluacion = cursor.getInt(cursor.getColumnIndex("ultimo")) + 1;
 			}
 			else {
 				//Colocar valor inicial
@@ -146,8 +144,8 @@ public class EvaluacionFuncion {
 		int tipoEvaluacion = 0;
 						
 		//La consulta para obtener el idEvaluacion
-		String consulta = 	"SELECT idtipo_pregunta " +
-							"FROM pregunta " +
+		String consulta = 	"SELECT idTipoPregunta " +
+							"FROM Pregunta " +
 							"WHERE idnivel = ? " +
 							"LIMIT 1" ;
 
@@ -163,7 +161,7 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Asigna el resultado
-				tipoEvaluacion = cursor.getInt(cursor.getColumnIndex("idtipo_pregunta"));
+				tipoEvaluacion = cursor.getInt(cursor.getColumnIndex("idTipoPregunta"));
 			}
 			
 			cursor.close();
@@ -186,8 +184,8 @@ public class EvaluacionFuncion {
 		String nombreNivel = "";
 						
 		//La consulta para obtener el idEvaluacion
-		String consulta = 	"SELECT Nombre " +
-							"FROM nivel " +
+		String consulta = 	"SELECT nombre " +
+							"FROM Nivel " +
 							"WHERE idNivel = ?" ;
 
 		//Sustitución de parametros ?
@@ -202,7 +200,7 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Asigna el resultado
-				nombreNivel = cursor.getString(cursor.getColumnIndex("Nombre"));
+				nombreNivel = cursor.getString(cursor.getColumnIndex("nombre"));
 			}
 			
 			cursor.close();
@@ -229,8 +227,8 @@ public class EvaluacionFuncion {
 		ArrayList<Pregunta> preguntas = new  ArrayList<Pregunta>();
 		
 		//La consulta para obtener las preguntas
-		String consulta = 	"SELECT idPregunta, enunciado, respuesta, idtipo_pregunta, idNivel " +
-							"FROM pregunta " +
+		String consulta = 	"SELECT idPregunta, enunciado, respuesta, idTipoPregunta, idNivel " +
+							"FROM Pregunta " +
 							"WHERE idNivel = ? " +
 							"ORDER BY RANDOM() " +
 							"LIMIT ?" ;
@@ -254,9 +252,10 @@ public class EvaluacionFuncion {
 					p.setIdPregunta(cursor.getInt(cursor.getColumnIndex("idPregunta")));
 					p.setEnunciado(cursor.getString(cursor.getColumnIndex("enunciado")));
 					p.setRespuesta(cursor.getString(cursor.getColumnIndex("respuesta")));
-					p.setTipoPregunta(cursor.getInt(cursor.getColumnIndex("idtipo_pregunta")));
+					p.setTipoPregunta(cursor.getInt(cursor.getColumnIndex("idTipoPregunta")));
 					
-					if(p.getTipoPregunta()==1) {
+					//Agregar las opciones si es de selección multiple
+					if(p.getTipoPregunta()==Pregunta.TIPO_SELECCION_MULTIPLE) {
 						p.setOpciones(getOpciones(context, p.getIdPregunta()));						
 					}
 					
@@ -286,7 +285,7 @@ public class EvaluacionFuncion {
 		
 		//La consulta para obtener el idEvaluacion
 		String consulta = 	"SELECT idOpcion, palabra " +
-							"FROM opcion " +
+							"FROM Opcion " +
 							"WHERE idPregunta = ?" ;
 
 		//Sustitución de parametros ?

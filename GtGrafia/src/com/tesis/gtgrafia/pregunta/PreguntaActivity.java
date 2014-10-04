@@ -56,9 +56,6 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 			this.setPreguntaEscrita();
 		}
 		
-		Intent resultIntent = new Intent();
-		resultIntent.putExtra("Valor", "Recibido DD:");
-		setResult(Activity.RESULT_OK, resultIntent);
 	}
 	
 	/**
@@ -137,7 +134,7 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 		//Enviamos los datos de regreso
 		Intent resultIntent = new Intent();
 		resultIntent.putExtra("Respuesta", respuesta);
-		resultIntent.putExtra("idPregunta", pregunta.getIdPregunta());
+		resultIntent.putExtra("IdPregunta", pregunta.getIdPregunta());
 		resultIntent.putExtra("Indice", 0);
 		
 		//Aceptamos el resultado y finalizamos
