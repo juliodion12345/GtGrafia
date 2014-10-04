@@ -3,9 +3,6 @@ package com.tesis.gtgrafia.nivel;
 import java.util.ArrayList;
 
 import com.tesis.gtgrafia.R;
-import com.tesis.gtgrafia.R.id;
-import com.tesis.gtgrafia.R.layout;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -71,7 +68,7 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
 		//Obtiene el elemento seleccionado
-		String fila = parent.getItemAtPosition(position).toString();
+		//String fila = parent.getItemAtPosition(position).toString();
 		
 		//TODO: Administrar los niveles
 	}

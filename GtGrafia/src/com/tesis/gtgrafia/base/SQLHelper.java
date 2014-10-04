@@ -223,7 +223,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 	 * @param idUsuario ID del usuario
 	 * @param idNivel ID del nivel
 	 */ 
-	public void insertUsuario_Nivel(int idUsuario, int idNivel){
+	public void insertUsuarioNivel(int idUsuario, int idNivel){
 		//Iniciar la transaccion
 		this.getWritableDatabase().beginTransaction();
 		

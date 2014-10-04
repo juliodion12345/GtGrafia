@@ -40,6 +40,7 @@ public class SQLFuncion {
 	/**
 	 * Metodo que inserta un usuario en la base de datos
 	 * 
+	 * @param context El contexto de la aplicación
 	 * @param nombre Nombre del usuario
 	 */ 
 	public static void insertUsuario(Context context, String nombre){
@@ -49,6 +50,45 @@ public class SQLFuncion {
 		
 		//Insertar al usuario
 		bd.insertUsuario(nombre);
+		
+		//Cerrar la base de datos
+		bd.cerrar();
+	}
+	
+	/**
+	 * Metodo que inserta un UsuarioNivel en la base de datos
+	 * 
+	 * @param context El contexto de la aplicación
+	 * @param idUsuario ID del usuario
+	 * @param idNivel ID del nivel
+	 */ 
+	public void insertUsuarioNivel(Context context, int idUsuario, int idNivel){
+		SQLHelper bd = new SQLHelper(context.getApplicationContext(), SQLHelper.DATABASE_VERSION);
+		//Abrir la base de datos
+		bd.abrir();
+		
+		//Insertar al usuario en UsuarioNivel
+		bd.insertUsuarioNivel(idUsuario, idNivel);
+		
+		//Cerrar la base de datos
+		bd.cerrar();
+	}
+	
+	/**
+	 * Metodo que inserta una evaluacion en la base de datos
+	 * 
+	 * @param context El contexto de la aplicación
+	 * @param idEvaluacion ID de la evaluacion
+	 * @param idPregunta ID de la pregunta
+	 * @param idUsuario ID del usuario
+	 */
+	public void insertEvaluacion(Context context, int idEvaluacion, int idPregunta, int idUsuario){
+		SQLHelper bd = new SQLHelper(context.getApplicationContext(), SQLHelper.DATABASE_VERSION);
+		//Abrir la base de datos
+		bd.abrir();
+		
+		//Insertar al usuario
+		bd.insertEvaluacion(idEvaluacion, idPregunta, idUsuario);
 		
 		//Cerrar la base de datos
 		bd.cerrar();

@@ -6,7 +6,6 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.tesis.gtgrafia.base.SQLFuncion;
-import com.tesis.gtgrafia.base.SQLHelper;
 import com.tesis.gtgrafia.estructura.Evaluacion;
 import com.tesis.gtgrafia.estructura.Opcion;
 import com.tesis.gtgrafia.estructura.Pregunta;
