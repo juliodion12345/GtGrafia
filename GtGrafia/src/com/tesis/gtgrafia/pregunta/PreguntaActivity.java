@@ -125,7 +125,7 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 		
 		//Obtener y enviar la respuesta
 		EditText textRespuesta = (EditText)findViewById(R.id.textRespuesta);
-		this.sendRespuesta(textRespuesta.getText().toString());
+		this.sendRespuesta(textRespuesta.getText().toString().trim());
 	}
 	
 	/**

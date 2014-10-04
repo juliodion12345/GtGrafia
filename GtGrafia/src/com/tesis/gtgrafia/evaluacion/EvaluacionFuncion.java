@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.tesis.gtgrafia.base.SQLFuncion;
 import com.tesis.gtgrafia.base.SQLHelper;
 import com.tesis.gtgrafia.estructura.Evaluacion;
 import com.tesis.gtgrafia.estructura.Opcion;
@@ -44,7 +45,7 @@ public class EvaluacionFuncion {
 		String[] args = 	{String.valueOf(idUsuario), String.valueOf(idNivel)};
 		
 		//Consultar
-		Cursor cursor = getCursor(context, consulta, args);
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
 		
 		//Verificar que no sea nulo
 		if (cursor != null) {
@@ -110,7 +111,7 @@ public class EvaluacionFuncion {
 							"FROM evaluacion" ;
 
 		//Consultar
-		Cursor cursor = getCursor(context, consulta, null);
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, null);
 				
 		//Verificar que no sea nulo
 		if (cursor != null) {
@@ -154,7 +155,7 @@ public class EvaluacionFuncion {
 		String[] args = 	{String.valueOf(idNivel)};
 		
 		//Consultar
-		Cursor cursor = getCursor(context, consulta, args);
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
 				
 		//Verificar que no sea nulo
 		if (cursor != null) {
@@ -193,7 +194,7 @@ public class EvaluacionFuncion {
 		String[] args = 	{String.valueOf(idNivel)};
 		
 		//Consultar
-		Cursor cursor = getCursor(context, consulta, args);
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
 				
 		//Verificar que no sea nulo
 		if (cursor != null) {
@@ -237,7 +238,7 @@ public class EvaluacionFuncion {
 		//Sustitución de parametros ?
 		String[] args = 	{String.valueOf(idNivel), String.valueOf(count)};
 		
-		Cursor cursor = getCursor(context, consulta, args);
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
 		
 		//Verificar que no sea nulo
 		if (cursor != null) {
@@ -291,7 +292,7 @@ public class EvaluacionFuncion {
 		//Sustitución de parametros ?
 		String[] args = 	{String.valueOf(idPregunta)};
 		
-		Cursor cursor = getCursor(context, consulta, args);
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
 		
 		//Verificar que no sea nulo
 		if (cursor != null) {
@@ -317,29 +318,6 @@ public class EvaluacionFuncion {
 		}
 		
 		return opciones;		
-	}
-	
-	/**
-	 * Metodo que devuelve un cursor con la consulta ejecutada
-	 * 
-	 * @param context El contexto de la actividad
-	 * @param consulta La consulta a realizar
-	 * @param args SelectionArgs usados para reemplazar los ?
-	 * 
-	 * @return El cursor de la consulta
-	 */
-	public static Cursor getCursor(Context context, String consulta, String[] args) {
-		SQLHelper bd = new SQLHelper(context.getApplicationContext(), SQLHelper.DATABASE_VERSION);
-		bd.abrir();
-			
-		//Consultar
-		Cursor cursor = bd.Select(consulta, args);
-				
-		//Cerrar la base de datos
-		bd.cerrar();
-		
-		//Retornar el cursor
-		return cursor;
 	}
 	
 }

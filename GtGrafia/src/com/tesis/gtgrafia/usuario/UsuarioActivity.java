@@ -1,47 +1,45 @@
-package com.tesis.gtgrafia.inicio;
+package com.tesis.gtgrafia.usuario;
 
 import java.util.ArrayList;
 
 import com.tesis.gtgrafia.R;
-import com.tesis.gtgrafia.R.id;
-import com.tesis.gtgrafia.R.layout;
-import com.tesis.gtgrafia.base.SQLHelper;
-import com.tesis.gtgrafia.menu.MenuActivity;
+import com.tesis.gtgrafia.base.SQLFuncion;
+import com.tesis.gtgrafia.nivel.NivelActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
- * InicioActivity
+ * UsuarioActivity
  * Activity para cargar la pantalla de selección de nombre
  * 
  * @author Andrea
  * @version 0.1
  * 
  */
-public class InicioActivity extends Activity implements OnItemClickListener  {
+public class UsuarioActivity extends Activity implements OnItemClickListener  {
 
-	SQLHelper bd = null;
-	@Override	
+	/**
+	 * Metodo que carga la pantalla de inicio
+	 * 
+	 * @param savedInstanceState savedInstanceState
+	 */
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_inicio);
-		bd = new SQLHelper (this, SQLHelper.DATABASE_VERSION);
+		setContentView(R.layout.activity_usuario);
 		
 		//Coloca los usuarios
 		this.setListItems();
-
 	}
 	
 	//////////////////////////////////////////LISTA////////////////////////////////////////////////
@@ -55,20 +53,29 @@ public class InicioActivity extends Activity implements OnItemClickListener  {
 	public ArrayList<String> listItems() {
 		ArrayList<String> lista = new ArrayList<String>();
 			
-		//tomar nombres de la base de datos 
-		bd.abrir();
+		//La consulta a realizar
+		String consulta = 	"SELECT Nombre " +
+							"FROM usuario " +
+							"ORDER BY id";
 		
-		Cursor usuario = bd.Select("Select * from usuario;");
+		//Tomar nombres de la base de datos		
+		Cursor usuario = SQLFuncion.getConsulta(this, consulta, null);
 		
-		if (usuario != null && usuario.getCount() > 0) {
-			usuario.moveToFirst();
-			lista.add(usuario.getString(1));
-			while (usuario.moveToNext()) {	
-				lista.add(usuario.getString(1));
+		//Verificar que no sea nulo
+		if (usuario != null) {
+			
+			//Verificar por al menos un resultado
+			if (usuario.getCount() > 0) {
+				usuario.moveToFirst();
+				
+				boolean mover = true;
+				while(mover==true) {					
+					//Agregar al ArrayList
+					lista.add(usuario.getString(usuario.getColumnIndex("Nombre")));
+					mover = usuario.moveToNext();
+				}
 			}
 		}
-		
-		bd.cerrar();
 		
 		return lista;				
 	}
@@ -97,24 +104,41 @@ public class InicioActivity extends Activity implements OnItemClickListener  {
 		
 	}
 	
+	/**
+	 * Metodo que se llama al presionar el boton de Aceptar
+	 * Inseta el nuevo usuario
+	 * 
+	 * @param v Referencia a la vista actual
+	 */
 	public void insertarNombre(View v) {
-		bd.abrir();
+
+		//Obtener el nombre de usuario
 		EditText nombre = (EditText) findViewById(R.id.textNombre);
-		String textonombre = nombre.getText().toString();
-		bd.InsertUsuario(textonombre);
-		Cursor usuario = bd.Select("Select * from usuario;");
-		if (usuario != null && usuario.getCount() > 0) {
-			usuario.moveToFirst();
-			System.out.println(usuario.getString(0));
-			System.out.println(usuario.getString(1));
-			while (usuario.moveToNext()) {
-				System.out.println(usuario.getString(0));
-				System.out.println(usuario.getString(1));
-			}
+		String textonombre = nombre.getText().toString().trim();
+		
+		if (! textonombre.equals("")) {
+			//Insertarlo
+			SQLFuncion.insertUsuario(this, textonombre);
+
+			//TODO: Recuperar el Usuario_id		
+			abrir_menu(0);
 		}
-		bd.close();
+		else {
+			this.getMensaje("Ingrese un nombre");
+		}
+		
+	}
 	
-		abrir_menu();
+	/**
+	 * Metodo que devuelve un mensaje corto de tipo Toast
+	 * 
+	 * @param texto El texto a mostrar
+	 */
+	private void getMensaje(String texto) {
+		int duracion = Toast.LENGTH_SHORT;
+
+		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
+		toast.show();
 	}
 	
 	/**
@@ -128,22 +152,20 @@ public class InicioActivity extends Activity implements OnItemClickListener  {
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int index, long id) {  
 		//Obtiene el elemento seleccionado
-		String fila = adapterView.getItemAtPosition(index).toString();
+		/*String fila = adapterView.getItemAtPosition(index).toString();*/
 		
 		//Redirige la aplicación al elemento seleccionado
-		irMenu();
-
+		abrir_menu(index);
 	}
 
-	public void abrir_menu(){
-		Intent intent = new Intent(this, MenuActivity.class);
+	/**
+	 * Metodo que abre la pantalla de niveles
+	 * 
+	 *  @param idUsuario El id del usuario
+	 */
+	public void abrir_menu(int idUsuario){
+		Intent intent = new Intent(this, NivelActivity.class);
 		startActivity(intent);		
 	}
 	
-	private void irMenu() {
-		//Inicia la actividad		
-		Intent intent = new Intent(this.getApplicationContext(), MenuActivity.class);
-		startActivity(intent);
-		
-	}
 }

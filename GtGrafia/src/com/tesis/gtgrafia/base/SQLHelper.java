@@ -32,7 +32,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 	/**
 	 * Variable que almacena el script de la base de datos
 	 */
-	private Script script = new Script();	
+	private Script script = null;	
 	/**
 	 * Variable que almacena el contexto de la aplicación
 	 */
@@ -196,7 +196,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 	 * 
 	 * @param nombre Nombre del usuario
 	 */ 
-	public void InsertUsuario (String nombre){
+	public void insertUsuario(String nombre){
 		//Iniciar la transaccion
 		this.getWritableDatabase().beginTransaction();
 		
@@ -223,7 +223,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 	 * @param idUsuario ID del usuario
 	 * @param idNivel ID del nivel
 	 */ 
-	public void InsertUsuario_Nivel (int idUsuario, int idNivel){
+	public void insertUsuario_Nivel(int idUsuario, int idNivel){
 		//Iniciar la transaccion
 		this.getWritableDatabase().beginTransaction();
 		
@@ -252,7 +252,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 	 * @param idPregunta ID de la pregunta
 	 * @param idUsuario ID del usuario
 	 */ 
-	public void InsertEvaluacion (int idEvaluacion, int idPregunta, int idUsuario){
+	public void insertEvaluacion(int idEvaluacion, int idPregunta, int idUsuario){
 		//Iniciar la transaccion
 		this.getWritableDatabase().beginTransaction();
 		

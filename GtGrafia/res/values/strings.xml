@@ -21,7 +21,7 @@
         <item>Acerca de</item>
     </string-array>
     
-    <!-- String de InicioActivity --> 
+    <!-- String de UsuarioActivity --> 
     <string name="str_configuracion">Configuración</string>
     <string name="str_ingreso_nombre">Ingrese su nombre</string>
     <string name="str_jugar">Jugar</string>

@@ -2,7 +2,7 @@ package com.tesis.gtgrafia;
 
 import com.tesis.gtgrafia.base.SQLHelper;
 import com.tesis.gtgrafia.evaluacion.EvaluacionActivity;
-import com.tesis.gtgrafia.inicio.InicioActivity;
+import com.tesis.gtgrafia.usuario.UsuarioActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -114,7 +114,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		//Inicia la actividad de "Iniciar Juego"
 		
 		//TODO Modificar las clases para iniciarlas
-		Intent intent = new Intent(this, InicioActivity.class);
+		Intent intent = new Intent(this, UsuarioActivity.class);
 		startActivity(intent);
 	}
 	

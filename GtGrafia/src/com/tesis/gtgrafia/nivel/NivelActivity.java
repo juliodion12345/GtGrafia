@@ -1,4 +1,4 @@
-package com.tesis.gtgrafia.menu;
+package com.tesis.gtgrafia.nivel;
 
 import java.util.ArrayList;
 
@@ -15,52 +15,64 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 /**
- * MenuActivity
+ * NivelActivity
  * Activity para cargar la pantalla con los niveles
  * 
  * @author Andrea
  * @version 0.1
  * 
  */
-public class MenuActivity extends Activity implements OnItemClickListener{
-
+public class NivelActivity extends Activity implements OnItemClickListener{
 	
-	//Numero de los niveles
-	
-	private static final int MENU_1 = 1;
-	
+	/**
+	 * Metodo que carga la pantalla principal
+	 * 
+	 * @param savedInstanceState savedInstanceState
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
 		
-		this.crear_menu();
+		this.setNiveles();
 	}
 	
-	public void crear_menu(){
-		//llenar con los niveles de la base de datos!
+	/**
+	 * Metodo que coloca la información de los niveles
+	 */
+	public void setNiveles(){
+		//Llenar con los niveles de la base de datos!
 		ArrayList<String> lista = new ArrayList<String>();
-		lista.add("1");
-		lista.add("2");
 		
+		//TODO: Obtener niveles de la base de datos, dependiendo del usuario
+		lista.add("1");lista.add("2");lista.add("3");lista.add("4");lista.add("5");
+		
+		
+		//Agregar los niveles al adaptador
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
 		
-		GridView gridView = (GridView) findViewById(R.id.gridView1);
+		//Colocar el adaptador
+		GridView gridView = (GridView) findViewById(R.id.gridNiveles);
 		gridView.setAdapter(adapter); 	
-				
+		
+		//Colocar el listener
 		gridView.setOnItemClickListener(this);
 	}
 
+	/**
+	 * Metodo que se activa al seleccionar un elemento del gridview
+	 * 
+	 * @param adapterView El adaptador de la vista
+	 * @param view El adaptador de la vista
+	 * @param index La posición del elemento cliqueado
+	 * @param id El ID del elemento cliqueado
+	 */
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
-		// TODO Auto-generated method stub
+		//Obtiene el elemento seleccionado
 		String fila = parent.getItemAtPosition(position).toString();
-		if (fila.equals("1")) {
-			//mostrar leccion 1
-		}
-		else if (fila.equals("2")) {
-			//mostrar leccion 2
-		}
+		
+		//TODO: Administrar los niveles
 	}
 }

@@ -26,11 +26,11 @@
             android:label="@string/title_activity_evaluacion" >
         </activity>
         <activity
-            android:name="com.tesis.gtgrafia.inicio.InicioActivity"
+            android:name="com.tesis.gtgrafia.usuario.UsuarioActivity"
             android:label="@string/title_activity_inicio" >
         </activity>
         <activity
-            android:name="com.tesis.gtgrafia.menu.MenuActivity"
+            android:name="com.tesis.gtgrafia.nivel.NivelActivity"
             android:label="@string/title_activity_menu" >
         </activity>
         <activity
