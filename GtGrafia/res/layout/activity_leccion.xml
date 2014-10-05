@@ -5,8 +5,41 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
+        android:id="@+id/textLeerLeccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/text_leccion"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textNombreLeccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textLeerLeccion"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/buttonEvaluacionLeccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textNombreLeccion"
+        android:layout_marginTop="83dp"
+        android:text="@string/button_evaluacion" />
+
+    <Button
+        android:id="@+id/buttonLeccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textNombreLeccion"
+        android:text="@string/button_leccion" />
 
 </RelativeLayout>

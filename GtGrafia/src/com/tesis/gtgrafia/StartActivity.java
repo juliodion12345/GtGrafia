@@ -34,8 +34,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		setContentView(R.layout.activity_start);
 	
 		//Colocarle el listener (esta clase) para seleccionar elementos
-		ListView listView = (ListView) findViewById(R.id.listStart);
-		listView.setOnItemClickListener(this);
+		ListView listMenuStart = (ListView) findViewById(R.id.listMenuStart);
+		listMenuStart.setOnItemClickListener(this);
 	}
 	
 	/**
@@ -52,10 +52,10 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		String fila = adapterView.getItemAtPosition(index).toString();
 		
 		//Redirige la aplicación al elemento seleccionado
-		if (fila.equals(getString(R.string.str_iniciar_juego))) {
+		if (fila.equals(getString(R.string.text_iniciar_juego))) {
 			iniciarJuego();
 		}
-		else if (fila.equals(getString(R.string.str_acerca_de))) {
+		else if (fila.equals(getString(R.string.text_acerca_de))) {
 			iniciarAcercaDe();
 		}
 	}
@@ -87,11 +87,11 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		//Redirige la aplicación al elemento seleccionado
-		if (item.getTitle().equals(getString(R.string.str_iniciar_juego))) {
+		if (item.getTitle().equals(getString(R.string.text_iniciar_juego))) {
 			iniciarJuego();
 			return true;
 		}
-		else if (item.getTitle().equals(getString(R.string.str_acerca_de))) {
+		else if (item.getTitle().equals(getString(R.string.text_acerca_de))) {
 			iniciarAcercaDe();
 			return true;
 		}

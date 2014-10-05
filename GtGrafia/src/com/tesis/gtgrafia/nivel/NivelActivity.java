@@ -3,7 +3,9 @@ package com.tesis.gtgrafia.nivel;
 import java.util.ArrayList;
 
 import com.tesis.gtgrafia.R;
+import com.tesis.gtgrafia.leccion.LeccionActivity;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,7 +26,7 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 	/**
 	 * Variable usada para almacenar el idUsuario de la aplicación
 	 */
-	private int idUsuario = 2;
+	private int idUsuario = -1;
 	
 	/**
 	 * Metodo que carga la pantalla principal
@@ -35,6 +37,9 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_nivel);
+		
+		//Obtener el idUsuario
+		this.idUsuario = getIntent().getIntExtra("IdUsuario", -1);
 		
 		//Coloca los niveles
 		this.setNiveles();
@@ -52,11 +57,11 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
 		
 		//Colocar el adaptador
-		GridView gridView = (GridView) findViewById(R.id.gridNiveles);
-		gridView.setAdapter(adapter); 	
+		GridView gridNivelesNivel = (GridView) findViewById(R.id.gridNivelesNivel);
+		gridNivelesNivel.setAdapter(adapter); 	
 		
 		//Colocar el listener
-		gridView.setOnItemClickListener(this);
+		gridNivelesNivel.setOnItemClickListener(this);
 	}
 
 	/**
@@ -68,10 +73,30 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 	 * @param id El ID del elemento cliqueado
 	 */
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
+	public void onItemClick(AdapterView<?> adapterView, View view, int index, long id) { 
 		//Obtiene el elemento seleccionado
 		//String fila = parent.getItemAtPosition(position).toString();
+		String fila = adapterView.getItemAtPosition(index).toString();
+		int idNivel = NivelFuncion.getIdNivel(this, fila);
 		
-		//TODO: Administrar los niveles
+		//Redirige la aplicación al elemento seleccionado
+		abrirNivel(idNivel);
+	}
+
+	/**
+	 * Metodo que abre la pantalla de lección
+	 * 
+	 *  @param idNivel El id del nivel
+	 */
+	public void abrirNivel(int idNivel){
+		Intent intent = new Intent(this.getApplicationContext(), LeccionActivity.class);
+		
+		//Enviar el idUsuario
+		intent.putExtra("IdUsuario", this.idUsuario);
+
+		//Enviar el idNivel
+		intent.putExtra("IdNivel", idNivel);
+		
+		startActivity(intent);		
 	}
 }

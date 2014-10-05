@@ -6,13 +6,13 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
-        android:id="@+id/labelPregunta"
+        android:id="@+id/textPreguntaE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/textRespuesta"
+        android:id="@+id/editRespuestaPreguntaE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_respuesta" >
@@ -21,10 +21,10 @@
     </EditText>
 
     <Button
-        android:id="@+id/buttonAceptar"
+        android:id="@+id/buttonAceptarE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_aceptar"
-        android:onClick="setRespuestaButton" />
+        android:onClick="setRespuestaButton"
+        android:text="@string/button_aceptar" />
     
 </LinearLayout>

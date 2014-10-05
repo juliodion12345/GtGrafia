@@ -59,11 +59,11 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
 		
 		//Asignar el adaptador al listView
-		ListView listView = (ListView) findViewById(R.id.listUsuarios);
-		listView.setAdapter(adapter); 	
+		ListView listUsuariosUsuario = (ListView) findViewById(R.id.listUsuariosUsuario);
+		listUsuariosUsuario.setAdapter(adapter); 	
 		
 		//Colocarle el listener (esta clase) para seleccionar elementos
-		listView.setOnItemClickListener(this);	
+		listUsuariosUsuario.setOnItemClickListener(this);	
 		
 	}
 	
@@ -76,8 +76,8 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 	public void insertarNombre(View v) {
 
 		//Obtener el nombre de usuario
-		EditText textNombre = (EditText) findViewById(R.id.textNombre);
-		String nombre = textNombre.getText().toString().trim();
+		EditText editNombreUsuario = (EditText) findViewById(R.id.editNombreUsuario);
+		String nombre = editNombreUsuario.getText().toString().trim();
 		
 		if (! nombre.equals("")) {
 			//Obtener idUsuario existente

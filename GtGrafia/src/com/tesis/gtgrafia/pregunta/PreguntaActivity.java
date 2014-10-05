@@ -64,8 +64,8 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 	public void setPreguntaMultiple() {
 		
 		//Colocar el enunciado
-		TextView labelPregunta = (TextView)findViewById(R.id.labelPregunta);
-		labelPregunta.setText(pregunta.getEnunciado());
+		TextView textPreguntaM = (TextView)findViewById(R.id.textPreguntaM);
+		textPreguntaM.setText(pregunta.getEnunciado());
 		
 		//Obtener los elementos
 		String[] lista = pregunta.getOpcionesArray();
@@ -77,11 +77,11 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
 		
 		//Asignar el adaptador al listView
-		ListView listView = (ListView)findViewById(R.id.listStart);
-		listView.setAdapter(adapter); 	
+		ListView listOpcionesPreguntaM = (ListView)findViewById(R.id.listOpcionesPreguntaM);
+		listOpcionesPreguntaM.setAdapter(adapter); 	
 		
 		//Colocarle el listener (esta clase) para seleccionar elementos
-		listView.setOnItemClickListener(this);
+		listOpcionesPreguntaM.setOnItemClickListener(this);
 		
 	}
 	
@@ -108,8 +108,8 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 	public void setPreguntaEscrita() {
 		
 		//Colocar el enunciado
-		TextView labelPregunta = (TextView)findViewById(R.id.labelPregunta);
-		labelPregunta.setText(pregunta.getEnunciado());	
+		TextView textPreguntaE = (TextView)findViewById(R.id.textPreguntaE);
+		textPreguntaE.setText(pregunta.getEnunciado());	
 		
 	}
 	
@@ -121,8 +121,8 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 	public void setRespuestaButton(View v) {
 		
 		//Obtener y enviar la respuesta
-		EditText textRespuesta = (EditText)findViewById(R.id.textRespuesta);
-		this.sendRespuesta(textRespuesta.getText().toString().trim());
+		EditText editRespuestaPreguntaE = (EditText)findViewById(R.id.editRespuestaPreguntaE);
+		this.sendRespuesta(editRespuestaPreguntaE.getText().toString().trim());
 	}
 	
 	/**

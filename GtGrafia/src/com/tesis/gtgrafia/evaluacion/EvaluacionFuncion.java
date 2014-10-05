@@ -98,7 +98,7 @@ public class EvaluacionFuncion {
 	 */
 	public static int getIdEvaluacion(Context context) {
 		//Variable que devolvera el idEvaluacion
-		int idEvaluacion = 0;
+		int idEvaluacion = -1;
 						
 		//La consulta para obtener el idEvaluacion
 		String consulta = 	"SELECT MAX(idEvaluacion) as 'ultimo' " +
@@ -137,7 +137,7 @@ public class EvaluacionFuncion {
 	 */
 	public static int getTipoEvaluacion(Context context, int idNivel) {
 		//Variable que devolvera el idTipoPregunta
-		int tipoEvaluacion = 0;
+		int tipoEvaluacion = -1;
 						
 		//La consulta para obtener el idEvaluacion
 		String consulta = 	"SELECT idTipoPregunta " +

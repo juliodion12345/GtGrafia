@@ -7,14 +7,14 @@
     
     <!-- String de las actividades --> 
     <string name="title_activity_inicio">GtGrafía</string>
-    <string name="title_activity_menu">GtGrafía</string>
+    <string name="title_activity_nivel">GtGrafía</string>
     <string name="title_activity_leccion">GtGrafía</string>
     <string name="title_activity_evaluacion">GtGrafía</string>
     <string name="title_activity_pregunta">GtGrafía</string>
     
     <!-- String de StartActivity -->   
-    <string name="str_iniciar_juego">Iniciar Juego</string>
-    <string name="str_acerca_de">Acerca de</string>
+    <string name="text_iniciar_juego">Iniciar Juego</string>
+    <string name="text_acerca_de">Acerca de</string>
     
     <string-array name="array_start">
         <item>Iniciar Juego</item>
@@ -22,13 +22,17 @@
     </string-array>
     
     <!-- String de UsuarioActivity --> 
-    <string name="str_configuracion">Configuración</string>
-    <string name="str_ingreso_nombre">Ingrese su nombre</string>
-    <string name="str_jugar">Jugar</string>
+    <string name="text_configuracion">Configuración</string>
+    <string name="text_nombre">Ingrese su nombre</string>
+    <string name="button_registro">¡Registrar!</string>
     
     <!-- String de PreguntaActivity -->
 	<string name="button_aceptar">Aceptar</string>
     <string name="hint_respuesta">Respuesta</string>
-	
+    
+    <!-- String de LeccionActivity -->
+	<string name="button_leccion">Leer Lección</string>
+	<string name="button_evaluacion">¡Evaluar Nivel!</string>
+	<string name="text_leccion">Lección del nivel:</string>
 
 </resources>

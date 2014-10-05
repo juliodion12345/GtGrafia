@@ -59,5 +59,43 @@ public class NivelFuncion {
 		
 		return lista;				
 	}
+	
+	/**
+	 * Metodo que devuelve el idUsuario
+	 * 
+	 * @param context El contexto de la actividad
+	 * @param nobre El nombre del nivel
+	 * 
+	 * @return El id del nivel
+	 */
+	public static int getIdNivel(Context context, String nombre) {
+		//Variable que devolvera el idUsuario
+		int idNivel = -1;
+						
+		//La consulta para obtener el idEvaluacion
+		String consulta = 	"SELECT idNivel " +
+							"FROM Nivel " +
+							"WHERE nombre LIKE ?" ;
+		
+		String[] args = {nombre};
+
+		//Consultar
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
+				
+		//Verificar que no sea nulo
+		if (cursor != null) {
+					
+			//Verificar por al menos un resultado
+			if (cursor.getCount() > 0) {
+				//Colocar ultimo valor
+				idNivel = cursor.getInt(cursor.getColumnIndex("idNivel"));
+			}
+			
+			cursor.close();
+		}
+		
+		//Retorna el idNivel
+		return idNivel;
+	}
 
 }

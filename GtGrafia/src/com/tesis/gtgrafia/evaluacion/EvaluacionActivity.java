@@ -23,11 +23,11 @@ public class EvaluacionActivity extends Activity {
 	/**
 	 * Variable usada para almacenar el idUsuario de la aplicación
 	 */
-	private int idUsuario = 2;
+	private int idUsuario = -1;
 	/**
 	 * Variable usada para almacenar el nivel a evaluar
 	 */
-	private int idNivel = 1;
+	private int idNivel = -1;
 	/**
 	 * Variable usada para almacenar localmente el indice de la pregunta actual
 	 */
@@ -50,6 +50,12 @@ public class EvaluacionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_evaluacion);
+		
+		//Obtener el idUsuario
+		this.idUsuario = getIntent().getIntExtra("IdUsuario", -1);
+				
+		//Obtener el idNivel
+		this.idNivel = getIntent().getIntExtra("IdNivel", -1);
 		
 		this.realizarEvaluacion();
 	}
