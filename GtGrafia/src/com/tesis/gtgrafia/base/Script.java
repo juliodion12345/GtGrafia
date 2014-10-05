@@ -54,7 +54,7 @@ public class Script {
 
 		create_nivel = "CREATE TABLE Nivel ("
 				+ "idNivel INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
-				+ "dirContenido TEXT NOT NULL							,"
+				+ "archivo TEXT NOT NULL							,"
 				+ "nombre TEXT NOT NULL )";
 
 		create_pregunta = "CREATE TABLE Pregunta ("

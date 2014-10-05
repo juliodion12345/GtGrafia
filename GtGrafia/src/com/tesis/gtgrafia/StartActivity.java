@@ -1,6 +1,5 @@
 package com.tesis.gtgrafia;
 
-import com.tesis.gtgrafia.evaluacion.EvaluacionActivity;
 import com.tesis.gtgrafia.usuario.UsuarioActivity;
 
 import android.app.Activity;
@@ -118,9 +117,8 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		//Inicia la actividad de "Acerca de"
 		
 		//TODO Modificar las clases para iniciarlas
-		Intent intent = new Intent(this.getApplicationContext(), EvaluacionActivity.class);
-		startActivity(intent);
-			
+		//Intent intent = new Intent(this.getApplicationContext(), EvaluacionActivity.class);
+		//startActivity(intent);			
 	}
 	
 }

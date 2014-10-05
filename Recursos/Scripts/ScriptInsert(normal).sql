@@ -19,7 +19,7 @@ INSERT INTO Usuario (nombre) VALUES ('Nadeko');
 -- ------------------------------------------------------------------------------------------------
 -- Tabla nivel
 -- -------------------------------------------------------------------------------------------------
-INSERT INTO Nivel (dirContenido, nombre) VALUES ('/Lecciones/LAS_PALABRAS_AGUDAS.pdf', 'Palabras Agudas');
+INSERT INTO Nivel (archivo, nombre) VALUES ('LAS_PALABRAS_AGUDAS.pdf', 'Palabras Agudas');
 
 -- ------------------------------------------------------------------------------------------------
 -- Tabla tipo_pregunta

@@ -69,7 +69,7 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 	
 	/**
 	 * Metodo que se llama al presionar el boton de Aceptar
-	 * Inseta el nuevo usuario
+	 * Inserta el nuevo usuario
 	 * 
 	 * @param v Referencia a la vista actual
 	 */

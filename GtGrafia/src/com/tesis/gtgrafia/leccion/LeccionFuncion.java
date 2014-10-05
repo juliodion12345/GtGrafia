@@ -1,7 +1,5 @@
 package com.tesis.gtgrafia.leccion;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.database.Cursor;
 
@@ -53,6 +51,44 @@ public class LeccionFuncion {
 		
 		//Retorna el nombre
 		return nombre;
+	}
+	
+	/**
+	 * Metodo que devuelve el nombre del archivo
+	 * 
+	 * @param context El contexto de la actividad
+	 * @param nobre El nombre del nivel
+	 * 
+	 * @return El id del nivel
+	 */
+	public static String getArchivo(Context context, int idNivel) {
+		//Variable que devolvera el idUsuario
+		String archivo = "";
+						
+		//La consulta para obtener el idEvaluacion
+		String consulta = 	"SELECT archivo " +
+							"FROM Nivel " +
+							"WHERE idNivel = ?" ;
+		
+		String[] args = {String.valueOf(idNivel)};
+
+		//Consultar
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
+				
+		//Verificar que no sea nulo
+		if (cursor != null) {
+					
+			//Verificar por al menos un resultado
+			if (cursor.getCount() > 0) {
+				//Colocar ultimo valor
+				archivo = cursor.getString(cursor.getColumnIndex("archivo"));
+			}
+			
+			cursor.close();
+		}
+		
+		//Retorna el nombre del archivo
+		return archivo;
 	}
 
 }
