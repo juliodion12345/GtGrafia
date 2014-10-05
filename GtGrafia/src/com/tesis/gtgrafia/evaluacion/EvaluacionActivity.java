@@ -93,7 +93,7 @@ public class EvaluacionActivity extends Activity {
 	private void llamarActividades(int index) {
 
 		//Enviar evaluacion a Activity
-		Intent intent = new Intent(this, PreguntaActivity.class);    
+		Intent intent = new Intent(this.getApplicationContext(), PreguntaActivity.class);    
 		intent.putExtra("Pregunta", this.evaluacion.getPregunta(index));
 		
 		//Llamar a la actividad con resultados

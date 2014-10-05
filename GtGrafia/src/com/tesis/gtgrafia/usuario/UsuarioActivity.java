@@ -8,7 +8,6 @@ import com.tesis.gtgrafia.nivel.NivelActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -45,48 +44,12 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 	//////////////////////////////////////////LISTA////////////////////////////////////////////////
 	
 	/**
-	 * Metodo que devuelve un listado de elementos String[]
-	 * necesario para colocar el listView de la pantalla.
-	 * 
-	 * @return Arreglo de String[] con los elementos de la lista
-	 */
-	public ArrayList<String> listItems() {
-		ArrayList<String> lista = new ArrayList<String>();
-			
-		//La consulta a realizar
-		String consulta = 	"SELECT nombre " +
-							"FROM Usuario " +
-							"ORDER BY idUsuario";
-		
-		//Tomar nombres de la base de datos		
-		Cursor usuario = SQLFuncion.getConsulta(this, consulta, null);
-		
-		//Verificar que no sea nulo
-		if (usuario != null) {
-			
-			//Verificar por al menos un resultado
-			if (usuario.getCount() > 0) {
-				usuario.moveToFirst();
-				
-				boolean mover = true;
-				while(mover==true) {					
-					//Agregar al ArrayList
-					lista.add(usuario.getString(usuario.getColumnIndex("nombre")));
-					mover = usuario.moveToNext();
-				}
-			}
-		}
-		
-		return lista;				
-	}
-	
-	/**
 	 * Metodo que coloca los elementos en la lista de la pantalla principal
 	 */
 	public void setListItems() {
 		
 		//Obtener los elementos
-		ArrayList<String> lista = listItems();
+		ArrayList<String> lista = UsuarioFuncion.getUsuarios(this);
 		
 		/*Llenar un nuevo adaptador con los elementos obtenidos, usando como plantilla
 		 * el simple_list_item_1 (que es una lista simple)
@@ -113,15 +76,23 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 	public void insertarNombre(View v) {
 
 		//Obtener el nombre de usuario
-		EditText nombre = (EditText) findViewById(R.id.textNombre);
-		String textonombre = nombre.getText().toString().trim();
+		EditText textNombre = (EditText) findViewById(R.id.textNombre);
+		String nombre = textNombre.getText().toString().trim();
 		
-		if (! textonombre.equals("")) {
-			//Insertarlo
-			SQLFuncion.insertUsuario(this, textonombre);
-
-			//TODO: Recuperar el Usuario_id		
-			abrir_menu(0);
+		if (! nombre.equals("")) {
+			//Obtener idUsuario existente
+			int idUsuario = UsuarioFuncion.getIdUsuario(this, nombre);
+			
+			if (idUsuario == -1) {
+				//Insertarlo si no existe
+				idUsuario = SQLFuncion.insertUsuario(this, nombre);
+				
+				//Insertar el primer nivel
+				SQLFuncion.insertUsuarioNivel(this, idUsuario, 1);
+			}
+			
+			//Redirigir al usuario a los niveles
+			abrirNiveles(idUsuario);
 		}
 		else {
 			this.getMensaje("Ingrese un nombre");
@@ -152,10 +123,11 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int index, long id) {  
 		//Obtiene el elemento seleccionado
-		/*String fila = adapterView.getItemAtPosition(index).toString();*/
+		String fila = adapterView.getItemAtPosition(index).toString();
+		int idUsuario = UsuarioFuncion.getIdUsuario(this, fila);
 		
 		//Redirige la aplicación al elemento seleccionado
-		abrir_menu(index);
+		abrirNiveles(idUsuario);
 	}
 
 	/**
@@ -163,8 +135,11 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 	 * 
 	 *  @param idUsuario El id del usuario
 	 */
-	public void abrir_menu(int idUsuario){
-		Intent intent = new Intent(this, NivelActivity.class);
+	public void abrirNiveles(int idUsuario){
+		Intent intent = new Intent(this.getApplicationContext(), NivelActivity.class);
+		
+		//Enviar el idUsuario
+		intent.putExtra("IdUsuario", idUsuario);
 		startActivity(intent);		
 	}
 	

@@ -1,6 +1,5 @@
 package com.tesis.gtgrafia;
 
-import com.tesis.gtgrafia.base.SQLHelper;
 import com.tesis.gtgrafia.evaluacion.EvaluacionActivity;
 import com.tesis.gtgrafia.usuario.UsuarioActivity;
 
@@ -23,11 +22,6 @@ import android.widget.AdapterView.OnItemClickListener;
  * 
  */
 public class StartActivity extends Activity implements OnItemClickListener {
-	
-	/**
-	 * Variable conectora con la base de datos
-	 */
-	public SQLHelper bd = null;
 	
 	/**
 	 * Metodo que carga la pantalla principal
@@ -113,8 +107,7 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	private void iniciarJuego() {
 		//Inicia la actividad de "Iniciar Juego"
 		
-		//TODO Modificar las clases para iniciarlas
-		Intent intent = new Intent(this, UsuarioActivity.class);
+		Intent intent = new Intent(this.getApplicationContext(), UsuarioActivity.class);
 		startActivity(intent);
 	}
 	

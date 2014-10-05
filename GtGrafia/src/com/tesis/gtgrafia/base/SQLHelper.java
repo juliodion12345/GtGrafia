@@ -195,8 +195,10 @@ public class SQLHelper extends SQLiteOpenHelper {
 	 * Metodo que inserta un usuario en la base de datos
 	 * 
 	 * @param nombre Nombre del usuario
+	 * 
+	 * @return El id del usuario insertado
 	 */ 
-	public void insertUsuario(String nombre){
+	public int insertUsuario(String nombre){
 		//Iniciar la transaccion
 		this.getWritableDatabase().beginTransaction();
 		
@@ -207,7 +209,9 @@ public class SQLHelper extends SQLiteOpenHelper {
 		valores.put("nombre", nombre);
 		
 		//Realizar la inserción y verificar
-		if (this.getWritableDatabase().insert("Usuario", null, valores) >=0){
+		long idUsuario = this.getWritableDatabase().insert("Usuario", null, valores);
+		
+		if (idUsuario > -1){
 			
 			//Colocar la transacción como exitosa
 			this.getWritableDatabase().setTransactionSuccessful();
@@ -215,6 +219,8 @@ public class SQLHelper extends SQLiteOpenHelper {
 		
 		//Finalizar la transacción
 		this.getWritableDatabase().endTransaction();
+		
+		return (int)idUsuario;
 	}
     
 	/**

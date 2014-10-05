@@ -15,8 +15,6 @@ INSERT INTO Usuario (nombre) VALUES ('Nagato');
 INSERT INTO Usuario (nombre) VALUES ('Matsuri');
 INSERT INTO Usuario (nombre) VALUES ('Victorique');
 INSERT INTO Usuario (nombre) VALUES ('Nadeko');
-INSERT INTO Usuario (nombre) VALUES ('Carlos');
-INSERT INTO Usuario (nombre) VALUES ('Julio');
 
 -- ------------------------------------------------------------------------------------------------
 -- Tabla nivel

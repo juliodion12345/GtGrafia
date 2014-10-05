@@ -22,6 +22,11 @@ import android.widget.GridView;
 public class NivelActivity extends Activity implements OnItemClickListener{
 	
 	/**
+	 * Variable usada para almacenar el idUsuario de la aplicación
+	 */
+	private int idUsuario = 2;
+	
+	/**
 	 * Metodo que carga la pantalla principal
 	 * 
 	 * @param savedInstanceState savedInstanceState
@@ -29,8 +34,9 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_menu);
+		setContentView(R.layout.activity_nivel);
 		
+		//Coloca los niveles
 		this.setNiveles();
 	}
 	
@@ -39,12 +45,8 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 	 */
 	public void setNiveles(){
 		//Llenar con los niveles de la base de datos!
-		ArrayList<String> lista = new ArrayList<String>();
-		
-		//TODO: Obtener niveles de la base de datos, dependiendo del usuario
-		lista.add("1");lista.add("2");lista.add("3");lista.add("4");lista.add("5");
-		
-		
+		ArrayList<String> lista = NivelFuncion.getNiveles(this, idUsuario);
+
 		//Agregar los niveles al adaptador
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, android.R.id.text1, lista);

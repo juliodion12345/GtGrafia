@@ -42,17 +42,21 @@ public class SQLFuncion {
 	 * 
 	 * @param context El contexto de la aplicación
 	 * @param nombre Nombre del usuario
+	 * 
+	 * @return El id del usuario insertado
 	 */ 
-	public static void insertUsuario(Context context, String nombre){
+	public static int insertUsuario(Context context, String nombre){
 		SQLHelper bd = new SQLHelper(context.getApplicationContext(), SQLHelper.DATABASE_VERSION);
 		//Abrir la base de datos
 		bd.abrir();
 		
 		//Insertar al usuario
-		bd.insertUsuario(nombre);
+		int idUsuario = bd.insertUsuario(nombre);
 		
 		//Cerrar la base de datos
 		bd.cerrar();
+		
+		return idUsuario;
 	}
 	
 	/**
@@ -62,7 +66,7 @@ public class SQLFuncion {
 	 * @param idUsuario ID del usuario
 	 * @param idNivel ID del nivel
 	 */ 
-	public void insertUsuarioNivel(Context context, int idUsuario, int idNivel){
+	public static void insertUsuarioNivel(Context context, int idUsuario, int idNivel){
 		SQLHelper bd = new SQLHelper(context.getApplicationContext(), SQLHelper.DATABASE_VERSION);
 		//Abrir la base de datos
 		bd.abrir();
@@ -82,7 +86,7 @@ public class SQLFuncion {
 	 * @param idPregunta ID de la pregunta
 	 * @param idUsuario ID del usuario
 	 */
-	public void insertEvaluacion(Context context, int idEvaluacion, int idPregunta, int idUsuario){
+	public static void insertEvaluacion(Context context, int idEvaluacion, int idPregunta, int idUsuario){
 		SQLHelper bd = new SQLHelper(context.getApplicationContext(), SQLHelper.DATABASE_VERSION);
 		//Abrir la base de datos
 		bd.abrir();

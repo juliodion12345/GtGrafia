@@ -3,8 +3,6 @@ INSERT INTO Usuario (nombre) VALUES ('Nagato');
 INSERT INTO Usuario (nombre) VALUES ('Matsuri');
 INSERT INTO Usuario (nombre) VALUES ('Victorique');
 INSERT INTO Usuario (nombre) VALUES ('Nadeko');
-INSERT INTO Usuario (nombre) VALUES ('Carlos');
-INSERT INTO Usuario (nombre) VALUES ('Julio');
 INSERT INTO Nivel (dirContenido, nombre) VALUES ('/Lecciones/LAS_PALABRAS_AGUDAS.pdf', 'Palabras Agudas');
 INSERT INTO TipoPregunta (descripcion) VALUES ('Seleccion multiple');
 INSERT INTO TipoPregunta (descripcion) VALUES ('Escrita');
