@@ -54,7 +54,7 @@ public class LeccionActivity extends Activity {
 		//Obtener el idNivel
 		this.idNivel = getIntent().getIntExtra("IdNivel", -1);
 		
-		//Colocar el enunciado
+		//Colocar el nombre de la lección
 		TextView textNombreLeccion = (TextView)findViewById(R.id.textNombreLeccion);
 		textNombreLeccion.setText(LeccionFuncion.getNombreNivel(this, idNivel));
 	}

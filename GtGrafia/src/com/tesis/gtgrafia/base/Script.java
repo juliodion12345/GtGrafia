@@ -80,10 +80,9 @@ public class Script {
 				+ "FOREIGN KEY (idNivel) REFERENCES Nivel(idNivel) )";
 
 		create_evaluacion = "CREATE TABLE Evaluacion ("
-				+ "idEvaluacion INTEGER NOT NULL							," 
+				+ "idEvaluacion INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL  ," 
 				+ "idPregunta INTEGER NOT NULL								,"
 				+ "idUsuario INTEGER NOT NULL								," 
-				+ "PRIMARY KEY (idEvaluacion, idPregunta, idUsuario)		,"
 				+ "FOREIGN KEY (idPregunta) REFERENCES Pregunta(idPregunta) ,"
 				+ "FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) )";
 		

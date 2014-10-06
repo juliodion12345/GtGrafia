@@ -28,7 +28,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 	/**
 	 * Etiqueta que almacena la version de la base de datos
 	 */
-	public static final int DATABASE_VERSION = 4;	
+	public static final int DATABASE_VERSION = 5;	
 	/**
 	 * Variable que almacena el script de la base de datos
 	 */
@@ -254,11 +254,10 @@ public class SQLHelper extends SQLiteOpenHelper {
 	/**
 	 * Metodo que inserta una evaluacion en la base de datos
 	 * 
-	 * @param idEvaluacion ID de la evaluacion
 	 * @param idPregunta ID de la pregunta
 	 * @param idUsuario ID del usuario
 	 */ 
-	public void insertEvaluacion(int idEvaluacion, int idPregunta, int idUsuario){
+	public void insertEvaluacion(int idPregunta, int idUsuario){
 		//Iniciar la transaccion
 		this.getWritableDatabase().beginTransaction();
 		
@@ -266,7 +265,6 @@ public class SQLHelper extends SQLiteOpenHelper {
 		ContentValues valores = new ContentValues();
 		
 		//Insertar valores en el contenedor
-		valores.put("idEvaluacion", idEvaluacion);
 		valores.put("idPregunta", idPregunta);
 		valores.put("idUsuario", idUsuario);
 		

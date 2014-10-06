@@ -1,5 +1,7 @@
 package com.tesis.gtgrafia.evaluacion;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.database.Cursor;
 
@@ -83,7 +85,7 @@ public class EvaluacionFuncion {
 		eval.setNombreNivel(getNombreNivel(context, idNivel));
 		
 		//Colocar valor preguntas
-		eval.setPreguntas(PreguntaFuncion.getPreguntas(context, idUsuario, idNivel, 10));
+		eval.setPreguntas(PreguntaFuncion.getPreguntas(context, idUsuario, idNivel));
 		
 		//Retornar la evaluación	
 		return eval;
@@ -137,9 +139,9 @@ public class EvaluacionFuncion {
 	 */
 	public static int getTipoEvaluacion(Context context, int idNivel) {
 		//Variable que devolvera el idTipoPregunta
-		int tipoEvaluacion = -1;
+		int idTipoPregunta = -1;
 						
-		//La consulta para obtener el idEvaluacion
+		//La consulta para obtener el idTipoPregunta
 		String consulta = 	"SELECT idTipoPregunta " +
 							"FROM Pregunta " +
 							"WHERE idnivel = ? " +
@@ -157,14 +159,14 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Asigna el resultado
-				tipoEvaluacion = cursor.getInt(cursor.getColumnIndex("idTipoPregunta"));
+				idTipoPregunta = cursor.getInt(cursor.getColumnIndex("idTipoPregunta"));
 			}
 			
 			cursor.close();
 		}
 			
 		//Retorna el idTipoPregunta
-		return tipoEvaluacion;
+		return idTipoPregunta;
 	}
 	
 	/**
@@ -176,10 +178,10 @@ public class EvaluacionFuncion {
 	 * @return El nombre del nivel
 	 */
 	public static String getNombreNivel(Context context, int idNivel) {
-		//Variable que devolvera el idEvaluacion
-		String nombreNivel = "";
+		//Variable que devolvera el nombre
+		String nombre = "";
 						
-		//La consulta para obtener el idEvaluacion
+		//La consulta para obtener el nombre
 		String consulta = 	"SELECT nombre " +
 							"FROM Nivel " +
 							"WHERE idNivel = ?" ;
@@ -196,14 +198,115 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Asigna el resultado
-				nombreNivel = cursor.getString(cursor.getColumnIndex("nombre"));
+				nombre = cursor.getString(cursor.getColumnIndex("nombre"));
 			}
 			
 			cursor.close();
 		}
 				
-		//Retorna el nombreNivel
-		return nombreNivel;
+		//Retorna el nombre
+		return nombre;
+	}
+	
+	/**
+	 * Metodo que devuelve el avance de la evaluacion
+	 * 
+	 * @param context El contexto de la actividad
+	 * @param idUsuario El id del usuario
+	 * @param idNivel El id del nivel
+	 * 
+	 * @return El avance de la evaluación
+	 */
+	public static String getAvance(Context context, int idUsuario, int idNivel) {
+		//Variable que devolvera el nombre
+		String avance = "";
+		
+		//La consulta para obtener el total del usuario
+		String consulta = 	"SELECT COUNT(1) as 'totalUsuario' " +
+							"FROM Evaluacion E " +
+							"INNER JOIN Pregunta P ON (E.idPregunta = P.idPregunta) " +
+							"WHERE P.idNivel = ? " +
+							"AND E.idUsuario = ?" ;
+		
+		//Sustitución de parametros ?
+		String[] argsUsuario = 	{String.valueOf(idNivel), String.valueOf(idUsuario)};
+		
+		//Consultar
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, argsUsuario);
+				
+		//Verificar que no sea nulo
+		if (cursor != null) {
+					
+			//Verificar por al menos un resultado
+			if (cursor.getCount() > 0) {
+				//Asigna el resultado
+				avance = avance.concat(cursor.getString(cursor.getColumnIndex("totalUsuario")));
+			}
+			
+			cursor.close();
+		}	
+		
+		
+		//La consulta para obtener el total
+		consulta = 			"SELECT COUNT(1) as 'total' " +
+							"FROM Pregunta " +
+							"WHERE idNivel = ?" ;
+
+		//Sustitución de parametros ?
+		String[] argsTotal = 	{String.valueOf(idNivel)};
+		
+		//Consultar
+		cursor = SQLFuncion.getConsulta(context, consulta, argsTotal);
+				
+		//Verificar que no sea nulo
+		if (cursor != null) {
+					
+			//Verificar por al menos un resultado
+			if (cursor.getCount() > 0) {
+				//Asigna el resultado
+				avance = avance.concat("/").concat(cursor.getString(cursor.getColumnIndex("total")));
+			}
+			
+			cursor.close();
+		}
+				
+		//Retorna el nombre
+		return avance;
+	}
+	
+	/**
+	 * Metodo que devuelve la comprobación de la respuesta
+	 * 
+	 * @param respuesta La respuesta correcta
+	 * @param respuestaUsuario La respuesta del usuario
+	 * 
+	 * @return La comprobación de la respuesta
+	 */
+	public static boolean comprobarRespuesta(String respuesta, String respuestaUsuario) {
+		boolean comprobacion = false;
+		
+		//A minusculas
+		respuesta  = respuesta.toLowerCase(Locale.US);
+		respuestaUsuario = respuestaUsuario.toLowerCase(Locale.US);
+		
+		//Comprobar
+		if (respuesta.equals(respuestaUsuario)) {
+			comprobacion = true;
+		}
+		
+		//Retornar el resultado
+		return comprobacion;
+	}
+
+	/**
+	 * Metodo que inserta la respuesta correcta
+	 * 
+	 * @param context El contexto de la actividad
+	 * @param idPregunta El id de la pregunta
+	 * @param idUsuario El id del usuario
+	 */
+	public static void insertarRespuestaCorrecta(Context context, int idPregunta, int idUsuario) {
+		
 	}
 	
 }

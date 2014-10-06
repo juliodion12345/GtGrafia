@@ -69,10 +69,10 @@ public class NivelFuncion {
 	 * @return El id del nivel
 	 */
 	public static int getIdNivel(Context context, String nombre) {
-		//Variable que devolvera el idUsuario
+		//Variable que devolvera el idNivel
 		int idNivel = -1;
 						
-		//La consulta para obtener el idEvaluacion
+		//La consulta para obtener el idNivel
 		String consulta = 	"SELECT idNivel " +
 							"FROM Nivel " +
 							"WHERE nombre LIKE ?" ;

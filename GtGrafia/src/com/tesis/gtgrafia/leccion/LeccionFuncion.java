@@ -24,10 +24,10 @@ public class LeccionFuncion {
 	 * @return El id del nivel
 	 */
 	public static String getNombreNivel(Context context, int idNivel) {
-		//Variable que devolvera el idUsuario
+		//Variable que devolvera el nombre
 		String nombre = "";
 						
-		//La consulta para obtener el idEvaluacion
+		//La consulta para obtener el nombre
 		String consulta = 	"SELECT nombre " +
 							"FROM Nivel " +
 							"WHERE idNivel = ?" ;
@@ -62,10 +62,10 @@ public class LeccionFuncion {
 	 * @return El id del nivel
 	 */
 	public static String getArchivo(Context context, int idNivel) {
-		//Variable que devolvera el idUsuario
+		//Variable que devolvera el archivo
 		String archivo = "";
 						
-		//La consulta para obtener el idEvaluacion
+		//La consulta para obtener el archivo
 		String consulta = 	"SELECT archivo " +
 							"FROM Nivel " +
 							"WHERE idNivel = ?" ;

@@ -24,26 +24,29 @@ public class PreguntaFuncion {
 	 * @param context El contexto de la actividad
 	 * @param idUsuario El idUsuario del usuario
 	 * @param idNivel El idNivel del nivel
-	 * @param count Cantidad de preguntas
 	 * 
 	 * @return Un ArrayList con las preguntas de la evaluación
 	 */
 	public static ArrayList<Pregunta> getPreguntas(Context context, 
 													int idUsuario, 
-													int idNivel, 
-													int count) {
+													int idNivel) {
 		
 		ArrayList<Pregunta> preguntas = new  ArrayList<Pregunta>();
 		
 		//La consulta para obtener las preguntas
 		String consulta = 	"SELECT idPregunta, enunciado, respuesta, idTipoPregunta, idNivel " +
-							"FROM Pregunta " +
-							"WHERE idNivel = ? " +
-							"ORDER BY RANDOM() " +
-							"LIMIT ?" ;
+							"FROM Pregunta P " +
+							"WHERE P.idNivel = ?" +
+							"AND NOT EXISTS (" +
+							"	SELECT E.idPregunta " +
+							"	FROM Evaluacion E " +
+							"	WHERE E.idUsuario = ? " +
+							"	AND P.idPregunta = E.idPregunta " +
+							") " +
+							"ORDER BY RANDOM() " ;
 
 		//Sustitución de parametros ?
-		String[] args = 	{String.valueOf(idNivel), String.valueOf(count)};
+		String[] args = 	{String.valueOf(idNivel), String.valueOf(idUsuario)};
 		
 		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
 		
@@ -92,7 +95,7 @@ public class PreguntaFuncion {
 		
 		ArrayList<Opcion> opciones = new  ArrayList<Opcion>();
 		
-		//La consulta para obtener el idEvaluacion
+		//La consulta para obtener el idOpcion y palabra
 		String consulta = 	"SELECT idOpcion, palabra " +
 							"FROM Opcion " +
 							"WHERE idPregunta = ?" ;

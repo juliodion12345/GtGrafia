@@ -65,7 +65,7 @@ public class UsuarioFuncion {
 		//Variable que devolvera el idUsuario
 		int idUsuario = -1;
 						
-		//La consulta para obtener el idEvaluacion
+		//La consulta para obtener el idUsuario
 		String consulta = 	"SELECT idUsuario " +
 							"FROM Usuario " +
 							"WHERE nombre LIKE ?" ;

@@ -135,7 +135,6 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 		Intent resultIntent = new Intent();
 		resultIntent.putExtra("Respuesta", respuesta);
 		resultIntent.putExtra("IdPregunta", pregunta.getIdPregunta());
-		resultIntent.putExtra("Indice", 0);
 		
 		//Aceptamos el resultado y finalizamos
 		setResult(Activity.RESULT_OK, resultIntent);

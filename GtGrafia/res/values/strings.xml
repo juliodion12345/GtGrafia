@@ -34,5 +34,10 @@
 	<string name="button_leccion">Leer Lección</string>
 	<string name="button_evaluacion">¡Evaluar Nivel!</string>
 	<string name="text_leccion">Lección del nivel:</string>
+	
+	<!-- String de EvaluacionActivity -->
+	<string name="button_iniciar">¡Iniciar!</string>
+	<string name="text_evaluacion">Evaluación:</string>
+	<string name="text_avance">Avance de la evaluación:</string>
 
 </resources>

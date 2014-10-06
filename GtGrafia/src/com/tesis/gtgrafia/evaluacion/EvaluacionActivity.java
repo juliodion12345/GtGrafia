@@ -2,11 +2,15 @@ package com.tesis.gtgrafia.evaluacion;
 
 import com.tesis.gtgrafia.R;
 import com.tesis.gtgrafia.estructura.Evaluacion;
+import com.tesis.gtgrafia.estructura.Pregunta;
+import com.tesis.gtgrafia.leccion.LeccionFuncion;
 import com.tesis.gtgrafia.pregunta.PreguntaActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -57,7 +61,13 @@ public class EvaluacionActivity extends Activity {
 		//Obtener el idNivel
 		this.idNivel = getIntent().getIntExtra("IdNivel", -1);
 		
-		this.realizarEvaluacion();
+		//Colocar el nombre de la evaluación
+		TextView textNombreEvaluacion = (TextView)findViewById(R.id.textNombreEvaluacion);
+		textNombreEvaluacion.setText(LeccionFuncion.getNombreNivel(this, this.idNivel));
+		
+		//Colocar el avance de la evaluación
+		TextView textAvanceEvaluacion = (TextView)findViewById(R.id.textAvanceEvaluacion);
+		textAvanceEvaluacion.setText(EvaluacionFuncion.getAvance(this, this.idUsuario, this.idNivel));
 	}
 	
 	/**
@@ -74,24 +84,25 @@ public class EvaluacionActivity extends Activity {
 	
 	/**
 	 * Metodo que redirige las preguntas de la evaluacion
+	 * 
+	 * @param v Referencia a la vista actual
 	 */
-	private void realizarEvaluacion() {	
+	public void realizarEvaluacion(View v) {	
 		//Comprobar usuario para el nivel de evaluacion
-		if (EvaluacionFuncion.comprobarEvaluacion(this, idUsuario, idNivel)==true) {
+		if (EvaluacionFuncion.comprobarEvaluacion(this, this.idUsuario, this.idNivel)==true) {
 			
 			//Llenar evaluacion
-			this.evaluacion = EvaluacionFuncion.getEvaluacion(this, idUsuario, idNivel);			
+			this.evaluacion = EvaluacionFuncion.getEvaluacion(this, this.idUsuario, this.idNivel);			
 			
 			//Llamar a las actividades
 			this.indexPregunta = 0;
-			this.llamarActividades(indexPregunta);			
+			this.llamarActividades(this.indexPregunta);			
 			
 		}
 		else {			
 			this.getMensaje("Aun no puede realizar esta evaluación");
 		}		
-		
-	}	
+	}
 	
 	/**
 	 * Metodo que llama una actividad, dependiendo del indice
@@ -122,8 +133,15 @@ public class EvaluacionActivity extends Activity {
 		if (requestCode == RESPUESTA_OK) { 
 			
 			//Si el codigo de respuesta es OK
-			if (resultCode == Activity.RESULT_OK) {						
-				//TODO: Asignar valores de respuesta
+			if (resultCode == Activity.RESULT_OK) {
+				Pregunta p = this.evaluacion.getPregunta(indexPregunta);
+				p.setRespuestaUsuario(data.getExtras().getString("Respuesta"));
+				
+				int idPregunta = data.getExtras().getInt("IdPregunta");
+				
+				if (EvaluacionFuncion.comprobarRespuesta(p.getRespuesta(), p.getRespuestaUsuario())) {
+					EvaluacionFuncion.insertarRespuestaCorrecta(this, idPregunta, this.idUsuario);
+				}
 				
 				//Aumentar el indice y evaluar nueva actividad
 				indexPregunta++;
