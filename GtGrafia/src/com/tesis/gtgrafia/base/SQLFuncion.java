@@ -82,16 +82,17 @@ public class SQLFuncion {
 	 * Metodo que inserta una evaluacion en la base de datos
 	 * 
 	 * @param context El contexto de la aplicación
+	 * @param idEvaluacion ID de la evaluacion
 	 * @param idPregunta ID de la pregunta
 	 * @param idUsuario ID del usuario
 	 */
-	public static void insertEvaluacion(Context context, int idPregunta, int idUsuario){
+	public static void insertEvaluacion(Context context, int idEvaluacion, int idPregunta, int idUsuario){
 		SQLHelper bd = new SQLHelper(context.getApplicationContext(), SQLHelper.DATABASE_VERSION);
 		//Abrir la base de datos
 		bd.abrir();
 		
 		//Insertar al usuario
-		bd.insertEvaluacion(idPregunta, idUsuario);
+		bd.insertEvaluacion(idEvaluacion, idPregunta, idUsuario);
 		
 		//Cerrar la base de datos
 		bd.cerrar();

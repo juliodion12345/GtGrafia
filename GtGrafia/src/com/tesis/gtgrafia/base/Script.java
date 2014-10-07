@@ -54,7 +54,7 @@ public class Script {
 
 		create_nivel = "CREATE TABLE Nivel ("
 				+ "idNivel INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 	," 
-				+ "archivo TEXT NOT NULL							,"
+				+ "archivo TEXT NOT NULL								,"
 				+ "nombre TEXT NOT NULL )";
 
 		create_pregunta = "CREATE TABLE Pregunta ("
@@ -63,7 +63,7 @@ public class Script {
 				+ "respuesta TEXT NOT NULL													," 
 				+ "idTipoPregunta INTEGER NOT NULL											,"
 				+ "idNivel INTEGER NOT NULL													,"
-				+ "FOREIGN KEY (idTipoPregunta) REFERENCES TipoPregunta(idTipoPregunta)	,"
+				+ "FOREIGN KEY (idTipoPregunta) REFERENCES TipoPregunta(idTipoPregunta)		,"
 				+ "FOREIGN KEY (idNivel) REFERENCES Nivel(idNivel) )";
 
 		create_opcion = "CREATE TABLE Opcion ("
@@ -80,9 +80,10 @@ public class Script {
 				+ "FOREIGN KEY (idNivel) REFERENCES Nivel(idNivel) )";
 
 		create_evaluacion = "CREATE TABLE Evaluacion ("
-				+ "idEvaluacion INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL  ," 
+				+ "idEvaluacion INTEGER NOT NULL  ," 
 				+ "idPregunta INTEGER NOT NULL								,"
-				+ "idUsuario INTEGER NOT NULL								," 
+				+ "idUsuario INTEGER NOT NULL								,"
+				+ "PRIMARY KEY (idEvaluacion, idPregunta, idUsuario) 		,"
 				+ "FOREIGN KEY (idPregunta) REFERENCES Pregunta(idPregunta) ,"
 				+ "FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) )";
 		
