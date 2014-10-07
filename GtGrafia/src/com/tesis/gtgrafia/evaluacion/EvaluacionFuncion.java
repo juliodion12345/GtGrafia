@@ -221,13 +221,34 @@ public class EvaluacionFuncion {
 		//Variable que devolvera el nombre
 		String avance = "";
 		
+		//Obtener los totales
+		avance = String.valueOf(getTotalPreguntasUsuario(context, idUsuario, idNivel));
+		avance = avance.concat("/");
+		avance = avance.concat(String.valueOf(getTotalPreguntas(context, idNivel)));
+				
+		//Retorna el nombre
+		return avance;
+	}
+	
+	/**
+	 * Metodo que devuelve el total de preguntas de la evaluación del usuario
+	 * 
+	 * @param context El contexto de la actividad
+	 * @param idUsuario El id del usuario
+	 * @param idNivel El id del nivel
+	 * 
+	 * @return El avance de la evaluación
+	 */
+	public static int getTotalPreguntasUsuario(Context context, int idUsuario, int idNivel) {
+		int total = 0;
+		
 		//La consulta para obtener el total del usuario
 		String consulta = 	"SELECT COUNT(1) as 'totalUsuario' " +
 							"FROM Evaluacion E " +
 							"INNER JOIN Pregunta P ON (E.idPregunta = P.idPregunta) " +
 							"WHERE P.idNivel = ? " +
 							"AND E.idUsuario = ?" ;
-		
+				
 		//Sustitución de parametros ?
 		String[] argsUsuario = 	{String.valueOf(idNivel), String.valueOf(idUsuario)};
 		
@@ -240,23 +261,36 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Asigna el resultado
-				avance = avance.concat(cursor.getString(cursor.getColumnIndex("totalUsuario")));
+				total = cursor.getInt(cursor.getColumnIndex("totalUsuario"));
 			}
 			
 			cursor.close();
-		}	
+		}
 		
+		return total;
+	}
+	
+	/**
+	 * Metodo que devuelve el total de preguntas de la evaluación
+	 * 
+	 * @param context El contexto de la actividad
+	 * @param idNivel El id del nivel
+	 * 
+	 * @return El avance de la evaluación
+	 */
+	public static int getTotalPreguntas(Context context, int idNivel) {
+		int total = 0;
 		
-		//La consulta para obtener el total
-		consulta = 			"SELECT COUNT(1) as 'total' " +
+		//La consulta para obtener el total del usuario
+		String consulta = 	"SELECT COUNT(1) as 'total' " +
 							"FROM Pregunta " +
 							"WHERE idNivel = ?" ;
-
+				
 		//Sustitución de parametros ?
-		String[] argsTotal = 	{String.valueOf(idNivel)};
+		String[] argsUsuario = 	{String.valueOf(idNivel)};
 		
 		//Consultar
-		cursor = SQLFuncion.getConsulta(context, consulta, argsTotal);
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, argsUsuario);
 				
 		//Verificar que no sea nulo
 		if (cursor != null) {
@@ -264,14 +298,13 @@ public class EvaluacionFuncion {
 			//Verificar por al menos un resultado
 			if (cursor.getCount() > 0) {
 				//Asigna el resultado
-				avance = avance.concat("/").concat(cursor.getString(cursor.getColumnIndex("total")));
+				total = cursor.getInt(cursor.getColumnIndex("total"));
 			}
 			
 			cursor.close();
 		}
-				
-		//Retorna el nombre
-		return avance;
+		
+		return total;
 	}
 	
 	/**
