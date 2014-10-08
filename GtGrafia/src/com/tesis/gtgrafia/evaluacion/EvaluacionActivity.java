@@ -134,22 +134,26 @@ public class EvaluacionActivity extends Activity {
 			
 			//Si el codigo de respuesta es OK
 			if (resultCode == Activity.RESULT_OK) {
-				Pregunta p = this.evaluacion.getPregunta(indexPregunta);
-				p.setRespuestaUsuario(data.getExtras().getString("Respuesta"));
-				
-				int idPregunta = data.getExtras().getInt("IdPregunta");
-				
-				if (EvaluacionFuncion.comprobarRespuesta(p.getRespuesta(), p.getRespuestaUsuario())) {
-					EvaluacionFuncion.insertarRespuestaCorrecta(this, idPregunta, this.idUsuario);
-				}
-				
-				//Aumentar el indice y evaluar nueva actividad
-				indexPregunta++;
+				//Comprobar para no pasar el indice
 				if (indexPregunta < evaluacion.getCountPreguntas()) {
+					Pregunta p = this.evaluacion.getPregunta(indexPregunta);
+					p.setRespuestaUsuario(data.getExtras().getString("Respuesta"));
 					
-					//Lamar a nueva actividad
-					this.llamarActividades(indexPregunta);
-				}
+					int idPregunta = data.getExtras().getInt("IdPregunta");
+					
+					if (EvaluacionFuncion.comprobarRespuesta(p.getRespuesta(), p.getRespuestaUsuario())) {
+						EvaluacionFuncion.insertarRespuestaCorrecta(this, idPregunta, this.idUsuario);
+					}
+					
+					//Aumentar el indice y evaluar nueva actividad
+					indexPregunta++;
+					System.out.println(indexPregunta + "-" +  evaluacion.getCountPreguntas());
+					if (indexPregunta < evaluacion.getCountPreguntas()) {
+						
+						//Lamar a nueva actividad
+						this.llamarActividades(indexPregunta);
+					}
+				}					
 			} 
 		} 
 	}

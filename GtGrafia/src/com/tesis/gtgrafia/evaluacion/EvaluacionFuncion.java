@@ -70,7 +70,7 @@ public class EvaluacionFuncion {
 		Evaluacion eval = new Evaluacion();	
 				
 		//Colocar valor idEvaluacion
-		eval.setIdEvaluacion(getIdEvaluacion(context));	
+		eval.setIdEvaluacion(getIdEvaluacion(context, idUsuario));	
 		
 		//Colocar valor idUsuario
 		eval.setIdUsuario(idUsuario);
@@ -95,19 +95,23 @@ public class EvaluacionFuncion {
 	 * Metodo que devuelve el idEvaluacion
 	 * 
 	 * @param context El contexto de la actividad
+	 * @param idUsuario El id del usuario
 	 * 
 	 * @return El ultimo + 1 idEvaluacion
 	 */
-	public static int getIdEvaluacion(Context context) {
+	public static int getIdEvaluacion(Context context, int idUsuario) {
 		//Variable que devolvera el idEvaluacion
 		int idEvaluacion = -1;
 						
 		//La consulta para obtener el idEvaluacion
 		String consulta = 	"SELECT MAX(idEvaluacion) as 'ultimo' " +
-							"FROM Evaluacion" ;
-
+							"FROM Evaluacion " +
+							"WHERE idUsuario = ? " ;
+		//Sustitución de parametros ?
+		String[] args = 	{String.valueOf(idUsuario)};
+				
 		//Consultar
-		Cursor cursor = SQLFuncion.getConsulta(context, consulta, null);
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
 				
 		//Verificar que no sea nulo
 		if (cursor != null) {
