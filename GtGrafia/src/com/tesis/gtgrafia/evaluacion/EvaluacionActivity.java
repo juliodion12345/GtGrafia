@@ -1,6 +1,7 @@
 package com.tesis.gtgrafia.evaluacion;
 
 import com.tesis.gtgrafia.R;
+import com.tesis.gtgrafia.base.SQLFuncion;
 import com.tesis.gtgrafia.estructura.Evaluacion;
 import com.tesis.gtgrafia.estructura.Pregunta;
 import com.tesis.gtgrafia.leccion.LeccionFuncion;
@@ -65,9 +66,22 @@ public class EvaluacionActivity extends Activity {
 		TextView textNombreEvaluacion = (TextView)findViewById(R.id.textNombreEvaluacion);
 		textNombreEvaluacion.setText(LeccionFuncion.getNombreNivel(this, this.idNivel));
 		
+		int respuestasUsuario = EvaluacionFuncion.getTotalPreguntasUsuario(this, this.idUsuario, this.idNivel);
+		int respuesta = EvaluacionFuncion.getTotalPreguntas(this, this.idNivel);
+		
 		//Colocar el avance de la evaluación
 		TextView textAvanceEvaluacion = (TextView)findViewById(R.id.textAvanceEvaluacion);
-		textAvanceEvaluacion.setText(EvaluacionFuncion.getAvance(this, this.idUsuario, this.idNivel));
+		textAvanceEvaluacion.setText(respuestasUsuario + "/" + respuesta);
+						
+		//Comparar nivel
+		if(respuestasUsuario == respuesta) {
+			//Comprobar si ya está el nivel insertado
+			if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, this.idNivel)==false) {
+				//Insertar el siguiente nivel
+				SQLFuncion.insertUsuarioNivel(this, this.idUsuario, this.idNivel);
+			}	
+		}	
+		
 	}
 	
 	/**
@@ -96,7 +110,10 @@ public class EvaluacionActivity extends Activity {
 			
 			//Llamar a las actividades
 			this.indexPregunta = 0;
-			this.llamarActividades(this.indexPregunta);			
+			
+			if (this.indexPregunta < this.evaluacion.getCountPreguntas()) {
+				this.llamarActividades(this.indexPregunta);	
+			}						
 			
 		}
 		else {			
@@ -134,21 +151,29 @@ public class EvaluacionActivity extends Activity {
 			
 			//Si el codigo de respuesta es OK
 			if (resultCode == Activity.RESULT_OK) {
+				
 				//Comprobar para no pasar el indice
-				if (indexPregunta < evaluacion.getCountPreguntas()) {
-					Pregunta p = this.evaluacion.getPregunta(indexPregunta);
-					p.setRespuestaUsuario(data.getExtras().getString("Respuesta"));
+				if (this.indexPregunta < evaluacion.getCountPreguntas()) {
 					
+					//Obtener pregunta
+					Pregunta p = this.evaluacion.getPregunta(indexPregunta);
+					
+					//Obtener extras
+					p.setRespuestaUsuario(data.getExtras().getString("Respuesta"));
 					int idPregunta = data.getExtras().getInt("IdPregunta");
 					
+					//Insertar respuesta
 					if (EvaluacionFuncion.comprobarRespuesta(p.getRespuesta(), p.getRespuestaUsuario())) {
-						EvaluacionFuncion.insertarRespuestaCorrecta(this, idPregunta, this.idUsuario);
+						EvaluacionFuncion.insertarRespuestaCorrecta(this, 
+																	this.evaluacion.getIdEvaluacion(), 
+																	idPregunta, 
+																	this.idUsuario);
 					}
 					
 					//Aumentar el indice y evaluar nueva actividad
-					indexPregunta++;
-					System.out.println(indexPregunta + "-" +  evaluacion.getCountPreguntas());
-					if (indexPregunta < evaluacion.getCountPreguntas()) {
+					this.indexPregunta++;
+					
+					if (this.indexPregunta < evaluacion.getCountPreguntas()) {
 						
 						//Lamar a nueva actividad
 						this.llamarActividades(indexPregunta);
@@ -156,6 +181,32 @@ public class EvaluacionActivity extends Activity {
 				}					
 			} 
 		} 
+	}
+	
+	/**
+	 * Metodo que se ejecuta al regresar a la actividad
+	 */
+	@Override
+	public void onResume() {
+		//Llamar a la super clase
+		super.onResume(); 
+	    
+		int respuestasUsuario = EvaluacionFuncion.getTotalPreguntasUsuario(this, this.idUsuario, this.idNivel);
+		int respuesta = EvaluacionFuncion.getTotalPreguntas(this, this.idNivel);
+		
+		//Colocar el avance de la evaluación
+		TextView textAvanceEvaluacion = (TextView)findViewById(R.id.textAvanceEvaluacion);
+		textAvanceEvaluacion.setText(respuestasUsuario + "/" + respuesta);
+				
+		//Comparar nivel
+		if(respuestasUsuario == respuesta) {
+			//Comprobar si ya está el nivel insertado
+			if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, this.idNivel)==false) {
+				//Insertar el siguiente nivel
+				SQLFuncion.insertUsuarioNivel(this, this.idUsuario, this.idNivel);
+			}	
+		}
+		
 	}
 	
 }

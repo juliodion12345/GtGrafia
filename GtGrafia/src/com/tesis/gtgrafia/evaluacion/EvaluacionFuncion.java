@@ -213,28 +213,6 @@ public class EvaluacionFuncion {
 	}
 	
 	/**
-	 * Metodo que devuelve el avance de la evaluacion
-	 * 
-	 * @param context El contexto de la actividad
-	 * @param idUsuario El id del usuario
-	 * @param idNivel El id del nivel
-	 * 
-	 * @return El avance de la evaluación
-	 */
-	public static String getAvance(Context context, int idUsuario, int idNivel) {
-		//Variable que devolvera el nombre
-		String avance = "";
-		
-		//Obtener los totales
-		avance = String.valueOf(getTotalPreguntasUsuario(context, idUsuario, idNivel));
-		avance = avance.concat("/");
-		avance = avance.concat(String.valueOf(getTotalPreguntas(context, idNivel)));
-				
-		//Retorna el nombre
-		return avance;
-	}
-	
-	/**
 	 * Metodo que devuelve el total de preguntas de la evaluación del usuario
 	 * 
 	 * @param context El contexto de la actividad
@@ -339,11 +317,50 @@ public class EvaluacionFuncion {
 	 * Metodo que inserta la respuesta correcta
 	 * 
 	 * @param context El contexto de la actividad
+	 * @param idEvaluacion El id de la evaluacion
 	 * @param idPregunta El id de la pregunta
 	 * @param idUsuario El id del usuario
 	 */
-	public static void insertarRespuestaCorrecta(Context context, int idPregunta, int idUsuario) {
+	public static void insertarRespuestaCorrecta(Context context, int idEvaluacion, int idPregunta, int idUsuario) {
 		
+		//Unicamente insertar en la base de datos
+		SQLFuncion.insertEvaluacion(context, idEvaluacion, idPregunta, idUsuario);
+		
+	}
+	
+	/**
+	 * Metodo que comprueba si el siguiente nivel ya esta habilitado
+	 * 
+	 * @param context El contexto de la actividad
+	 * @param idUsuario El id del usuario
+	 * @param idNivel El id del nivel
+	 */
+	public static boolean comprobarSiguienteNivel(Context context, int idUsuario, int idNivel) {
+		boolean retorno = false;
+		
+		//La consulta para obtener el total del usuario
+		String consulta = 	"SELECT idUsuario, idNivel " +
+							"FROM UsuarioNivel " +
+							"WHERE idUsuario = ? " +
+							"AND idNivel = ?" ;
+				
+		//Sustitución de parametros ?
+		String[] args = 	{String.valueOf(idUsuario), String.valueOf(idNivel)};
+		
+		//Consultar
+		Cursor cursor = SQLFuncion.getConsulta(context, consulta, args);
+				
+		//Verificar que no sea nulo
+		if (cursor != null) {
+					
+			//Verificar por al menos un resultado
+			if (cursor.getCount() > 0) {
+				retorno = true;
+			}			
+			cursor.close();
+		}
+
+		return retorno;
 	}
 	
 }
