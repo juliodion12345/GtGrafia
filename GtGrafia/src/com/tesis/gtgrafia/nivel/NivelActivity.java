@@ -99,4 +99,16 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 		
 		startActivity(intent);		
 	}
+	
+	/**
+	 * Metodo que se ejecuta al regresar a la actividad
+	 */
+	@Override
+	public void onResume() {
+		//Llamar a la super clase
+		super.onResume();
+		
+		//Coloca los niveles
+		this.setNiveles();	
+	}
 }

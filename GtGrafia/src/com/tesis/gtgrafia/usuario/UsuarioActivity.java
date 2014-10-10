@@ -142,5 +142,21 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 		intent.putExtra("IdUsuario", idUsuario);
 		startActivity(intent);		
 	}
+
+	/**
+	 * Metodo que se ejecuta al regresar a la actividad
+	 */
+	@Override
+	public void onResume() {
+		//Llamar a la super clase
+		super.onResume();
+				
+		//Coloca los usuarios
+		this.setListItems();
+		
+		//Limpiar el cuadro de texto
+		EditText editNombreUsuario = (EditText) findViewById(R.id.editNombreUsuario);
+		editNombreUsuario.setText("");
+	}
 	
 }
