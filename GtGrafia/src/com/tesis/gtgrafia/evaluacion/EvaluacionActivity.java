@@ -76,9 +76,11 @@ public class EvaluacionActivity extends Activity {
 		//Comparar nivel
 		if(respuestasUsuario == respuesta) {
 			//Comprobar si ya está el nivel insertado
-			if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, this.idNivel)==false) {
+			int siguienteNivel = this.idNivel + 1;
+			
+			if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, siguienteNivel)==false) {
 				//Insertar el siguiente nivel
-				SQLFuncion.insertUsuarioNivel(this, this.idUsuario, this.idNivel);
+				SQLFuncion.insertUsuarioNivel(this, this.idUsuario, siguienteNivel);
 			}	
 		}	
 		
@@ -201,9 +203,11 @@ public class EvaluacionActivity extends Activity {
 		//Comparar nivel
 		if(respuestasUsuario == respuesta) {
 			//Comprobar si ya está el nivel insertado
-			if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, this.idNivel)==false) {
+			int siguienteNivel = this.idNivel + 1;
+			
+			if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, siguienteNivel)==false) {
 				//Insertar el siguiente nivel
-				SQLFuncion.insertUsuarioNivel(this, this.idUsuario, this.idNivel);
+				SQLFuncion.insertUsuarioNivel(this, this.idUsuario, siguienteNivel);
 			}	
 		}
 		
