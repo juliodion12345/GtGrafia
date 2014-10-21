@@ -1,8 +1,24 @@
+-- ------------------------------------------------------------------------------------------------
+-- ScriptInsert.sql
+-- Carga de datos inicial
+-- 
+-- @author Andrea
+-- @version 0.1
+-- ------------------------------------------------------------------------------------------------
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla Usuario
+-- ------------------------------------------------------------------------------------------------
+
 INSERT INTO Usuario (nombre) VALUES ('Mayaka');
 INSERT INTO Usuario (nombre) VALUES ('Andrea');
 INSERT INTO Usuario (nombre) VALUES ('Matsuri');
 INSERT INTO Usuario (nombre) VALUES ('Victorique');
 INSERT INTO Usuario (nombre) VALUES ('Nadeko');
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla nivel
+-- -------------------------------------------------------------------------------------------------
 INSERT INTO Nivel (archivo, nombre) VALUES ('LAS_PALABRAS_AGUDAS.pdf', 'Palabras Agudas');
 INSERT INTO Nivel (archivo, nombre) VALUES ('LAS_PALABRAS_GRAVES.pdf', 'Palabras Graves');
 INSERT INTO Nivel (archivo, nombre) VALUES ('LAS_PALABRAS_ESDRUJULAS.pdf', 'Palabras Esdrujulas');
@@ -19,8 +35,19 @@ INSERT INTO Nivel (archivo, nombre) VALUES ('USO_S.pdf', 'Uso de la letra S');
 INSERT INTO Nivel (archivo, nombre) VALUES ('USO_V.pdf', 'Uso de la letra V');
 INSERT INTO Nivel (archivo, nombre) VALUES ('USO_X.pdf', 'Uso de la letra X');
 INSERT INTO Nivel (archivo, nombre) VALUES ('USO_Z.pdf', 'Uso de la letra Z');
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla tipo_pregunta
+-- ------------------------------------------------------------------------------------------------
 INSERT INTO TipoPregunta (descripcion) VALUES ('Seleccion multiple');
 INSERT INTO TipoPregunta (descripcion) VALUES ('Escrita');
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla Pregunta y Opcion
+-- ------------------------------------------------------------------------------------------------
+-- ----------------------------------------------
+-- Nivel 1
+-- ----------------------------------------------
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Ladrón', 1, 1);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Colibrí', 1, 1);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Fatal', 1, 1);
@@ -41,6 +68,7 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Se
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'País', 1, 1);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Capaz', 1, 1);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Virtud', 1, 1);
+
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ladrón', 1);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ladron', 1);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 1);
@@ -101,6 +129,11 @@ INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 19);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Virtúd', 20);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Virtud', 20);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 20);
+
+-- ----------------------------------------------
+-- Nivel 2
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Lápiz', 1, 2);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Ninguna', 1, 2);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Ortografía', 1, 2);
@@ -121,6 +154,7 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Se
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Ninguna', 1, 2);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Tráiler', 1, 2);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Problema', 1, 2);
+
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Lapiz', 21);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Lápiz', 21);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 21);
@@ -181,6 +215,11 @@ INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 39);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Problema', 40);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Probléma', 40);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 40);
+
+-- ----------------------------------------------
+-- Nivel 3
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Ninguna', 1, 3);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Idolo', 1, 3);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Término', 1, 3);
@@ -201,6 +240,7 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Se
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Geometría', 1, 3);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Matemática', 1, 3);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Didáctico', 1, 3);
+
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Heroe ', 41);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Heróe', 41);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 41);
@@ -261,6 +301,11 @@ INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 59);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Didáctico', 60);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Didactico', 60);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 60);
+
+-- ----------------------------------------------
+-- Nivel 4
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Ábremelo', 1, 4);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Agítamelo', 1, 4);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Apágamelo', 1, 4);
@@ -281,6 +326,7 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Se
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Ruégamelo', 1, 4);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Quítamelo', 1, 4);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra escrita correctamente', 'Ninguna', 1, 4);
+
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ábremelo ', 61);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Abrémelo', 61);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 61);
@@ -341,6 +387,11 @@ INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 79);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Véndémelo', 80);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Védemeló', 80);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 80);
+
+-- ----------------------------------------------
+-- Nivel 5
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Dígaselo a __', 'él', 1, 5);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Pásame __ libro', 'el', 1, 5);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('__ sabes lo que dices', 'Tú', 1, 5);
@@ -361,6 +412,8 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Te
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Quiero __', 'más', 1, 5);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('El ministro de gobernación crítica que __ no hay arrestos por el atentado', 'aún', 1, 5);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Cuando sacaron las navajas, __ los más valientes se retiraron prudentemente', 'aun', 1, 5);
+
+
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Él', 81);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('El', 81);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Él', 82);
@@ -401,6 +454,11 @@ INSERT INTO Opcion (palabra, idPregunta) VALUES ('Aún', 99);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Aun', 99);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Aún', 100);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Aun', 100);
+
+-- ----------------------------------------------
+-- Nivel 6
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe el prefijo o sufijo utilizado Antesala', 'Ante', 2, 6);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe el prefijo o sufijo utilizado Despedazar', 'Des', 2, 6);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe el prefijo o sufijo utilizado Tostador', 'Dor', 2, 6);
@@ -422,6 +480,11 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Es
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe el prefijo o sufijo utilizado Proactiva', 'Pro', 2, 6);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe el prefijo o sufijo utilizado Omnívoro', 'Omní', 2, 6);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe el prefijo o sufijo utilizado Rebaja', 'Re', 2, 6);
+
+
+-- ----------------------------------------------
+-- Nivel 7
+-- ----------------------------------------------
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la opción correspondiente, considerando si el superlativo es absoluto o relativo: "Karla es la mejor de mis amigas"', 'Relativo', 1, 7);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la opción correspondiente, considerando si el superlativo es absoluto o relativo: "Eres el peor de todos"', 'Relativo', 1, 7);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la opción correspondiente, considerando si el superlativo es absoluto o relativo: "El pastel esta riquísimo"', 'Absoluto', 1, 7);
@@ -437,6 +500,8 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Se
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la opción correspondiente, considerando si el superlativo es absoluto o relativo: "erdió la vida muy rápidamente"', 'Absoluto', 1, 7);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la opción correspondiente, considerando si el superlativo es absoluto o relativo: "Tiene muchísima facilidad para bailar"', 'Absoluto', 1, 7);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la opción correspondiente, considerando si el superlativo es absoluto o relativo: "Se alejó de los escenarios por ser muy bella"', 'Absoluto', 1, 7);
+
+
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Absoluto', 101);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Relativo', 101);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Absoluto', 102);
@@ -469,6 +534,11 @@ INSERT INTO Opcion (palabra, idPregunta) VALUES ('Absoluto', 115);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Relativo', 115);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Absoluto', 116);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Relativo', 116);
+
+-- ----------------------------------------------
+-- Nivel 8
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando b o v según corresponda: "El doctor preparó un jarabe noci_o"', 'nocivo', 2, 8);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando b o v según corresponda: "El gerente no pre_ió que el sábado era día festivo"', 'previó', 2, 8);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando b o v según corresponda: "El di_ujo era muy detallado"', 'dibujo', 2, 8);
@@ -489,6 +559,11 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Es
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando b o v según corresponda: "La am_ulancia se llevó a los heridos al hospital"', 'ambulancia', 2, 8);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando b o v según corresponda: "La pre_enta de juegos es un negocio muy rentable"', 'preventa', 2, 8);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando b o v según corresponda: "Van a derri_ar el edificio viejo"', 'derribar', 2, 8);
+
+-- ----------------------------------------------
+-- Nivel 9
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando c, s o z según corresponda: "a declaración que dió el acusado fue clara y con_isa"', 'concisa', 2, 9);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando c, s o z según corresponda: "No tuvo nada que ver con el su_eso"', 'suceso', 2, 9);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando c, s o z según corresponda: "Fue una gran ha_aña la que logró"', 'hazaña', 2, 9);
@@ -509,6 +584,11 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Es
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando c, s o z según corresponda: "El se_go de especificación afecto al modelo definido"', 'sesgo', 2, 9);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando c, s o z según corresponda: "El se_go de especificación afecto al modelo definido"', 'timidez', 2, 9);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando c, s o z según corresponda: "Existe mas individuali_mo en estos tiempos"', 'individualismo', 2, 9);
+
+-- ----------------------------------------------
+-- Nivel 10
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando g o j según corresponda: "El cuadra_ésimo aniversario de la tragedia no fue recordado"', 'cuadragésimo', 2, 10);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando g o j según corresponda: "Una gran virtud es saber dar el e_emplo"', 'ejemplo', 2, 10);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando g o j según corresponda: "El ju_o de uva es delicioso para la cena"', 'jugo', 2, 10);
@@ -529,6 +609,11 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Es
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando g o j según corresponda: "El _erente de mercadeo alabó la creatividad de sus colaboradores"', 'gerente', 2, 10);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando g o j según corresponda: "El deter_ente arruino mi ropa"', 'detergente', 2, 10);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando g o j según corresponda: "El aborda_e se realizo sin éxito, ¡hay que abortar la misión!"', 'abordaje', 2, 10);
+
+-- ----------------------------------------------
+-- Nivel 11
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra h según corresponda: "La comida grasosa te puede volver _ipertenso"', 'hipertenso', 2, 11);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra h según corresponda: "El jugador sufrió de una _ernia discal"', 'hernia', 2, 11);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra h según corresponda: "El _omo neanderthalensis es nuestro pariente humano mas cercano extinto"', 'homo', 2, 11);
@@ -539,6 +624,11 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Es
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra h según corresponda: "Espero que se la _aya pasado de maravilla"', 'haya', 2, 11);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra h según corresponda: "Ellos _iban de viaje a las bahamas"', 'iban', 2, 11);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra h según corresponda: "Hay una pequeña _olgura en la unión del tornillo y la rosca"', 'holgura', 2, 11);
+
+-- ----------------------------------------------
+-- Nivel 12
+-- ----------------------------------------------
+
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra x o alguna otra letra, según corresponda: "La feria es e_pecial"', 'especial', 2, 12);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra x o alguna otra letra, según corresponda: "La bomba e_plotó de manera maravillosa"', 'explotó', 2, 12);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra x o alguna otra letra, según corresponda: "El E_preso de Oriente es un servicio de tren de larga distancia"', 'Expreso', 2, 12);
@@ -549,6 +639,13 @@ INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Es
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra x o alguna otra letra, según corresponda: "Se realizó una actividad e_tracurricular"', 'extracurricular', 2, 12);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra x o alguna otra letra, según corresponda: "La e_cusa que presentó, no es válida"', 'excusa', 2, 12);
 INSERT INTO Pregunta (enunciado, respuesta, idTipoPregunta, idNivel) VALUES ('Escribe la palabra colocando la letra x o alguna otra letra, según corresponda: "Se fueron a e_plorar al bosque prohibido"', 'explorar', 2, 12);
+
+
+
+
+-- ------------------------------------------------------------------------------------------------
+-- Tabla UsuarioNivel
+-- ------------------------------------------------------------------------------------------------
 INSERT INTO UsuarioNivel (idUsuario, idNivel) VALUES (1, 1);
 INSERT INTO UsuarioNivel (idUsuario, idNivel) VALUES (2, 1);
 INSERT INTO UsuarioNivel (idUsuario, idNivel) VALUES (3, 1);
