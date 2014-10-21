@@ -1,6 +1,7 @@
 package com.tesis.gtgrafia.pregunta;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -129,6 +130,30 @@ public class PreguntaFuncion {
 		}
 		
 		return opciones;		
+	}
+	
+	/**
+	 * Metodo que devuelve la comprobación de la respuesta
+	 * 
+	 * @param respuesta La respuesta correcta
+	 * @param respuestaUsuario La respuesta del usuario
+	 * 
+	 * @return La comprobación de la respuesta
+	 */
+	public static boolean comprobarRespuesta(String respuesta, String respuestaUsuario) {
+		boolean comprobacion = false;
+		
+		//A minusculas
+		respuesta  = respuesta.toLowerCase(Locale.US);
+		respuestaUsuario = respuestaUsuario.toLowerCase(Locale.US);
+		
+		//Comprobar
+		if (respuesta.equals(respuestaUsuario)) {
+			comprobacion = true;
+		}
+		
+		//Retornar el resultado
+		return comprobacion;
 	}
 
 }

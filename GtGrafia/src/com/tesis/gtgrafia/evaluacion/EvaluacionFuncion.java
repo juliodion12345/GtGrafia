@@ -1,10 +1,7 @@
 package com.tesis.gtgrafia.evaluacion;
 
-import java.util.Locale;
-
 import android.content.Context;
 import android.database.Cursor;
-
 import com.tesis.gtgrafia.base.SQLFuncion;
 import com.tesis.gtgrafia.estructura.Evaluacion;
 import com.tesis.gtgrafia.pregunta.PreguntaFuncion;
@@ -68,7 +65,7 @@ public class EvaluacionFuncion {
 	public static Evaluacion getEvaluacion(Context context, int idUsuario, int idNivel) {
 		//Variable que devolvera la evaluacion
 		Evaluacion eval = new Evaluacion();	
-				
+		
 		//Colocar valor idEvaluacion
 		eval.setIdEvaluacion(getIdEvaluacion(context, idUsuario));	
 		
@@ -287,30 +284,6 @@ public class EvaluacionFuncion {
 		}
 		
 		return total;
-	}
-	
-	/**
-	 * Metodo que devuelve la comprobación de la respuesta
-	 * 
-	 * @param respuesta La respuesta correcta
-	 * @param respuestaUsuario La respuesta del usuario
-	 * 
-	 * @return La comprobación de la respuesta
-	 */
-	public static boolean comprobarRespuesta(String respuesta, String respuestaUsuario) {
-		boolean comprobacion = false;
-		
-		//A minusculas
-		respuesta  = respuesta.toLowerCase(Locale.US);
-		respuestaUsuario = respuestaUsuario.toLowerCase(Locale.US);
-		
-		//Comprobar
-		if (respuesta.equals(respuestaUsuario)) {
-			comprobacion = true;
-		}
-		
-		//Retornar el resultado
-		return comprobacion;
 	}
 
 	/**

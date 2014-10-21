@@ -6,6 +6,7 @@ import com.tesis.gtgrafia.estructura.Evaluacion;
 import com.tesis.gtgrafia.estructura.Pregunta;
 import com.tesis.gtgrafia.leccion.LeccionFuncion;
 import com.tesis.gtgrafia.pregunta.PreguntaActivity;
+import com.tesis.gtgrafia.pregunta.PreguntaFuncion;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -74,15 +75,10 @@ public class EvaluacionActivity extends Activity {
 		textAvanceEvaluacion.setText(respuestasUsuario + "/" + respuesta);
 						
 		//Comparar nivel
-		if(respuestasUsuario == respuesta) {
+		if(respuesta == respuestasUsuario) {
 			//Comprobar si ya está el nivel insertado
-			int siguienteNivel = this.idNivel + 1;
-			
-			if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, siguienteNivel)==false) {
-				//Insertar el siguiente nivel
-				SQLFuncion.insertUsuarioNivel(this, this.idUsuario, siguienteNivel);
-			}	
-		}	
+			this.comprobarNivel(respuesta, respuestasUsuario);	
+		}
 		
 	}
 	
@@ -94,6 +90,17 @@ public class EvaluacionActivity extends Activity {
 	private void getMensaje(String texto) {
 		int duracion = Toast.LENGTH_SHORT;
 
+		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
+		toast.show();
+	}
+	
+	/**
+	 * Metodo que devuelve un mensaje de cierta duración de tipo Toast
+	 * 
+	 * @param texto El texto a mostrar
+	 * @param duracion La duración del mensaje
+	 */
+	private void getMensaje(String texto, int duracion) {
 		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
 		toast.show();
 	}
@@ -113,14 +120,19 @@ public class EvaluacionActivity extends Activity {
 			//Llamar a las actividades
 			this.indexPregunta = 0;
 			
+			//Lanzamiento de preguntas
 			if (this.indexPregunta < this.evaluacion.getCountPreguntas()) {
 				this.llamarActividades(this.indexPregunta);	
-			}						
+			}
+			//Realización de preguntas, pero sin guardar el resultado
+			else {
+				
+			}
 			
 		}
 		else {			
-			this.getMensaje("Aun no puede realizar esta evaluación");
-		}		
+			this.getMensaje(getString(R.string.msg_evaluacion_deshabilitada));
+		}
 	}
 	
 	/**
@@ -133,8 +145,7 @@ public class EvaluacionActivity extends Activity {
 		intent.putExtra("Pregunta", this.evaluacion.getPregunta(index));
 		
 		//Llamar a la actividad con resultados
-		startActivityForResult(intent, RESPUESTA_OK);
-		
+		startActivityForResult(intent, RESPUESTA_OK);		
 	}
 	
 	/**
@@ -164,24 +175,44 @@ public class EvaluacionActivity extends Activity {
 					p.setRespuestaUsuario(data.getExtras().getString("Respuesta"));
 					int idPregunta = data.getExtras().getInt("IdPregunta");
 					
-					//Insertar respuesta
-					if (EvaluacionFuncion.comprobarRespuesta(p.getRespuesta(), p.getRespuestaUsuario())) {
+					//Insertar respuesta y mostrar mensaje
+					if (PreguntaFuncion.comprobarRespuesta(p.getRespuesta(), p.getRespuestaUsuario())) {
+						
+						//Mostrar mensaje
+						this.getMensaje(getString(R.string.msg_respuesta_correcta));
+						
+						//Insertar respuesta correcta
 						EvaluacionFuncion.insertarRespuestaCorrecta(this, 
 																	this.evaluacion.getIdEvaluacion(), 
 																	idPregunta, 
-																	this.idUsuario);
+																	this.idUsuario);						
+						
+					}
+					else {
+						//Mostrar mensaje
+						this.getMensaje(getString(R.string.msg_respuesta_incorrecta));			
 					}
 					
 					//Aumentar el indice y evaluar nueva actividad
 					this.indexPregunta++;
 					
+					//Lanzar nueva pregunta
 					if (this.indexPregunta < evaluacion.getCountPreguntas()) {
 						
 						//Lamar a nueva actividad
 						this.llamarActividades(indexPregunta);
 					}
+					//Mostrar resultado
+					else {
+						this.comprobarPuntuacion();
+					}
+					
 				}					
-			} 
+			}
+			//Mostrar resultado de respuesta RESULT_CANCELED
+			else {
+				this.comprobarPuntuacion();
+			}
 		} 
 	}
 	
@@ -191,7 +222,7 @@ public class EvaluacionActivity extends Activity {
 	@Override
 	public void onResume() {
 		//Llamar a la super clase
-		super.onResume(); 
+		super.onResume();
 	    
 		int respuestasUsuario = EvaluacionFuncion.getTotalPreguntasUsuario(this, this.idUsuario, this.idNivel);
 		int respuesta = EvaluacionFuncion.getTotalPreguntas(this, this.idNivel);
@@ -201,16 +232,54 @@ public class EvaluacionActivity extends Activity {
 		textAvanceEvaluacion.setText(respuestasUsuario + "/" + respuesta);
 				
 		//Comparar nivel
-		if(respuestasUsuario == respuesta) {
+		if(respuesta == respuestasUsuario) {
 			//Comprobar si ya está el nivel insertado
-			int siguienteNivel = this.idNivel + 1;
-			
-			if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, siguienteNivel)==false) {
-				//Insertar el siguiente nivel
-				SQLFuncion.insertUsuarioNivel(this, this.idUsuario, siguienteNivel);
-			}	
-		}
+			this.comprobarNivel(respuesta, respuestasUsuario);	
+		}		
+	}
+	
+	/**
+	 * Metodo que comprueba el nivel finalizado
+	 * 
+	 * @param respuesta Cantidad de respuestas totales
+	 * @param respuestasUsuario Cantidad de respuestas del usuario
+	 */
+	private void comprobarNivel(int respuesta, int respuestasUsuario) {
+		//Comprobar si ya está el nivel insertado
+		int siguienteNivel = this.idNivel + 1;
 		
+		if (EvaluacionFuncion.comprobarSiguienteNivel(this, this.idUsuario, siguienteNivel)==false) {
+			//Insertar el siguiente nivel
+			SQLFuncion.insertUsuarioNivel(this, this.idUsuario, siguienteNivel);
+			
+			//Muestra mensaje de nivel finalizado
+			this.getMensaje(getString(R.string.msg_evaluacion_terminada), Toast.LENGTH_LONG);
+		}
+	}
+	
+	/**
+	 * Metodo que comprueba la puntuación de este nivel
+	 */
+	private void comprobarPuntuacion() {
+		//Respuestas totales en la evaluación
+		int respuesta = this.evaluacion.getCountPreguntas();
+		//Respuestas totales del usuario en esta evalucación
+		int respuestasUsuario = 0;
+		
+		for (int i=0; i<respuesta; i++) {
+			//Obtener pregunta
+			Pregunta p = this.evaluacion.getPregunta(i);
+			
+			//Comprobar la respuesta
+			if (PreguntaFuncion.comprobarRespuesta(p.getRespuesta(), p.getRespuestaUsuario())==true) {
+				respuestasUsuario++;
+			}
+		}		
+		
+		//Muestra mensaje de punteo
+		String punteo = " " + respuestasUsuario + "/" + respuesta;	
+		
+		this.getMensaje(getString(R.string.msg_punteo) + punteo, Toast.LENGTH_LONG);
 	}
 	
 }

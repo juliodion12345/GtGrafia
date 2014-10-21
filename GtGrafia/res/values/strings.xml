@@ -5,6 +5,17 @@
     <string name="app_name">GtGrafía</string>    
     <string name="hello_world">Ibara Mayaka!</string>
     
+    <!-- Mensajes -->
+    <string name="msg_usuario_registrado">¡Usuario registrado!</string>
+    <string name="msg_ingrese_nombre">¡Ingrese un nombre!</string>
+    
+    <string name="msg_punteo">¡Punteo de la evaluación: </string>
+    <string name="msg_respuesta_correcta">¡Respuesta correcta!</string>
+	<string name="msg_respuesta_incorrecta">¡Respuesta incorrecta!</string>
+	
+	<string name="msg_evaluacion_terminada">¡Siguiente nivel activado!</string>
+	<string name="msg_evaluacion_deshabilitada">Aun no puede realizar esta evaluación</string>
+    
     <!-- String de las actividades --> 
     <string name="title_activity_inicio">GtGrafía</string>
     <string name="title_activity_nivel">GtGrafía</string>
@@ -39,5 +50,5 @@
 	<string name="button_iniciar">¡Iniciar!</string>
 	<string name="text_evaluacion">Evaluación:</string>
 	<string name="text_avance">Avance de la evaluación:</string>
-
+	
 </resources>

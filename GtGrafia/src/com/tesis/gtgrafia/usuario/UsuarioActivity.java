@@ -91,11 +91,15 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 				SQLFuncion.insertUsuarioNivel(this, idUsuario, 1);
 			}
 			
+			//Ingrese nombre
+			this.getMensaje(getString(R.string.msg_usuario_registrado));
+			
 			//Redirigir al usuario a los niveles
 			abrirNiveles(idUsuario);
 		}
 		else {
-			this.getMensaje("Ingrese un nombre");
+			//Ingrese nombre
+			this.getMensaje(getString(R.string.msg_ingrese_nombre));
 		}
 		
 	}
