@@ -58,8 +58,9 @@ public class Script {
 				+ "nombre TEXT NOT NULL )";
 
 		create_pregunta = "CREATE TABLE Pregunta ("
-				+ "idPregunta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 					," 
+				+ "idPregunta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL 					," 				 
 				+ "enunciado TEXT NOT NULL													,"
+				+ "pregunta TEXT NOT NULL								 					,"
 				+ "respuesta TEXT NOT NULL													," 
 				+ "idTipoPregunta INTEGER NOT NULL											,"
 				+ "idNivel INTEGER NOT NULL													,"

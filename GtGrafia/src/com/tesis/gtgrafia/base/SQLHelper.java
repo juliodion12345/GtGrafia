@@ -28,7 +28,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 	/**
 	 * Etiqueta que almacena la version de la base de datos
 	 */
-	public static final int DATABASE_VERSION = 7;	
+	public static final int DATABASE_VERSION = 8;	
 	/**
 	 * Variable que almacena el script de la base de datos
 	 */

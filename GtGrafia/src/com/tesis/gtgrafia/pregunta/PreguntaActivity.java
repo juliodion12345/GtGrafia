@@ -64,8 +64,12 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 	public void setPreguntaMultiple() {
 		
 		//Colocar el enunciado
+		TextView textEnunciadoM = (TextView)findViewById(R.id.textEnunciadoM);
+		textEnunciadoM.setText(pregunta.getEnunciado());
+		
+		//Colocar la pregunta
 		TextView textPreguntaM = (TextView)findViewById(R.id.textPreguntaM);
-		textPreguntaM.setText(pregunta.getEnunciado());
+		textPreguntaM.setText(pregunta.getPregunta());
 		
 		//Obtener los elementos
 		String[] lista = pregunta.getOpcionesArray();
@@ -108,8 +112,12 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 	public void setPreguntaEscrita() {
 		
 		//Colocar el enunciado
+		TextView textEnunciadoE = (TextView)findViewById(R.id.textEnunciadoE);
+		textEnunciadoE.setText(pregunta.getEnunciado());
+		
+		//Colocar la pregunta
 		TextView textPreguntaE = (TextView)findViewById(R.id.textPreguntaE);
-		textPreguntaE.setText(pregunta.getEnunciado());	
+		textPreguntaE.setText(pregunta.getPregunta());
 		
 	}
 	

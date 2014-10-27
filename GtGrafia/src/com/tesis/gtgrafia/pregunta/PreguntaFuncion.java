@@ -35,7 +35,7 @@ public class PreguntaFuncion {
 		ArrayList<Pregunta> preguntas = new  ArrayList<Pregunta>();
 		
 		//La consulta para obtener las preguntas
-		String consulta = 	"SELECT idPregunta, enunciado, respuesta, idTipoPregunta, idNivel " +
+		String consulta = 	"SELECT idPregunta, enunciado, pregunta, respuesta, idTipoPregunta, idNivel " +
 							"FROM Pregunta P " +
 							"WHERE P.idNivel = ?" +
 							"AND NOT EXISTS (" +
@@ -64,6 +64,7 @@ public class PreguntaFuncion {
 					//Colocar atributos
 					p.setIdPregunta(cursor.getInt(cursor.getColumnIndex("idPregunta")));
 					p.setEnunciado(cursor.getString(cursor.getColumnIndex("enunciado")));
+					p.setPregunta(cursor.getString(cursor.getColumnIndex("pregunta")));
 					p.setRespuesta(cursor.getString(cursor.getColumnIndex("respuesta")));
 					p.setTipoPregunta(cursor.getInt(cursor.getColumnIndex("idTipoPregunta")));
 					

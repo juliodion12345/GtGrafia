@@ -24,6 +24,10 @@ public class Pregunta implements Parcelable {
 	 */
 	private String enunciado;
 	/**
+	 * Variable usada para almacenar la pregunta
+	 */
+	private String pregunta;
+	/**
 	 * Variable usada para almacena la respuesta
 	 */
 	private String respuesta;
@@ -76,6 +80,12 @@ public class Pregunta implements Parcelable {
 	}
 	public void setEnunciado(String enunciado) {
 		this.enunciado = enunciado;
+	}
+	public String getPregunta() {
+		return pregunta;
+	}
+	public void setPregunta(String pregunta) {
+		this.pregunta = pregunta;
 	}
 	public String getRespuesta() {
 		return respuesta;
@@ -169,6 +179,7 @@ public class Pregunta implements Parcelable {
 		//Escribir los valores
 		dest.writeInt(idPregunta);
 		dest.writeString(enunciado);
+		dest.writeString(pregunta);
 		dest.writeString(respuesta);
 		dest.writeString(respuestaUsuario);
 		dest.writeInt(tipoPregunta);
@@ -184,6 +195,7 @@ public class Pregunta implements Parcelable {
 		//Leer los valores
 		this.idPregunta = in.readInt();
 		this.enunciado = in.readString();
+		this.pregunta = in.readString();
 		this.respuesta = in.readString();
 		this.respuestaUsuario = in.readString();
 		this.tipoPregunta = in.readInt();

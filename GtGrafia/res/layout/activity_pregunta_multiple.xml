@@ -6,6 +6,12 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
+        android:id="@+id/textEnunciadoM"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/textPreguntaM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
