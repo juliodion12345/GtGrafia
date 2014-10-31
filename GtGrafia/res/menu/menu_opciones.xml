@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    
+    <item
+        android:id="@+id/mnu_inicio"
+        android:orderInCategory="100"
+        android:title="@string/str_inicio"/>
+
+    <item
+        android:id="@+id/mnu_evaluacion"
+        android:orderInCategory="100"
+        android:title="@string/str_evaluacion"/>
+    
+    <item
+        android:id="@+id/mnu_salir"
+        android:orderInCategory="100"
+        android:title="@string/str_salir"/>
+    
+</menu>
