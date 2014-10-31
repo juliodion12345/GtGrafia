@@ -51,4 +51,9 @@
 	<string name="text_evaluacion">Evaluación:</string>
 	<string name="text_avance">Avance de la evaluación:</string>
 	
+	<!-- String de menu_opciones -->
+	<string name="str_inicio">Inicio</string>
+	<string name="str_evaluacion">Evaluación</string>
+	<string name="str_salir">Salir</string>
+	
 </resources>

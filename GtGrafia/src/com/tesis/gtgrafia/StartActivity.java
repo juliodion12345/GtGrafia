@@ -59,45 +59,6 @@ public class StartActivity extends Activity implements OnItemClickListener {
 		}
 	}
 	
-	//////////////////////////////////////////MENU/////////////////////////////////////////////////
-	
-	/**
-	 * Metodo que se activa al crear el menu de la pantalla
-	 * 
-	 * @param menu El elemento menu
-	 * 
-	 * @return Si el elemento menu fue creado
-	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_start, menu);
-		
-		return true;
-	}
-	
-	/**
-	 * Metodo que se activa al selecionar un elemento del menu de la pantalla
-	 * 
-	 * @param item El elemento selecionado del menu
-	 * 
-	 * @return Si se encontro con el elemento seleccionado
-	 */
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		//Redirige la aplicación al elemento seleccionado
-		if (item.getTitle().equals(getString(R.string.text_iniciar_juego))) {
-			iniciarJuego();
-			return true;
-		}
-		else if (item.getTitle().equals(getString(R.string.text_acerca_de))) {
-			iniciarAcercaDe();
-			return true;
-		}
-		
-		return super.onOptionsItemSelected(item);
-	}
-	
 	/////////////////////////////////////////INICIAR///////////////////////////////////////////////
 
 	/**

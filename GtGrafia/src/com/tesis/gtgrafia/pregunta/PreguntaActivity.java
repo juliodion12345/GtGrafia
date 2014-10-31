@@ -5,6 +5,8 @@ import com.tesis.gtgrafia.estructura.Pregunta;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -56,6 +58,43 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 			this.setPreguntaEscrita();
 		}
 		
+	}
+	
+	/**
+	 * Metodo que se activa al crear el menu de la pantalla
+	 * 
+	 * @param menu El elemento menu
+	 * 
+	 * @return Si el elemento menu fue creado
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_opciones, menu);
+		
+		return true;
+	}
+	
+	/**
+	 * Metodo que se activa al selecionar un elemento del menu de la pantalla
+	 * 
+	 * @param item El elemento selecionado del menu
+	 * 
+	 * @return Si se encontro con el elemento seleccionado
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//Redirige la aplicación al elemento seleccionado
+		if (item.getTitle().equals("")) {
+			//TODO: Regresar
+			return true;
+		}
+		else if (item.getTitle().equals("")) {
+			//TODO: Regresar
+			return true;
+		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 	
 	/**
