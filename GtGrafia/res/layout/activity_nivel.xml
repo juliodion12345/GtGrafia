@@ -1,16 +1,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#6495ED"
+    style="@style/relativeView"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <TextView
+        android:id="@+id/textAplicacionNivel"
+        style="@style/textAplicacion"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/textTituloNivel"
+        style="@style/textTitulo"
+        android:layout_below="@+id/textAplicacionNivel"
+        android:text="@string/title_activity_nivel" />
+    
     <GridView
         android:id="@+id/gridNivelesNivel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:numColumns="2" >
+        style="@style/gridOpciones"
+        android:layout_below="@+id/textTituloNivel"	>
     </GridView>
 
 </RelativeLayout>

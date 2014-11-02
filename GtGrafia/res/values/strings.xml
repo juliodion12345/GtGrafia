@@ -1,59 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
+
     <!-- String de la aplicación -->
-    <string name="app_name">GtGrafía</string>    
+    <string name="app_name">GtGrafía</string>
     <string name="hello_world">Ibara Mayaka!</string>
+    <string name="dev_andrea">Andrea Alejandra González Vides</string>
+    <string name="dev_julio">Julio César Osorio Boror</string>
     
-    <!-- Mensajes -->
-    <string name="msg_usuario_registrado">¡Usuario registrado!</string>
-    <string name="msg_ingrese_nombre">¡Ingrese un nombre!</string>
-    
-    <string name="msg_punteo">¡Punteo de la evaluación: </string>
-    <string name="msg_respuesta_correcta">¡Respuesta correcta!</string>
-	<string name="msg_respuesta_incorrecta">¡Respuesta incorrecta!</string>
-	
-	<string name="msg_evaluacion_terminada">¡Siguiente nivel activado!</string>
-	<string name="msg_evaluacion_deshabilitada">Aun no puede realizar esta evaluación</string>
-    
-    <!-- String de las actividades --> 
-    <string name="title_activity_inicio">GtGrafía</string>
-    <string name="title_activity_nivel">GtGrafía</string>
+    <string name="gt_font">fonts/Cheveuxdange.ttf</string>
+
+    <!-- String de las actividades -->
+    <string name="title_activity_start">¡Bienvenido!</string>
+    <string name="title_activity_acerca">Acerca de</string>
+    <string name="title_activity_usuario">Usuarios</string>
+    <string name="title_activity_nivel">Niveles</string>
     <string name="title_activity_leccion">GtGrafía</string>
     <string name="title_activity_evaluacion">GtGrafía</string>
     <string name="title_activity_pregunta">GtGrafía</string>
     
-    <!-- String de StartActivity -->   
+    <!-- Mensajes -->
+    <string name="msg_usuario_registrado">¡Usuario registrado!</string>
+    <string name="msg_ingrese_nombre">¡Ingrese un nombre!</string>
+    <string name="msg_punteo">¡Punteo de la evaluación: </string>
+    <string name="msg_respuesta_correcta">¡Respuesta correcta!</string>
+    <string name="msg_respuesta_incorrecta">¡Respuesta incorrecta!</string>
+    <string name="msg_evaluacion_terminada">¡Siguiente nivel activado!</string>
+    <string name="msg_evaluacion_deshabilitada">Aun no puede realizar esta evaluación</string>
+    
+    <!-- String de StartActivity -->
     <string name="text_iniciar_juego">Iniciar Juego</string>
     <string name="text_acerca_de">Acerca de</string>
+
+    <!-- String de AcercaActivity -->
+    <string name="text_dev">Desarrolladores:</string>
     
-    <string-array name="array_start">
-        <item>Iniciar Juego</item>
-        <item>Acerca de</item>
-    </string-array>
-    
-    <!-- String de UsuarioActivity --> 
+    <!-- String de UsuarioActivity -->
     <string name="text_configuracion">Configuración</string>
-    <string name="text_nombre">Ingrese su nombre</string>
-    <string name="button_registro">¡Registrar!</string>
-    
+    <string name="text_nuevo_usuario">Nuevo usuario:</string>
+    <string name="text_viejo_usuario">Usuario registrado:</string>
+
     <!-- String de PreguntaActivity -->
-	<string name="button_aceptar">Aceptar</string>
+    <string name="button_aceptar">Aceptar</string>
     <string name="hint_respuesta">Respuesta</string>
-    
+
     <!-- String de LeccionActivity -->
-	<string name="button_leccion">Leer Lección</string>
-	<string name="button_evaluacion">¡Evaluar Nivel!</string>
-	<string name="text_leccion">Lección del nivel:</string>
-	
-	<!-- String de EvaluacionActivity -->
-	<string name="button_iniciar">¡Iniciar!</string>
-	<string name="text_evaluacion">Evaluación:</string>
-	<string name="text_avance">Avance de la evaluación:</string>
-	
-	<!-- String de menu_opciones -->
-	<string name="str_inicio">Inicio</string>
-	<string name="str_evaluacion">Evaluación</string>
-	<string name="str_salir">Salir</string>
-	
+    <string name="button_leccion">Leer Lección</string>
+    <string name="button_evaluacion">¡Evaluar Nivel!</string>
+    <string name="text_leccion">Lección del nivel:</string>
+
+    <!-- String de EvaluacionActivity -->
+    <string name="button_iniciar">¡Iniciar!</string>
+    <string name="text_evaluacion">Evaluación:</string>
+    <string name="text_avance">Avance de la evaluación:</string>
+
+    <!-- String de menu_opciones -->
+    <string name="str_inicio">Inicio</string>
+    <string name="str_evaluacion">Evaluación</string>
+    <string name="str_salir">Salir</string>
+
 </resources>

@@ -1,16 +1,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FF8C00"
+    style="@style/relativeView"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <ListView
-        android:id="@+id/listMenuStart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/array_start" >
+    <TextView
+        android:id="@+id/textAplicacionStart"
+        style="@style/textAplicacion"
+        android:text="@string/app_name" />
 
-    </ListView>
+    <TextView
+        android:id="@+id/textTituloStart"
+        style="@style/textTitulo"
+        android:layout_below="@+id/textAplicacionStart"
+        android:text="@string/title_activity_start" />
+    
+    <TableLayout
+        style="@style/tableLayout"
+        android:layout_below="@+id/textTituloStart" >
+        
+        <TableRow>
+            
+        	<ImageView
+            	android:id="@+id/imageIniciarStart"
+            	style="@style/imageItem" 
+            	android:onClick="iniciarJuego"
+            	android:contentDescription="@string/text_iniciar_juego"
+            	android:layout_height="150dp" />
+        	
+        	<ImageView
+            	android:id="@+id/imageAcercaStart"
+            	style="@style/imageItem"
+            	android:onClick="iniciarAcercaDe"
+            	android:contentDescription="@string/text_acerca_de"
+            	android:layout_height="150dp" />
+        	
+        </TableRow> 
+            
+        <TableRow>   
+                     
+            <TextView
+		        android:id="@+id/textIniciarStart"
+		        style="@style/textItem"	
+		        android:onClick="iniciarJuego"
+		        android:text="@string/text_iniciar_juego" />
+		    
+		    <TextView
+		        android:id="@+id/textAcercaStart"
+		        style="@style/textItem"
+		        android:onClick="iniciarAcercaDe"
+		        android:text="@string/text_acerca_de" />     
+		               
+        </TableRow>
+        
+   	</TableLayout>
 
 </RelativeLayout>

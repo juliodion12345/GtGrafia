@@ -3,14 +3,16 @@ package com.tesis.gtgrafia.nivel;
 import java.util.ArrayList;
 
 import com.tesis.gtgrafia.R;
+import com.tesis.gtgrafia.estructura.CustomAdapter;
 import com.tesis.gtgrafia.leccion.LeccionActivity;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 /**
@@ -41,8 +43,27 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 		//Obtener el idUsuario
 		this.idUsuario = getIntent().getIntExtra("IdUsuario", -1);
 		
+		//Colocar las fuentes
+		this.colocarFuentes();
+		
 		//Coloca los niveles
-		this.setNiveles();
+		this.setNiveles();		
+	}
+	
+	/**
+	 * Metodo que colocar las fuentes a los elementos
+	 */
+	private void colocarFuentes() {
+		
+		//Typeface
+		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
+		
+		//Colocar la fuente a cada elemento
+		TextView textAplicacionNivel = (TextView)findViewById(R.id.textAplicacionNivel);
+		textAplicacionNivel.setTypeface(tf);
+		
+		TextView textTituloNivel = (TextView)findViewById(R.id.textTituloNivel);
+		textTituloNivel.setTypeface(tf);
 	}
 	
 	/**
@@ -52,9 +73,9 @@ public class NivelActivity extends Activity implements OnItemClickListener{
 		//Llenar con los niveles de la base de datos!
 		ArrayList<String> lista = NivelFuncion.getNiveles(this, idUsuario);
 
-		//Agregar los niveles al adaptador
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
+		//Llenar un nuevo adaptador usando un adaptador generico		
+		CustomAdapter adapter = new CustomAdapter(this,
+				android.R.layout.simple_list_item_1, R.layout.custom_list_text, lista);
 		
 		//Colocar el adaptador
 		GridView gridNivelesNivel = (GridView) findViewById(R.id.gridNivelesNivel);

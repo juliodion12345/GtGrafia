@@ -4,16 +4,21 @@ import java.util.ArrayList;
 
 import com.tesis.gtgrafia.R;
 import com.tesis.gtgrafia.base.SQLFuncion;
+import com.tesis.gtgrafia.estructura.CustomAdapter;
 import com.tesis.gtgrafia.nivel.NivelActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -25,7 +30,7 @@ import android.widget.AdapterView.OnItemClickListener;
  * @version 0.1
  * 
  */
-public class UsuarioActivity extends Activity implements OnItemClickListener  {
+public class UsuarioActivity extends Activity implements OnItemClickListener, OnEditorActionListener  {
 
 	/**
 	 * Metodo que carga la pantalla de inicio
@@ -37,8 +42,36 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_usuario);
 		
+		//Colocar las fuentes
+		this.colocarFuentes();
+		
 		//Coloca los usuarios
-		this.setListItems();
+		this.setListItems();	
+	}
+	
+	/**
+	 * Metodo que colocar las fuentes a los elementos
+	 */
+	private void colocarFuentes() {
+		
+		//Typeface
+		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
+		
+		//Colocar la fuente a cada elemento
+		TextView textAplicacionUsuario = (TextView)findViewById(R.id.textAplicacionUsuario);
+		textAplicacionUsuario.setTypeface(tf);
+		
+		TextView textTituloUsuario = (TextView)findViewById(R.id.textTituloUsuario);
+		textTituloUsuario.setTypeface(tf);
+		
+		TextView textNuevoUsuario = (TextView)findViewById(R.id.textNuevoUsuario);
+		textNuevoUsuario.setTypeface(tf);
+		
+		EditText editNombreUsuario = (EditText)findViewById(R.id.editNombreUsuario);
+		editNombreUsuario.setTypeface(tf);
+		
+		TextView textViejoUsuario = (TextView)findViewById(R.id.textViejoUsuario);
+		textViejoUsuario.setTypeface(tf);
 	}
 	
 	//////////////////////////////////////////LISTA////////////////////////////////////////////////
@@ -51,34 +84,55 @@ public class UsuarioActivity extends Activity implements OnItemClickListener  {
 		//Obtener los elementos
 		ArrayList<String> lista = UsuarioFuncion.getUsuarios(this);
 		
-		/*Llenar un nuevo adaptador con los elementos obtenidos, usando como plantilla
-		 * el simple_list_item_1 (que es una lista simple)
-		 */
-				
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
+		//Llenar un nuevo adaptador usando un adaptador generico		
+		CustomAdapter adapter = new CustomAdapter(this,
+				android.R.layout.simple_list_item_1, R.layout.custom_list_text, lista);
 		
 		//Asignar el adaptador al listView
 		ListView listUsuariosUsuario = (ListView) findViewById(R.id.listUsuariosUsuario);
 		listUsuariosUsuario.setAdapter(adapter); 	
 		
 		//Colocarle el listener (esta clase) para seleccionar elementos
-		listUsuariosUsuario.setOnItemClickListener(this);	
+		listUsuariosUsuario.setOnItemClickListener(this);
+		
+		//Colocarle el listener (esta clase) para enviar desde el editText
+		EditText editNombreUsuario = (EditText) findViewById(R.id.editNombreUsuario);
+		editNombreUsuario.setOnEditorActionListener(this);
 		
 	}
 	
 	/**
-	 * Metodo que se llama al presionar el boton de Aceptar
+	 * Metodo que se llama al presionar el boton de Send
 	 * Inserta el nuevo usuario
 	 * 
-	 * @param v Referencia a la vista actual
+	 * @param editor Referencia al textView
+	 * @param actionID El id de la acción
+	 * @param event	El evento del teclado
 	 */
-	public void insertarNombre(View v) {
+	@Override
+    public boolean onEditorAction(TextView editor, int actionId, KeyEvent event) {
+		//Evento manejado
+        boolean handled = false;
+        
+        //Si la acción es la de enviar
+        if (actionId == EditorInfo.IME_ACTION_SEND) {
+        	
+        	//Obtener el nombre de usuario e insertarlo
+        	this.insertarNombre(editor.getText().toString().trim());
+            handled = true;
+        }
+        
+        //Retorno de evento manejado
+        return handled;
+    }
+	
+	/**
+	 * Metodo que inserta el nuevo usuario a la base de datos
+	 * 
+	 * @param nombre Nombre del usuario
+	 */
+	public void insertarNombre(String nombre) {
 
-		//Obtener el nombre de usuario
-		EditText editNombreUsuario = (EditText) findViewById(R.id.editNombreUsuario);
-		String nombre = editNombreUsuario.getText().toString().trim();
-		
 		if (! nombre.equals("")) {
 			//Obtener idUsuario existente
 			int idUsuario = UsuarioFuncion.getIdUsuario(this, nombre);

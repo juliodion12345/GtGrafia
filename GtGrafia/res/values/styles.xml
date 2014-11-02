@@ -1,8 +1,197 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
+    
+    <!-- Estilo para los View -->
+    <style name="view">
+        <!-- Tamaños -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+	    <style name="relativeView" parent="@style/view">
+	        <!-- Colores -->
+	        <item name="android:background">@color/gt_view</item>			
+	    </style>
+	    
+	    <!-- Estilo para los tableLayout -->
+		<style name="tableLayout" parent="@style/view">
+		    <!-- Tamaños -->
+	        <item name="android:layout_height">wrap_content</item>
+	        
+	        <!-- Otras propiedades -->
+	        <item name="android:stretchColumns">*</item>
+	    </style>	    
+		
+    
+    <!-- Estilo para los textView -->
+    <style name="textView">
+        <!-- Tamaños -->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        
+        <!-- Alineación -->
+        <item name="android:layout_alignParentLeft">true</item>
+        
+        <!-- Colores -->
+        <item name="android:textColor">@color/gt_text</item>
+        
+        <!-- Margenes y Padding -->
+        <item name="android:padding">1dp</item>
+    </style>
+    
+    	<!-- Estilo para las cabeceras de las pantallas -->
+    	<style name="textCabecera" parent="@style/textView">
+    	    <!-- Margenes y Padding -->
+	        <item name="android:layout_marginLeft">5dp</item>	        
+	    </style>
+    
+    		<!-- Nombre de la aplicación -->
+	    	<style name="textAplicacion" parent="@style/textCabecera">
+	    	    <!-- Alineación -->
+		        <item name="android:layout_alignParentTop">true</item>
+		        
+		        <!-- Margenes y Padding -->
+		        <item name="android:layout_marginTop">5dp</item>
+		        
+		        <!-- Tamaños de texto -->
+		        <item name="android:textSize">15sp</item>
+		    </style>
+	    
+	    	<!-- Titulo de la pantalla -->
+		    <style name="textTitulo" parent="@style/textCabecera">
+		        <!-- Margenes y Padding -->
+		        <item name="android:layout_marginBottom">20dp</item>
+		        
+		        <!-- Tamaños de texto -->
+		        <item name="android:textSize">25sp</item>
+		    </style>
+		    
+		    
+		    
+		<!--  Estilo para el cuerpo de las pantallas -->		    
+		<style name="textCuerpo" parent="@style/textView">
+		    <!-- Margenes y Padding -->
+	        <item name="android:layout_marginLeft">5dp</item>
+	        
+	        <!-- Tamaños de texto -->
+	        <item name="android:textSize">20sp</item>
+	    </style>
+	    
+			<!-- Subtitulos de la pantalla -->
+		    <style name="textSubtitulo" parent="@style/textCuerpo">
+		        <!-- Tamaños de texto -->
+		        <item name="android:textSize">15sp</item>
+		    </style>
+		    
+		    <style name="textItem" parent="@style/textCuerpo">
+		        <!-- Tamaños -->
+		        <item name="android:layout_width">fill_parent</item>
+		        
+		        <!-- Margenes y Padding -->
+        		<item name="android:layout_marginLeft">0dp</item>
+        		
+        		<!-- Otras propiedades -->
+        		<item name="android:gravity">center</item>
+        		<item name="android:layout_span">2</item>
+        		
+        		<!-- Eventos -->
+        		<item name="android:clickable">true</item>
+		    </style>
+		    
+		    	<style name="imageItem" parent="@style/textItem">
+		    	    
+			    </style>
+		    
+		    <style name="textTexto" parent="@style/textCuerpo">
+		        
+		    </style>
+		    
+		    <style name="listItem" parent="@style/textCuerpo">
+		        <!-- Margenes y Padding -->
+		        <item name="android:layout_marginLeft">10dp</item>
+        		<item name="android:padding">10dp</item>
+			</style>
+		    
+	
+	<!-- Estilo para los editText -->
+    <style name="editText">
+        <!-- Tamaños -->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        
+        <!-- Alineación -->
+        <item name="android:layout_alignParentLeft">true</item>
+        
+        <!-- Colores -->
+        <item name="android:textColor">@color/gt_edit</item>
+        <item name="android:background">@color/gt_edit_background</item>
+        
+        <!-- Margenes y Padding -->
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+	        
+	    <!-- Tamaños de texto -->
+	    <item name="android:textSize">20sp</item>
+	    
+	    <!-- Otras propiedades -->
+	    <item name="android:inputType">text</item>
+	    <item name="android:imeOptions">actionSend</item>
+    </style>
+    
+		<style name="editTexto" parent="@style/editText">
+		        
+		</style>   
+		
+		
+	<!-- Estilo para los listView -->
+    <style name="listView">	
+        <!-- Tamaños -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        
+        <!-- Alineación -->
+        <item name="android:layout_alignParentLeft">true</item>
+        
+        <!-- Colores -->
+        <item name="android:background">@color/gt_list_background</item>
+        
+        <!-- Margenes y Padding -->
+        <item name="android:padding">1dp</item>
+	    
+	    <!-- Otras propiedades -->
+	    <item name="android:cacheColorHint">#00000000</item>
+    </style>
+    
+    	<style name="listOpciones" parent="@style/listView">
+		        
+		</style>
+		
+		
+   	<!-- Estilo para los gridView -->
+    <style name="gridView">	
+        <!-- Tamaños -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        
+        <!-- Alineación -->
+        <item name="android:layout_alignParentLeft">true</item>
+        
+        <!-- Colores -->
+        <item name="android:background">@color/gt_list_background</item>
+        
+        <!-- Margenes y Padding -->
+        <item name="android:padding">1dp</item>
+	    
+	    <!-- Otras propiedades -->
+	    <item name="android:numColumns">2</item>
+    </style>
+    
+    	<style name="gridOpciones" parent="@style/gridView">
+		        
+		</style> 	
 
 </resources>

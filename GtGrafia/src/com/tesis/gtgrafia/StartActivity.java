@@ -1,14 +1,14 @@
 package com.tesis.gtgrafia;
 
+import com.tesis.gtgrafia.acerca.AcercaActivity;
 import com.tesis.gtgrafia.usuario.UsuarioActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 /**
  * StartActivity
@@ -18,7 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
  * @version 0.1
  * 
  */
-public class StartActivity extends Activity implements OnItemClickListener {
+public class StartActivity extends Activity {
 	
 	/**
 	 * Metodo que carga la pantalla principal
@@ -29,40 +29,19 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-	
-		//Colocarle el listener (esta clase) para seleccionar elementos
-		ListView listMenuStart = (ListView) findViewById(R.id.listMenuStart);
-		listMenuStart.setOnItemClickListener(this);
-	}
-	
-	/**
-	 * Metodo que se activa al seleccionar un elemento del listView
-	 * 
-	 * @param adapterView El adaptador de la vista
-	 * @param view El adaptador de la vista
-	 * @param index La posición del elemento cliqueado
-	 * @param id El ID del elemento cliqueado
-	 */
-	@Override
-	public void onItemClick(AdapterView<?> adapterView, View view, int index, long id) {  
-		//Obtiene el elemento seleccionado
-		String fila = adapterView.getItemAtPosition(index).toString();
 		
-		//Redirige la aplicación al elemento seleccionado
-		if (fila.equals(getString(R.string.text_iniciar_juego))) {
-			iniciarJuego();
-		}
-		else if (fila.equals(getString(R.string.text_acerca_de))) {
-			iniciarAcercaDe();
-		}
+		//Colocar las fuentes
+		this.colocarFuentes();
 	}
 	
 	/////////////////////////////////////////INICIAR///////////////////////////////////////////////
 
 	/**
 	 * Metodo que inicia la pantalla de "Iniciar Juego"
+	 * 
+	 * @param v La vista de la pantalla
 	 */
-	private void iniciarJuego() {
+	public void iniciarJuego(View v) {
 		//Inicia la actividad de "Iniciar Juego"
 		
 		Intent intent = new Intent(this.getApplicationContext(), UsuarioActivity.class);
@@ -70,14 +49,37 @@ public class StartActivity extends Activity implements OnItemClickListener {
 	}
 	
 	/**
-	 * Metodo que inicia la pantalla de "Acerca de"
+	 * Metodo que colocar las fuentes a los elementos
 	 */
-	private void iniciarAcercaDe() {
+	private void colocarFuentes() {
+		
+		//Typeface
+		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
+		
+		//Colocar la fuente a cada elemento
+		TextView textTituloStart = (TextView)findViewById(R.id.textTituloStart);
+		textTituloStart.setTypeface(tf);
+		
+		TextView textAplicacionStart = (TextView)findViewById(R.id.textAplicacionStart);
+		textAplicacionStart.setTypeface(tf);
+		
+		TextView textIniciarStart = (TextView)findViewById(R.id.textIniciarStart);
+		textIniciarStart.setTypeface(tf);
+		
+		TextView textAcercaStart = (TextView)findViewById(R.id.textAcercaStart);
+		textAcercaStart.setTypeface(tf);
+	}
+	
+	/**
+	 * Metodo que inicia la pantalla de "Acerca de"
+	 * 
+	 * @param v La vista de la pantalla
+	 */
+	public void iniciarAcercaDe(View v) {
 		//Inicia la actividad de "Acerca de"
 		
-		//TODO Modificar las clases para iniciarlas
-		//Intent intent = new Intent(this.getApplicationContext(), EvaluacionActivity.class);
-		//startActivity(intent);			
+		Intent intent = new Intent(this.getApplicationContext(), AcercaActivity.class);
+		startActivity(intent);			
 	}
 	
 }

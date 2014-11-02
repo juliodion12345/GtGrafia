@@ -1,48 +1,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusable="true" 
-    android:focusableInTouchMode="true"
-    android:background="#B03060"
+    style="@style/relativeView"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <TextView
+        android:id="@+id/textAplicacionUsuario"
+        style="@style/textAplicacion"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/textTituloUsuario"
+        style="@style/textTitulo"
+        android:layout_below="@+id/textAplicacionUsuario"
+        android:text="@string/title_activity_usuario" />
+    
 	<TextView
-	    android:id="@+id/textIngresoUsuario"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentLeft="true"
-	    android:layout_alignParentTop="true"
-	    android:gravity="center"
-	    android:text="@string/text_nombre"
-	    android:textAppearance="?android:attr/textAppearanceLarge"
-	    android:textSize="30sp" />
+	    android:id="@+id/textNuevoUsuario"
+	    style="@style/textSubtitulo"	    
+	    android:layout_below="@+id/textTituloUsuario"
+	    android:text="@string/text_nuevo_usuario" />
 
 	<EditText
 	    android:id="@+id/editNombreUsuario"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentLeft="true"
-	    android:layout_alignParentRight="true"
-	    android:layout_below="@+id/textIngresoUsuario"
-	    android:ems="10"
-	    android:inputType="none" />
-
-	<Button
-	    android:id="@+id/buttonRegistrarUsuario"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
+	    style="@style/editTexto"
+	    android:layout_below="@+id/textNuevoUsuario" />
+	
+	<TextView
+	    android:id="@+id/textViejoUsuario"
+	    style="@style/textSubtitulo"	    
 	    android:layout_below="@+id/editNombreUsuario"
-	    android:layout_centerHorizontal="true"
-	    android:onClick="insertarNombre"
-	    android:text="@string/button_registro" />
+	    android:text="@string/text_viejo_usuario" />
 
 	<ListView
 	    android:id="@+id/listUsuariosUsuario"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentLeft="true"
-	    android:layout_below="@+id/buttonRegistrarUsuario" >
+		style="@style/listOpciones"	
+	    android:layout_below="@+id/textViejoUsuario" >
 
 	</ListView>
 

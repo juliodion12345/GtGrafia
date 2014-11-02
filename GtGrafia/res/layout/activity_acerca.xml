@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/relativeView"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/textAplicacionAcerca"
+        style="@style/textAplicacion"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/textTituloAcerca"
+        style="@style/textTitulo"
+        android:layout_below="@+id/textAplicacionAcerca"
+        android:text="@string/title_activity_acerca" />
+
+    <TextView
+        android:id="@+id/textDevAcerca"
+        style="@style/textSubtitulo"
+        android:layout_below="@+id/textTituloAcerca"
+        android:text="@string/text_dev" />
+
+    <TextView
+        android:id="@+id/textAndreaAcerca"
+        style="@style/textTexto"
+        android:layout_below="@+id/textDevAcerca"
+        android:text="@string/dev_andrea" />
+
+    <TextView
+        android:id="@+id/textJulioAcerca"
+        style="@style/textTexto"
+        android:layout_alignRight="@+id/textAndreaAcerca"
+        android:layout_below="@+id/textAndreaAcerca"
+        android:text="@string/dev_julio" />
+
+</RelativeLayout>
