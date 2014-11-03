@@ -16,7 +16,7 @@
     <string name="title_activity_nivel">Niveles</string>
     <string name="title_activity_leccion">Lección</string>
     <string name="title_activity_evaluacion">Evaluación</string>
-    <string name="title_activity_pregunta">GtGrafía</string>
+    <string name="title_activity_pregunta">Pregunta</string>
     
     <!-- Mensajes -->
     <string name="msg_usuario_registrado">¡Usuario registrado!</string>
@@ -38,9 +38,11 @@
     <string name="text_configuracion">Configuración</string>
     <string name="text_nuevo_usuario">Nuevo usuario:</string>
     <string name="text_viejo_usuario">Usuario registrado:</string>
+    <string name="text_enviar_usuario">Enviar</string>
+    <string name="hint_nuevo_usuario">Usuario</string>
 
     <!-- String de PreguntaActivity -->
-    <string name="button_aceptar">Aceptar</string>
+    <string name="text_enviar_pregunta">Enviar</string>    
     <string name="hint_respuesta">Respuesta</string>
 
     <!-- String de LeccionActivity -->

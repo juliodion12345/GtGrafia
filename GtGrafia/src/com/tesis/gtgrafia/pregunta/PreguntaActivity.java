@@ -144,6 +144,12 @@ public class PreguntaActivity extends Activity implements OnItemClickListener, O
 		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
 		
 		//Colocar la fuente a cada elemento
+		TextView textAplicacionPreguntaM = (TextView)findViewById(R.id.textAplicacionPreguntaM);
+		textAplicacionPreguntaM.setTypeface(tf);
+		
+		TextView textTituloPreguntaM = (TextView)findViewById(R.id.textTituloPreguntaM);
+		textTituloPreguntaM.setTypeface(tf);
+		
 		TextView textEnunciadoM = (TextView)findViewById(R.id.textEnunciadoM);
 		textEnunciadoM.setTypeface(tf);
 		
@@ -199,6 +205,12 @@ public class PreguntaActivity extends Activity implements OnItemClickListener, O
 		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
 		
 		//Colocar la fuente a cada elemento
+		TextView textAplicacionPreguntaE = (TextView)findViewById(R.id.textAplicacionPreguntaE);
+		textAplicacionPreguntaE.setTypeface(tf);
+		
+		TextView textTituloPreguntaE = (TextView)findViewById(R.id.textTituloPreguntaE);
+		textTituloPreguntaE.setTypeface(tf);
+		
 		TextView textEnunciadoE = (TextView)findViewById(R.id.textEnunciadoE);
 		textEnunciadoE.setTypeface(tf);
 		
@@ -207,6 +219,9 @@ public class PreguntaActivity extends Activity implements OnItemClickListener, O
 		
 		EditText editRespuestaPreguntaE = (EditText)findViewById(R.id.editRespuestaPreguntaE);
 		editRespuestaPreguntaE.setTypeface(tf);
+		
+		TextView textEnviarPreguntaE = (TextView)findViewById(R.id.textEnviarPreguntaE);
+		textEnviarPreguntaE.setTypeface(tf);
 	}
 	
 	/**
@@ -233,6 +248,20 @@ public class PreguntaActivity extends Activity implements OnItemClickListener, O
         //Retorno de evento manejado
         return handled;
     }
+	
+	/**
+	 * Metodo que envia los resultados
+	 * 
+	 * @param v Vista del elemento
+	 */
+	public void sendRespuesta(View v) {
+		//Obtener el nombre de usuario
+		EditText editRespuestaPreguntaE = (EditText)findViewById(R.id.editRespuestaPreguntaE);
+		String nombre = editRespuestaPreguntaE.getText().toString().trim();
+		
+		//Envia la respuesta
+		this.sendRespuesta(nombre);		
+	}
 	
 	/**
 	 * Metodo que finaliza la actividad y envia los resultados

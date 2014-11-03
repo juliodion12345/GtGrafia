@@ -20,16 +20,34 @@
 	    android:layout_below="@+id/textTituloUsuario"
 	    android:text="@string/text_nuevo_usuario" />
 
-	<EditText
-	    android:id="@+id/editNombreUsuario"
-	    style="@style/editTexto"
-	    android:layout_below="@+id/textNuevoUsuario"
-	    android:layout_marginBottom="10dp" />
+	<LinearLayout
+	    android:id="@+id/layoutEnviarUsuario"
+	    style="@style/linearLayout"
+	    android:layout_below="@+id/textNuevoUsuario" >
+    
+	    <EditText
+		    android:id="@+id/editNombreUsuario"
+		    style="@style/editTexto"
+		    android:layout_weight=".8"
+		    android:layout_width="0dp" 
+		    android:layout_marginBottom="10dp"
+		    android:hint="@string/hint_nuevo_usuario" />
+		
+		<TextView
+		    android:id="@+id/textEnviarUsuario"
+		   	style="@style/textItem"	
+		    android:layout_width="0dp" 
+		    android:layout_weight=".2"
+		    android:layout_marginBottom="10dp"
+		    android:onClick="insertarNombre"
+		    android:text="@string/text_enviar_usuario" />
+	    
+	</LinearLayout>
 	
 	<TextView
 	    android:id="@+id/textViejoUsuario"
 	    style="@style/textSubtitulo"	    
-	    android:layout_below="@+id/editNombreUsuario"
+	    android:layout_below="@+id/layoutEnviarUsuario"
 	    android:text="@string/text_viejo_usuario" />
 
 	<ListView

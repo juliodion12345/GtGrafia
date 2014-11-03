@@ -4,8 +4,20 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
+        android:id="@+id/textAplicacionPreguntaM"
+        style="@style/textAplicacion"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/textTituloPreguntaM"
+        style="@style/textTitulo"
+        android:layout_below="@+id/textAplicacionPreguntaM"
+        android:text="@string/title_activity_pregunta" />
+    
+    <TextView
         android:id="@+id/textEnunciadoM"
         style="@style/textTexto"
+        android:layout_below="@+id/textTituloPreguntaM"
         android:layout_marginBottom="15dp" />
 
     <TextView

@@ -70,6 +70,9 @@ public class UsuarioActivity extends Activity implements OnItemClickListener, On
 		EditText editNombreUsuario = (EditText)findViewById(R.id.editNombreUsuario);
 		editNombreUsuario.setTypeface(tf);
 		
+		TextView textEnviarUsuario = (TextView)findViewById(R.id.textEnviarUsuario);
+		textEnviarUsuario.setTypeface(tf);
+		
 		TextView textViejoUsuario = (TextView)findViewById(R.id.textViejoUsuario);
 		textViejoUsuario.setTypeface(tf);
 	}
@@ -125,6 +128,20 @@ public class UsuarioActivity extends Activity implements OnItemClickListener, On
         //Retorno de evento manejado
         return handled;
     }
+	
+	/**
+	 * Metodo que inserta el nuevo usuario a la base de datos
+	 * 
+	 * @param v Vista del elemento
+	 */
+	public void insertarNombre(View v) {
+		//Obtener el nombre de usuario
+		EditText editNombreUsuario = (EditText)findViewById(R.id.editNombreUsuario);
+		String nombre = editNombreUsuario.getText().toString().trim();
+		
+		//Inserta el nombre
+		this.insertarNombre(nombre);		
+	}
 	
 	/**
 	 * Metodo que inserta el nuevo usuario a la base de datos

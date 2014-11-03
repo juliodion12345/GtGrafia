@@ -26,6 +26,10 @@
 	        <item name="android:stretchColumns">*</item>
 	    </style>	    
 		
+		<style name="linearLayout" parent="@style/view">
+	        <!-- Tamaños -->
+	        <item name="android:layout_height">wrap_content</item>	
+	    </style>
     
     <!-- Estilo para los textView -->
     <style name="textView">
