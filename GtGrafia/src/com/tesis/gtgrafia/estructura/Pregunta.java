@@ -156,6 +156,22 @@ public class Pregunta implements Parcelable {
 		return array;
 	}
 	
+	/**
+	 * Metodo que devuelve las opciones como ArrayList de String
+	 * 
+	 * @return Devuelve las opciones como Array de String
+	 */
+	public ArrayList<String> getOpcionesArrayList() {
+		int conteo = this.getCountOpciones();
+		ArrayList<String> array = new ArrayList<String>();
+		
+		for (int i=0; i<conteo; i++) {
+			array.add(this.getOpcion(i).getOpcion());
+		}
+		
+		return array;
+	}
+	
 	/////////////////////////////////////////PARCEL////////////////////////////////////////////////
 	
 	/**

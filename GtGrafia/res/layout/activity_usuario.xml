@@ -23,7 +23,8 @@
 	<EditText
 	    android:id="@+id/editNombreUsuario"
 	    style="@style/editTexto"
-	    android:layout_below="@+id/textNuevoUsuario" />
+	    android:layout_below="@+id/textNuevoUsuario"
+	    android:layout_marginBottom="10dp" />
 	
 	<TextView
 	    android:id="@+id/textViejoUsuario"

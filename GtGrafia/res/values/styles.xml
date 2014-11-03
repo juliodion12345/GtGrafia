@@ -103,7 +103,8 @@
 		    </style>
 		    
 		    	<style name="imageItem" parent="@style/textItem">
-		    	    
+		    	    <!-- Otras propiedades -->
+        			<item name="android:layout_height">150dp</item>
 			    </style>
 		    
 		    <style name="textTexto" parent="@style/textCuerpo">

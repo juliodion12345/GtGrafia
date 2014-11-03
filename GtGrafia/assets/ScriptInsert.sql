@@ -330,7 +330,7 @@ INSERT INTO Opcion (palabra, idPregunta) VALUES ('Quitamelo', 79);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Quítamelo', 79);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 79);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Véndémelo', 80);
-INSERT INTO Opcion (palabra, idPregunta) VALUES ('Védemeló', 80);
+INSERT INTO Opcion (palabra, idPregunta) VALUES ('Véndemeló', 80);
 INSERT INTO Opcion (palabra, idPregunta) VALUES ('Ninguna', 80);
 INSERT INTO Pregunta (enunciado, pregunta, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra que corresponda', 'Dígaselo a __', 'él', 1, 5);
 INSERT INTO Pregunta (enunciado, pregunta, respuesta, idTipoPregunta, idNivel) VALUES ('Seleccione la palabra que corresponda', 'Pásame __ libro', 'el', 1, 5);

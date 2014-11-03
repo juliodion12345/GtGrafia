@@ -1,54 +1,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/relativeView"
     tools:context="${relativePackage}.${activityClass}" >
+    
+    <TextView
+        android:id="@+id/textAplicacionEvaluacion"
+        style="@style/textAplicacion"
+        android:text="@string/app_name" />
 
     <TextView
-        android:id="@+id/textLeerEvaluacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/text_evaluacion"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:id="@+id/textTituloEvaluacion"
+        style="@style/textTitulo"
+        android:layout_below="@+id/textAplicacionEvaluacion"
+        android:text="@string/title_activity_evaluacion" />
 
     <TextView
         android:id="@+id/textNombreEvaluacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textLeerEvaluacion"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        style="@style/textTexto"
+        android:layout_below="@+id/textTituloEvaluacion" />
 
     <TextView
         android:id="@+id/textAvanceTextoEvaluacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        style="@style/textSubtitulo"
         android:layout_below="@+id/textNombreEvaluacion"
-        android:text="@string/text_avance"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/text_avance_evaluacion" />
 
     <TextView
         android:id="@+id/textAvanceEvaluacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textAvanceTextoEvaluacion"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textAvanceEvaluacion"
-        android:layout_marginTop="57dp"
-        android:text="@string/button_iniciar"
-        android:onClick="realizarEvaluacion" />
+        style="@style/textTexto"
+        android:layout_below="@+id/textAvanceTextoEvaluacion" />
+    
+    <ImageView
+        android:id="@+id/imageIniciarEvaluacion"
+        style="@style/imageItem" 
+        android:onClick="realizarEvaluacion"
+        android:contentDescription="@string/text_iniciar_evaluacion"
+        android:layout_below="@+id/textAvanceEvaluacion" />
+    
+    <TextView
+		android:id="@+id/textIniciarEvaluacion"
+		style="@style/textItem"	
+		android:onClick="realizarEvaluacion"
+		android:text="@string/text_iniciar_evaluacion"
+		android:layout_below="@+id/imageIniciarEvaluacion" />
 
 </RelativeLayout>

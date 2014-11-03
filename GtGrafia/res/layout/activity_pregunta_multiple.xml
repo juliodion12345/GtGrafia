@@ -1,27 +1,23 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    style="@style/relativeView"
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
         android:id="@+id/textEnunciadoM"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        style="@style/textTexto"
+        android:layout_marginBottom="15dp" />
 
     <TextView
         android:id="@+id/textPreguntaM"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        style="@style/textTexto" 
+        android:layout_below="@+id/textEnunciadoM" />
 
     <ListView
         android:id="@+id/listOpcionesPreguntaM"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        style="@style/textTexto"
+        android:layout_below="@+id/textPreguntaM" >
 
     </ListView>
     
-</LinearLayout>
+</RelativeLayout>

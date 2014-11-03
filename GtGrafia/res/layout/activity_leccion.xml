@@ -1,47 +1,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/relativeView"
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
-        android:id="@+id/textLeerLeccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/text_leccion"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:id="@+id/textAplicacionLeccion"
+        style="@style/textAplicacion"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/textTituloLeccion"
+        style="@style/textTitulo"
+        android:layout_below="@+id/textAplicacionLeccion"
+        android:text="@string/title_activity_leccion" />
 
     <TextView
         android:id="@+id/textNombreLeccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textLeerLeccion"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        style="@style/textTexto"
+        android:layout_below="@+id/textTituloLeccion" />
     
-    <Button
-        android:id="@+id/buttonLeccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textNombreLeccion"
-        android:text="@string/button_leccion"
-        android:onClick="leerLeccion" />
-
-    <Button
-        android:id="@+id/buttonEvaluacionLeccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textNombreLeccion"
-        android:layout_marginTop="83dp"
-        android:text="@string/button_evaluacion"
-        android:onClick="abrirEvaluacion" />    
+    <TableLayout
+        style="@style/tableLayout"
+        android:layout_below="@+id/textNombreLeccion" >
+        
+        <TableRow>
+            
+        	<ImageView
+            	android:id="@+id/imageLeerLeccion"
+            	style="@style/imageItem" 
+            	android:onClick="leerLeccion"
+            	android:contentDescription="@string/text_leer_leccion" />
+        	
+        	<ImageView
+            	android:id="@+id/imageEvaluarLeccion"
+            	style="@style/imageItem"
+            	android:onClick="abrirEvaluacion"
+            	android:contentDescription="@string/text_evaluar_leccion" />
+        	
+        </TableRow> 
+            
+        <TableRow>   
+                     
+            <TextView
+		        android:id="@+id/textLeerLeccion"
+		        style="@style/textItem"	
+		        android:onClick="leerLeccion"
+		        android:text="@string/text_leer_leccion" />
+		    
+		    <TextView
+		        android:id="@+id/textEvaluarLeccion"
+		        style="@style/textItem"
+		        android:onClick="abrirEvaluacion"
+		        android:text="@string/text_evaluar_leccion" />     
+		               
+        </TableRow>
+        
+   	</TableLayout>
 
 </RelativeLayout>

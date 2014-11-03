@@ -10,6 +10,7 @@ import com.tesis.gtgrafia.pregunta.PreguntaFuncion;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -80,6 +81,36 @@ public class EvaluacionActivity extends Activity {
 			this.comprobarNivel(respuesta, respuestasUsuario);	
 		}
 		
+		//Colocar las fuentes
+		this.colocarFuentes();
+	}
+	
+	/**
+	 * Metodo que colocar las fuentes a los elementos
+	 */
+	private void colocarFuentes() {
+		
+		//Typeface
+		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
+		
+		//Colocar la fuente a cada elemento
+		TextView textAplicacionEvaluacion = (TextView)findViewById(R.id.textAplicacionEvaluacion);
+		textAplicacionEvaluacion.setTypeface(tf);
+		
+		TextView textTituloEvaluacion = (TextView)findViewById(R.id.textTituloEvaluacion);
+		textTituloEvaluacion.setTypeface(tf);
+		
+		TextView textNombreEvaluacion = (TextView)findViewById(R.id.textNombreEvaluacion);
+		textNombreEvaluacion.setTypeface(tf);
+		
+		TextView textAvanceTextoEvaluacion = (TextView)findViewById(R.id.textAvanceTextoEvaluacion);
+		textAvanceTextoEvaluacion.setTypeface(tf);
+		
+		TextView textAvanceEvaluacion = (TextView)findViewById(R.id.textAvanceEvaluacion);
+		textAvanceEvaluacion.setTypeface(tf);
+		
+		TextView textIniciarEvaluacion = (TextView)findViewById(R.id.textIniciarEvaluacion);
+		textIniciarEvaluacion.setTypeface(tf);
 	}
 	
 	/**
@@ -110,7 +141,7 @@ public class EvaluacionActivity extends Activity {
 	 * 
 	 * @param v Referencia a la vista actual
 	 */
-	public void realizarEvaluacion(View v) {	
+	public void realizarEvaluacion(View v) {	System.out.println("Algo");
 		//Comprobar usuario para el nivel de evaluacion
 		if (EvaluacionFuncion.comprobarEvaluacion(this, this.idUsuario, this.idNivel)==true) {
 			

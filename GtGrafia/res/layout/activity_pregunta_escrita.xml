@@ -1,36 +1,25 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    style="@style/relativeView"
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
         android:id="@+id/textEnunciadoE"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        style="@style/textTexto"
+        android:layout_marginBottom="15dp" />
 
     <TextView
         android:id="@+id/textPreguntaE"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        style="@style/textTexto"
+        android:layout_below="@+id/textEnunciadoE" />
 
     <EditText
         android:id="@+id/editRespuestaPreguntaE"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_respuesta" >
+        style="@style/editTexto"
+        android:hint="@string/hint_respuesta"
+        android:layout_below="@+id/textPreguntaE" >
 
         <requestFocus />
     </EditText>
-
-    <Button
-        android:id="@+id/buttonAceptarE"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="setRespuestaButton"
-        android:text="@string/button_aceptar" />
     
-</LinearLayout>
+</RelativeLayout>

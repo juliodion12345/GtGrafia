@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -57,6 +58,34 @@ public class LeccionActivity extends Activity {
 		//Colocar el nombre de la lección
 		TextView textNombreLeccion = (TextView)findViewById(R.id.textNombreLeccion);
 		textNombreLeccion.setText(LeccionFuncion.getNombreNivel(this, idNivel));
+		
+		//Colocar las fuentes
+		this.colocarFuentes();
+	}
+	
+	/**
+	 * Metodo que colocar las fuentes a los elementos
+	 */
+	private void colocarFuentes() {
+		
+		//Typeface
+		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
+		
+		//Colocar la fuente a cada elemento
+		TextView textAplicacionLeccion = (TextView)findViewById(R.id.textAplicacionLeccion);
+		textAplicacionLeccion.setTypeface(tf);
+		
+		TextView textTituloLeccion = (TextView)findViewById(R.id.textTituloLeccion);
+		textTituloLeccion.setTypeface(tf);
+		
+		TextView textNombreLeccion = (TextView)findViewById(R.id.textNombreLeccion);
+		textNombreLeccion.setTypeface(tf);
+		
+		TextView textLeerLeccion = (TextView)findViewById(R.id.textLeerLeccion);
+		textLeerLeccion.setTypeface(tf);
+		
+		TextView textEvaluarLeccion = (TextView)findViewById(R.id.textEvaluarLeccion);
+		textEvaluarLeccion.setTypeface(tf);
 	}
 	
 	/**

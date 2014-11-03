@@ -1,18 +1,24 @@
 package com.tesis.gtgrafia.pregunta;
 
+import java.util.ArrayList;
+
 import com.tesis.gtgrafia.R;
+import com.tesis.gtgrafia.estructura.CustomAdapter;
 import com.tesis.gtgrafia.estructura.Pregunta;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.TextView;
 
 /**
@@ -23,7 +29,7 @@ import android.widget.TextView;
  * @version 0.1
  * 
  */
-public class PreguntaActivity extends Activity implements OnItemClickListener {
+public class PreguntaActivity extends Activity implements OnItemClickListener, OnEditorActionListener {
 
 	/**
 	 * Variable usada para almacenar localmente la evaluación
@@ -102,6 +108,9 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 	 */
 	public void setPreguntaMultiple() {
 		
+		//Colocar las fuentes
+		this.colocarFuentesM();
+		
 		//Colocar el enunciado
 		TextView textEnunciadoM = (TextView)findViewById(R.id.textEnunciadoM);
 		textEnunciadoM.setText(pregunta.getEnunciado());
@@ -111,13 +120,11 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 		textPreguntaM.setText(pregunta.getPregunta());
 		
 		//Obtener los elementos
-		String[] lista = pregunta.getOpcionesArray();
+		ArrayList<String> lista = pregunta.getOpcionesArrayList();
 				
-		/*Llenar un nuevo adaptador con los elementos obtenidos, usando como plantilla
-		 * el simple_list_item_1 (que es una lista simple)
-		 */
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, lista);
+		//Llenar un nuevo adaptador usando un adaptador generico		
+		CustomAdapter adapter = new CustomAdapter(this,
+				android.R.layout.simple_list_item_1, R.layout.custom_list_text, lista);
 		
 		//Asignar el adaptador al listView
 		ListView listOpcionesPreguntaM = (ListView)findViewById(R.id.listOpcionesPreguntaM);
@@ -126,6 +133,22 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 		//Colocarle el listener (esta clase) para seleccionar elementos
 		listOpcionesPreguntaM.setOnItemClickListener(this);
 		
+	}
+	
+	/**
+	 * Metodo que colocar las fuentes a los elementos de selección multiple
+	 */
+	private void colocarFuentesM() {
+		
+		//Typeface
+		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
+		
+		//Colocar la fuente a cada elemento
+		TextView textEnunciadoM = (TextView)findViewById(R.id.textEnunciadoM);
+		textEnunciadoM.setTypeface(tf);
+		
+		TextView textPreguntaM = (TextView)findViewById(R.id.textPreguntaM);
+		textPreguntaM.setTypeface(tf);
 	}
 	
 	/**
@@ -150,6 +173,9 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 	 */
 	public void setPreguntaEscrita() {
 		
+		//Colocar las fuentes
+		this.colocarFuentesE();
+		
 		//Colocar el enunciado
 		TextView textEnunciadoE = (TextView)findViewById(R.id.textEnunciadoE);
 		textEnunciadoE.setText(pregunta.getEnunciado());
@@ -158,19 +184,55 @@ public class PreguntaActivity extends Activity implements OnItemClickListener {
 		TextView textPreguntaE = (TextView)findViewById(R.id.textPreguntaE);
 		textPreguntaE.setText(pregunta.getPregunta());
 		
+		//Colocarle el listener (esta clase) para enviar desde el editText
+		EditText editRespuestaPreguntaE = (EditText) findViewById(R.id.editRespuestaPreguntaE);
+		editRespuestaPreguntaE.setOnEditorActionListener(this);
+				
 	}
 	
 	/**
-	 * Metodo que se llama al presionar el boton de Aceptar
-	 * 
-	 * @param v Referencia a la vista actual
+	 * Metodo que colocar las fuentes a los elementos de pregunta escrita
 	 */
-	public void setRespuestaButton(View v) {
+	private void colocarFuentesE() {
 		
-		//Obtener y enviar la respuesta
+		//Typeface
+		Typeface tf = Typeface.createFromAsset(getAssets(), getResources().getString(R.string.gt_font));
+		
+		//Colocar la fuente a cada elemento
+		TextView textEnunciadoE = (TextView)findViewById(R.id.textEnunciadoE);
+		textEnunciadoE.setTypeface(tf);
+		
+		TextView textPreguntaE = (TextView)findViewById(R.id.textPreguntaE);
+		textPreguntaE.setTypeface(tf);
+		
 		EditText editRespuestaPreguntaE = (EditText)findViewById(R.id.editRespuestaPreguntaE);
-		this.sendRespuesta(editRespuestaPreguntaE.getText().toString().trim());
+		editRespuestaPreguntaE.setTypeface(tf);
 	}
+	
+	/**
+	 * Metodo que se llama al presionar el boton de Send
+	 * Inserta el nuevo usuario
+	 * 
+	 * @param editor Referencia al textView
+	 * @param actionID El id de la acción
+	 * @param event	El evento del teclado
+	 */
+	@Override
+    public boolean onEditorAction(TextView editor, int actionId, KeyEvent event) {
+		//Evento manejado
+        boolean handled = false;
+        
+        //Si la acción es la de enviar
+        if (actionId == EditorInfo.IME_ACTION_SEND) {
+        	
+        	//Obtener el nombre de usuario e insertarlo
+        	this.sendRespuesta(editor.getText().toString().trim());
+            handled = true;
+        }
+        
+        //Retorno de evento manejado
+        return handled;
+    }
 	
 	/**
 	 * Metodo que finaliza la actividad y envia los resultados

@@ -14,8 +14,8 @@
     <string name="title_activity_acerca">Acerca de</string>
     <string name="title_activity_usuario">Usuarios</string>
     <string name="title_activity_nivel">Niveles</string>
-    <string name="title_activity_leccion">GtGrafía</string>
-    <string name="title_activity_evaluacion">GtGrafía</string>
+    <string name="title_activity_leccion">Lección</string>
+    <string name="title_activity_evaluacion">Evaluación</string>
     <string name="title_activity_pregunta">GtGrafía</string>
     
     <!-- Mensajes -->
@@ -44,14 +44,14 @@
     <string name="hint_respuesta">Respuesta</string>
 
     <!-- String de LeccionActivity -->
-    <string name="button_leccion">Leer Lección</string>
-    <string name="button_evaluacion">¡Evaluar Nivel!</string>
+    <string name="text_leer_leccion">Leer Lección</string>
+    <string name="text_evaluar_leccion">¡Evaluar Nivel!</string>
     <string name="text_leccion">Lección del nivel:</string>
 
     <!-- String de EvaluacionActivity -->
-    <string name="button_iniciar">¡Iniciar!</string>
-    <string name="text_evaluacion">Evaluación:</string>
-    <string name="text_avance">Avance de la evaluación:</string>
+    <string name="text_iniciar_evaluacion">¡Iniciar!</string>
+    <string name="text_leer_evaluacion">Evaluación:</string>
+    <string name="text_avance_evaluacion">Avance de la evaluación:</string>
 
     <!-- String de menu_opciones -->
     <string name="str_inicio">Inicio</string>
