@@ -32,9 +32,9 @@ import android.widget.TextView;
 public class PreguntaActivity extends Activity implements OnItemClickListener, OnEditorActionListener {
 
 	/**
-	 * Variable usada para almacenar localmente la evaluación
+	 * Variable usada para almacenar localmente la pregunta
 	 */
-	Pregunta pregunta = null;
+	private Pregunta pregunta = null;
 	
 	/**
 	 * Metodo que carga la pantalla de la pregunta

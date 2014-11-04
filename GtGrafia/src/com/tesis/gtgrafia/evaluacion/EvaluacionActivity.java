@@ -42,7 +42,7 @@ public class EvaluacionActivity extends Activity {
 	/**
 	 * Variable usada para almacenar localmente la evaluación
 	 */
-	Evaluacion evaluacion = null;
+	private Evaluacion evaluacion = null;
 	/**
 	 * Etiqueta usada para reconocer la respuesta
 	 */
