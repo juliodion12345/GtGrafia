@@ -24,13 +24,15 @@
             	android:id="@+id/imageIniciarStart"
             	style="@style/imageItem" 
             	android:onClick="iniciarJuego"
-            	android:contentDescription="@string/text_iniciar_juego" />
+            	android:contentDescription="@string/text_iniciar_juego"
+            	android:src="@drawable/icono_iniciar_juego" />
         	
         	<ImageView
             	android:id="@+id/imageAcercaStart"
             	style="@style/imageItem"
             	android:onClick="iniciarAcercaDe"
-            	android:contentDescription="@string/text_acerca_de" />
+            	android:contentDescription="@string/text_acerca_de"
+            	android:src="@drawable/icono_acerca" />
         	
         </TableRow> 
             

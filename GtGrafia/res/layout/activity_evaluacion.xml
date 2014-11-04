@@ -29,19 +29,20 @@
         android:id="@+id/textAvanceEvaluacion"
         style="@style/textTexto"
         android:layout_below="@+id/textAvanceTextoEvaluacion" />
-    
+
     <ImageView
         android:id="@+id/imageIniciarEvaluacion"
-        style="@style/imageItem" 
-        android:onClick="realizarEvaluacion"
-        android:contentDescription="@string/text_iniciar_evaluacion"
-        android:layout_below="@+id/textAvanceEvaluacion" />
-    
+		style="@style/imageImagen"
+		android:onClick="realizarEvaluacion"
+		android:contentDescription="@string/text_iniciar_evaluacion"
+		android:layout_below="@+id/textAvanceEvaluacion"
+        android:src="@drawable/icono_iniciar_evaluacion" />
+
     <TextView
 		android:id="@+id/textIniciarEvaluacion"
 		style="@style/textItem"	
 		android:onClick="realizarEvaluacion"
 		android:text="@string/text_iniciar_evaluacion"
 		android:layout_below="@+id/imageIniciarEvaluacion" />
-
+    
 </RelativeLayout>

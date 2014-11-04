@@ -3,7 +3,6 @@
 
     <!-- String de la aplicación -->
     <string name="app_name">GtGrafía</string>
-    <string name="hello_world">Ibara Mayaka!</string>
     <string name="dev_andrea">Andrea Alejandra González Vides</string>
     <string name="dev_julio">Julio César Osorio Boror</string>
     
@@ -35,7 +34,6 @@
     <string name="text_dev">Desarrolladores:</string>
     
     <!-- String de UsuarioActivity -->
-    <string name="text_configuracion">Configuración</string>
     <string name="text_nuevo_usuario">Nuevo usuario:</string>
     <string name="text_viejo_usuario">Usuario registrado:</string>
     <string name="text_enviar_usuario">Enviar</string>
@@ -48,11 +46,9 @@
     <!-- String de LeccionActivity -->
     <string name="text_leer_leccion">Leer Lección</string>
     <string name="text_evaluar_leccion">¡Evaluar Nivel!</string>
-    <string name="text_leccion">Lección del nivel:</string>
 
     <!-- String de EvaluacionActivity -->
     <string name="text_iniciar_evaluacion">¡Iniciar!</string>
-    <string name="text_leer_evaluacion">Evaluación:</string>
     <string name="text_avance_evaluacion">Avance de la evaluación:</string>
 
     <!-- String de menu_opciones -->

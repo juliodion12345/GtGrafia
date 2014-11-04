@@ -29,13 +29,15 @@
             	android:id="@+id/imageLeerLeccion"
             	style="@style/imageItem" 
             	android:onClick="leerLeccion"
-            	android:contentDescription="@string/text_leer_leccion" />
+            	android:contentDescription="@string/text_leer_leccion"
+            	android:src="@drawable/icono_leer_leccion" />
         	
         	<ImageView
             	android:id="@+id/imageEvaluarLeccion"
             	style="@style/imageItem"
             	android:onClick="abrirEvaluacion"
-            	android:contentDescription="@string/text_evaluar_leccion" />
+            	android:contentDescription="@string/text_evaluar_leccion"
+            	android:src="@drawable/icono_evaluar_nivel" />
         	
         </TableRow> 
             
