@@ -22,8 +22,8 @@ INSERT INTO Nivel (archivo, nombre) VALUES ('LAS_PALABRAS_AGUDAS.pdf', 'Palabras
 INSERT INTO Nivel (archivo, nombre) VALUES ('LAS_PALABRAS_GRAVES.pdf', 'Palabras Graves');
 INSERT INTO Nivel (archivo, nombre) VALUES ('LAS_PALABRAS_ESDRUJULAS.pdf', 'Palabras Esdrújulas');
 INSERT INTO Nivel (archivo, nombre) VALUES ('LAS_PALABRAS_SOBRESDRUJULAS.pdf', 'Palabras Sobresdrújulas');
-INSERT INTO Nivel (archivo, nombre) VALUES ('PREFIJOS.pdf', 'Prefijos');
-INSERT INTO Nivel (archivo, nombre) VALUES ('SUFIJOS.pdf', 'Sufijos');
+INSERT INTO Nivel (archivo, nombre) VALUES ('LA_TILDE_DIACRITICA.pdf', 'La Tilde Diacrítica');
+INSERT INTO Nivel (archivo, nombre) VALUES ('PREFIJOS_SUFIJOS.pdf', 'Prefijos y Sufijos');
 INSERT INTO Nivel (archivo, nombre) VALUES ('SUPERLATIVOS.pdf', 'Superlativos');
 INSERT INTO Nivel (archivo, nombre) VALUES ('USO_B_V.pdf', 'Uso de la letra B y V');
 INSERT INTO Nivel (archivo, nombre) VALUES ('USO_C_S_Z.pdf', 'Uso de la letra C, S y Z');

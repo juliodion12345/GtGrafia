@@ -14,7 +14,7 @@
     
 	    <style name="relativeView" parent="@style/view">
 	        <!-- Colores -->
-	        <item name="android:background">@color/gt_view</item>			
+	        <item name="android:background">@color/view_fondo</item>			
 	    </style>
 	    
 	    <!-- Estilo para los tableLayout -->
@@ -28,7 +28,10 @@
 		
 		<style name="linearLayout" parent="@style/view">
 	        <!-- Tamaños -->
-	        <item name="android:layout_height">wrap_content</item>	
+	        <item name="android:layout_height">wrap_content</item>
+	        
+	        <!-- Colores -->
+        	<item name="android:textColor">@color/view_fondo</item>
 	    </style>
 	    
 	<style name="toastView" parent="@style/view">
@@ -37,7 +40,7 @@
         <item name="android:layout_height">fill_parent</item>	
         
         <!-- Colores -->
-	    <item name="android:background">@color/gt_view</item>
+	    <item name="android:background">@color/toast_fondo</item>
 	    
 	    <!-- Orientación -->
 	    <item name="android:orientation">horizontal</item>
@@ -57,7 +60,7 @@
         <item name="android:layout_alignParentLeft">true</item>
         
         <!-- Colores -->
-        <item name="android:textColor">@color/gt_text</item>
+        <item name="android:textColor">@color/text</item>
         
         <!-- Margenes y Padding -->
         <item name="android:padding">1dp</item>
@@ -77,6 +80,9 @@
 		        <!-- Margenes y Padding -->
 		        <item name="android:layout_marginTop">5dp</item>
 		        
+		        <!-- Colores -->
+        		<item name="android:textColor">@color/text_aplicacion</item>
+		        
 		        <!-- Tamaños de texto -->
 		        <item name="android:textSize">15sp</item>
 		    </style>
@@ -85,6 +91,9 @@
 		    <style name="textTitulo" parent="@style/textCabecera">
 		        <!-- Margenes y Padding -->
 		        <item name="android:layout_marginBottom">20dp</item>
+		        
+		        <!-- Colores -->
+        		<item name="android:textColor">@color/text_titulo</item>
 		        
 		        <!-- Tamaños de texto -->
 		        <item name="android:textSize">25sp</item>
@@ -105,6 +114,9 @@
 		    <style name="textSubtitulo" parent="@style/textCuerpo">
 		        <!-- Tamaños de texto -->
 		        <item name="android:textSize">15sp</item>
+		        
+		        <!-- Colores -->
+        		<item name="android:textColor">@color/text_subtitulo</item>
 		    </style>
 		    
 		    <style name="textItem" parent="@style/textCuerpo">
@@ -113,6 +125,9 @@
 		        
 		        <!-- Margenes y Padding -->
         		<item name="android:layout_marginLeft">0dp</item>
+        		
+        		<!-- Colores -->
+        		<item name="android:textColor">@color/text_item</item>
         		
         		<!-- Otras propiedades -->
         		<item name="android:gravity">center</item>
@@ -129,12 +144,18 @@
 		    <style name="textToast" parent="@style/textCuerpo">
 		        <!-- Alineación -->
         		<item name="android:layout_alignParentLeft">false</item>
+        		
+        		<!-- Colores -->
+        		<item name="android:textColor">@color/toast_texto</item>
 		    </style>
 		    
 		    <style name="listItem" parent="@style/textCuerpo">
 		        <!-- Margenes y Padding -->
 		        <item name="android:layout_marginLeft">10dp</item>
         		<item name="android:padding">10dp</item>
+        		
+        		<!-- Colores -->
+        		<item name="android:textColor">@color/list_item</item>
 			</style>
 			    
 		   	<style name="imageImagen" parent="@style/textItem">
@@ -174,8 +195,8 @@
         <item name="android:layout_alignParentLeft">true</item>
         
         <!-- Colores -->
-        <item name="android:textColor">@color/gt_edit</item>
-        <item name="android:background">@color/gt_edit_background</item>
+        <item name="android:textColor">@color/edit_texto</item>
+        <item name="android:background">@color/edit_fondo</item>
         
         <!-- Margenes y Padding -->
         <item name="android:padding">1dp</item>
@@ -204,7 +225,7 @@
         <item name="android:layout_alignParentLeft">true</item>
         
         <!-- Colores -->
-        <item name="android:background">@color/gt_list_background</item>
+        <item name="android:background">@color/list_fondo</item>
         
         <!-- Margenes y Padding -->
         <item name="android:padding">1dp</item>
@@ -222,13 +243,13 @@
     <style name="gridView">	
         <!-- Tamaños -->
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
         
         <!-- Alineación -->
         <item name="android:layout_alignParentLeft">true</item>
         
         <!-- Colores -->
-        <item name="android:background">@color/gt_list_background</item>
+        <item name="android:background">@color/list_fondo</item>
         
         <!-- Margenes y Padding -->
         <item name="android:padding">1dp</item>

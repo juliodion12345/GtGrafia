@@ -50,7 +50,7 @@
 
     <!-- String de EvaluacionActivity -->
     <string name="text_iniciar_evaluacion">¡Iniciar!</string>
-    <string name="text_avance_evaluacion">Avance de la evaluación:</string>
+    <string name="text_avance_evaluacion">Estado de la evaluación:</string>
 
     <!-- String de menu_opciones -->
     <string name="str_inicio">Inicio</string>
