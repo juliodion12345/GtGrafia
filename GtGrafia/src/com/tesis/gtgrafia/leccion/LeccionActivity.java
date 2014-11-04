@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import com.tesis.gtgrafia.R;
+import com.tesis.gtgrafia.StartFuncion;
 import com.tesis.gtgrafia.evaluacion.EvaluacionActivity;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -18,7 +19,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * LeccionActivity
@@ -86,18 +86,6 @@ public class LeccionActivity extends Activity {
 		
 		TextView textEvaluarLeccion = (TextView)findViewById(R.id.textEvaluarLeccion);
 		textEvaluarLeccion.setTypeface(tf);
-	}
-	
-	/**
-	 * Metodo que devuelve un mensaje corto de tipo Toast
-	 * 
-	 * @param texto El texto a mostrar
-	 */
-	private void getMensaje(String texto) {
-		int duracion = Toast.LENGTH_SHORT;
-
-		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
-		toast.show();
 	}
 	
 	/**
@@ -193,12 +181,12 @@ public class LeccionActivity extends Activity {
 			} 
 			catch (ActivityNotFoundException e) {
 				//No tiene lector PDF
-				this.getMensaje("No tiene un lector PDF para abrir la lección");
+				StartFuncion.getMensaje(this, "No tiene un lector PDF para abrir la lección");
 			}
 		}
 		else {
 			//No tiene lector PDF
-			this.getMensaje("Error desconocido: No se pudo acceder al elemento");
+			StartFuncion.getMensaje(this, "Error desconocido: No se pudo acceder al elemento");
 		}
 	
 	}

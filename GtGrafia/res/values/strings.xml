@@ -18,6 +18,7 @@
     <string name="title_activity_pregunta">Pregunta</string>
     
     <!-- Mensajes -->
+    <string name="msg_toast">Mensaje</string>
     <string name="msg_usuario_registrado">¡Usuario registrado!</string>
     <string name="msg_ingrese_nombre">¡Ingrese un nombre!</string>
     <string name="msg_punteo">¡Punteo de la evaluación: </string>

@@ -1,6 +1,7 @@
 package com.tesis.gtgrafia.evaluacion;
 
 import com.tesis.gtgrafia.R;
+import com.tesis.gtgrafia.StartFuncion;
 import com.tesis.gtgrafia.base.SQLFuncion;
 import com.tesis.gtgrafia.estructura.Evaluacion;
 import com.tesis.gtgrafia.estructura.Pregunta;
@@ -14,7 +15,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * EvaluacionActivity
@@ -114,29 +114,6 @@ public class EvaluacionActivity extends Activity {
 	}
 	
 	/**
-	 * Metodo que devuelve un mensaje corto de tipo Toast
-	 * 
-	 * @param texto El texto a mostrar
-	 */
-	private void getMensaje(String texto) {
-		int duracion = Toast.LENGTH_SHORT;
-
-		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
-		toast.show();
-	}
-	
-	/**
-	 * Metodo que devuelve un mensaje de cierta duración de tipo Toast
-	 * 
-	 * @param texto El texto a mostrar
-	 * @param duracion La duración del mensaje
-	 */
-	private void getMensaje(String texto, int duracion) {
-		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
-		toast.show();
-	}
-	
-	/**
 	 * Metodo que redirige las preguntas de la evaluacion
 	 * 
 	 * @param v Referencia a la vista actual
@@ -162,7 +139,7 @@ public class EvaluacionActivity extends Activity {
 			
 		}
 		else {			
-			this.getMensaje(getString(R.string.msg_evaluacion_deshabilitada));
+			StartFuncion.getMensaje(this, getString(R.string.msg_evaluacion_deshabilitada));
 		}
 	}
 	
@@ -210,7 +187,7 @@ public class EvaluacionActivity extends Activity {
 					if (PreguntaFuncion.comprobarRespuesta(p.getRespuesta(), p.getRespuestaUsuario())) {
 						
 						//Mostrar mensaje
-						this.getMensaje(getString(R.string.msg_respuesta_correcta));
+						StartFuncion.getMensaje(this, getString(R.string.msg_respuesta_correcta));
 						
 						//Insertar respuesta correcta
 						EvaluacionFuncion.insertarRespuestaCorrecta(this, 
@@ -221,7 +198,7 @@ public class EvaluacionActivity extends Activity {
 					}
 					else {
 						//Mostrar mensaje
-						this.getMensaje(getString(R.string.msg_respuesta_incorrecta));			
+						StartFuncion.getMensaje(this, getString(R.string.msg_respuesta_incorrecta));			
 					}
 					
 					//Aumentar el indice y evaluar nueva actividad
@@ -284,7 +261,7 @@ public class EvaluacionActivity extends Activity {
 			SQLFuncion.insertUsuarioNivel(this, this.idUsuario, siguienteNivel);
 			
 			//Muestra mensaje de nivel finalizado
-			this.getMensaje(getString(R.string.msg_evaluacion_terminada), Toast.LENGTH_LONG);
+			StartFuncion.getMensaje(this, getString(R.string.msg_evaluacion_terminada));
 		}
 	}
 	
@@ -310,7 +287,7 @@ public class EvaluacionActivity extends Activity {
 		//Muestra mensaje de punteo
 		String punteo = " " + respuestasUsuario + "/" + respuesta;	
 		
-		this.getMensaje(getString(R.string.msg_punteo) + punteo, Toast.LENGTH_LONG);
+		StartFuncion.getMensaje(this, getString(R.string.msg_punteo) + punteo);
 	}
 	
 }

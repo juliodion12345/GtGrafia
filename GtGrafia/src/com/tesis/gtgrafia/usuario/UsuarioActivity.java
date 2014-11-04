@@ -3,6 +3,7 @@ package com.tesis.gtgrafia.usuario;
 import java.util.ArrayList;
 
 import com.tesis.gtgrafia.R;
+import com.tesis.gtgrafia.StartFuncion;
 import com.tesis.gtgrafia.base.SQLFuncion;
 import com.tesis.gtgrafia.estructura.CustomAdapter;
 import com.tesis.gtgrafia.nivel.NivelActivity;
@@ -19,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
@@ -163,28 +163,16 @@ public class UsuarioActivity extends Activity implements OnItemClickListener, On
 			}
 			
 			//Ingrese nombre
-			this.getMensaje(getString(R.string.msg_usuario_registrado));
+			StartFuncion.getMensaje(this, getString(R.string.msg_usuario_registrado));
 			
 			//Redirigir al usuario a los niveles
 			abrirNiveles(idUsuario);
 		}
 		else {
 			//Ingrese nombre
-			this.getMensaje(getString(R.string.msg_ingrese_nombre));
+			StartFuncion.getMensaje(this, getString(R.string.msg_ingrese_nombre));
 		}
 		
-	}
-	
-	/**
-	 * Metodo que devuelve un mensaje corto de tipo Toast
-	 * 
-	 * @param texto El texto a mostrar
-	 */
-	private void getMensaje(String texto) {
-		int duracion = Toast.LENGTH_SHORT;
-
-		Toast toast = Toast.makeText(this.getApplicationContext(), texto, duracion);
-		toast.show();
 	}
 	
 	/**

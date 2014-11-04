@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutToast"
+    style="@style/toastView" >
+    
+    <ImageView
+        android:id="@+id/imageToast"
+        style="@style/imageToast"
+        android:contentDescription="@string/msg_toast"
+        android:src="@drawable/icono_toast" />
+
+    <TextView
+        android:id="@+id/textToast"
+        style="@style/textToast"
+        android:layout_toRightOf="@+id/imageToast" />
+
+</RelativeLayout>  

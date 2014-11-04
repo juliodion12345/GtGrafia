@@ -30,6 +30,22 @@
 	        <!-- Tamaños -->
 	        <item name="android:layout_height">wrap_content</item>	
 	    </style>
+	    
+	<style name="toastView" parent="@style/view">
+	    <!-- Tamaños -->
+	    <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>	
+        
+        <!-- Colores -->
+	    <item name="android:background">@color/gt_view</item>
+	    
+	    <!-- Orientación -->
+	    <item name="android:orientation">horizontal</item>
+	    
+	    <!-- Margenes y Padding -->
+        <item name="android:padding">5dp</item>
+	</style>
+	
     
     <!-- Estilo para los textView -->
     <style name="textView">
@@ -110,6 +126,11 @@
 		        
 		    </style>
 		    
+		    <style name="textToast" parent="@style/textCuerpo">
+		        <!-- Alineación -->
+        		<item name="android:layout_alignParentLeft">false</item>
+		    </style>
+		    
 		    <style name="listItem" parent="@style/textCuerpo">
 		        <!-- Margenes y Padding -->
 		        <item name="android:layout_marginLeft">10dp</item>
@@ -128,6 +149,16 @@
         			
         			<!-- Otras propiedades -->
         			<item name="android:layout_span">2</item>
+        			<item name="android:scaleType">centerInside</item>
+        			<item name="android:adjustViewBounds">true</item>      			 
+			    </style>
+			    
+		   		<style name="imageToast" parent="@style/imageImagen">		    	    
+		    	    <!-- Tamaños -->
+		    	    <item name="android:layout_width">50dp</item>
+        			<item name="android:layout_height">50dp</item>
+        			
+        			<!-- Otras propiedades -->
         			<item name="android:scaleType">centerInside</item>
         			<item name="android:adjustViewBounds">true</item>      			 
 			    </style>
