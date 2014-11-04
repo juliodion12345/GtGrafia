@@ -126,20 +126,25 @@ public class EvaluacionActivity extends Activity {
 		//Comprobar usuario para el nivel de evaluacion
 		if (EvaluacionFuncion.comprobarEvaluacion(this, this.idUsuario, this.idNivel)==true) {
 			
-			//Llenar evaluacion
-			this.evaluacion = EvaluacionFuncion.getEvaluacion(this, this.idUsuario, this.idNivel);			
-			
-			//Llamar a las actividades
-			this.indexPregunta = 0;
-			
-			//Lanzamiento de preguntas
-			if (this.indexPregunta < this.evaluacion.getCountPreguntas()) {
-				this.llamarActividades(this.indexPregunta);	
-			}
-			//Realización de preguntas, pero sin guardar el resultado
-			else {
+			//Contar que no hayan mas actividades
+			if (this.conteoActividades == 0) {
 				
-			}
+				//Llenar evaluacion
+				this.evaluacion = EvaluacionFuncion.getEvaluacion(this, this.idUsuario, this.idNivel);			
+				
+				//Llamar a las actividades
+				this.indexPregunta = 0;
+				
+				//Lanzamiento de preguntas
+				if (this.indexPregunta < this.evaluacion.getCountPreguntas()) {
+					this.llamarActividades(this.indexPregunta);	
+				}
+				//Realización de preguntas, pero sin guardar el resultado
+				else {
+					
+				}
+				
+			}				
 			
 		}
 		else {			
