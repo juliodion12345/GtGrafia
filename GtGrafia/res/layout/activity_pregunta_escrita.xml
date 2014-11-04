@@ -35,10 +35,7 @@
 	        style="@style/editTexto"
 	        android:layout_weight=".8"
 		    android:layout_width="0dp"
-	        android:hint="@string/hint_respuesta" >
-	
-	        <requestFocus />
-	    </EditText>
+	        android:hint="@string/hint_respuesta" />
 		
 		<TextView
 		    android:id="@+id/textEnviarPreguntaE"

@@ -2,7 +2,6 @@ package com.tesis.gtgrafia;
 
 import android.app.Activity;
 import android.graphics.Typeface;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +47,7 @@ public class StartFuncion {
         Toast toast = new Toast(actividad.getApplicationContext());
         
         //Colocar atributos
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        //toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         toast.setDuration(duracion);
         toast.setView(layout);
         
