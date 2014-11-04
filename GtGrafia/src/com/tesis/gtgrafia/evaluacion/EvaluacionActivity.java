@@ -47,6 +47,10 @@ public class EvaluacionActivity extends Activity {
 	 * Etiqueta usada para reconocer la respuesta
 	 */
 	public static int RESPUESTA_OK = 1;
+	/**
+	 * Varibale usada para almacenar la cantidad de actividades lanzadas
+	 */
+	private int conteoActividades = 0;
 	
 	/**
 	 * Metodo que carga la pantalla de la evaluacion
@@ -118,7 +122,7 @@ public class EvaluacionActivity extends Activity {
 	 * 
 	 * @param v Referencia a la vista actual
 	 */
-	public void realizarEvaluacion(View v) {	System.out.println("Algo");
+	public void realizarEvaluacion(View v) {
 		//Comprobar usuario para el nivel de evaluacion
 		if (EvaluacionFuncion.comprobarEvaluacion(this, this.idUsuario, this.idNivel)==true) {
 			
@@ -152,8 +156,16 @@ public class EvaluacionActivity extends Activity {
 		Intent intent = new Intent(this.getApplicationContext(), PreguntaActivity.class);    
 		intent.putExtra("Pregunta", this.evaluacion.getPregunta(index));
 		
-		//Llamar a la actividad con resultados
-		startActivityForResult(intent, RESPUESTA_OK);		
+		//Contar que no hayan mas actividades
+		if (this.conteoActividades == 0) {
+			
+			//Aumenta el conteo de actividades
+			this.conteoActividades++;
+			
+			//Llamar a la actividad con resultados
+			startActivityForResult(intent, RESPUESTA_OK);
+		}
+					
 	}
 	
 	/**
@@ -166,6 +178,9 @@ public class EvaluacionActivity extends Activity {
 	@Override 
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {     
 		super.onActivityResult(requestCode, resultCode, data); 
+		
+		//Reduce el conteo de actividades
+		this.conteoActividades--;
 		
 		//Si el codigo de respuesta es de una pregunta
 		if (requestCode == RESPUESTA_OK) { 
@@ -203,7 +218,7 @@ public class EvaluacionActivity extends Activity {
 					
 					//Aumentar el indice y evaluar nueva actividad
 					this.indexPregunta++;
-					
+										
 					//Lanzar nueva pregunta
 					if (this.indexPregunta < evaluacion.getCountPreguntas()) {
 						
