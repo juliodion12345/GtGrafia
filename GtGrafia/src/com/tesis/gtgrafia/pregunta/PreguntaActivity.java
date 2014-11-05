@@ -229,7 +229,7 @@ public class PreguntaActivity extends Activity implements OnItemClickListener, O
 	 * Inserta el nuevo usuario
 	 * 
 	 * @param editor Referencia al textView
-	 * @param actionID El id de la acción
+	 * @param actionId El id de la acción
 	 * @param event	El evento del teclado
 	 */
 	@Override

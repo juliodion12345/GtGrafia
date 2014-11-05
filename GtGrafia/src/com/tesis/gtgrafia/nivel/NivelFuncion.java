@@ -64,7 +64,7 @@ public class NivelFuncion {
 	 * Metodo que devuelve el idUsuario
 	 * 
 	 * @param context El contexto de la actividad
-	 * @param nobre El nombre del nivel
+	 * @param nombre El nombre del nivel
 	 * 
 	 * @return El id del nivel
 	 */

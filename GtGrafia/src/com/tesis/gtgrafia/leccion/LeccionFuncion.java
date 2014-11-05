@@ -21,7 +21,7 @@ public class LeccionFuncion {
 	 * @param context El contexto de la actividad
 	 * @param idNivel El id del nivel
 	 * 
-	 * @return El id del nivel
+	 * @return El nombre del nivel
 	 */
 	public static String getNombreNivel(Context context, int idNivel) {
 		//Variable que devolvera el nombre
@@ -57,9 +57,9 @@ public class LeccionFuncion {
 	 * Metodo que devuelve el nombre del archivo
 	 * 
 	 * @param context El contexto de la actividad
-	 * @param nobre El nombre del nivel
+	 * @param idNivel El id del nivel
 	 * 
-	 * @return El id del nivel
+	 * @return El nombre del archivo
 	 */
 	public static String getArchivo(Context context, int idNivel) {
 		//Variable que devolvera el archivo

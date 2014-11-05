@@ -21,7 +21,7 @@ public class StartFuncion {
 	/**
 	 * Metodo que devuelve un mensaje corto de tipo Toast
 	 * 
-	 * @param contexto El contexto de la actividad
+	 * @param actividad La actividad en donde se mostrara el mensaje
 	 * @param texto El texto a mostrar
 	 */
 	public static void getMensaje(Activity actividad, String texto) {

@@ -109,7 +109,7 @@ public class UsuarioActivity extends Activity implements OnItemClickListener, On
 	 * Inserta el nuevo usuario
 	 * 
 	 * @param editor Referencia al textView
-	 * @param actionID El id de la acción
+	 * @param actionId El id de la acción
 	 * @param event	El evento del teclado
 	 */
 	@Override

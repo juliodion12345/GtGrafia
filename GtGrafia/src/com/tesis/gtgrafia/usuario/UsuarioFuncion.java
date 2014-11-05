@@ -57,7 +57,7 @@ public class UsuarioFuncion {
 	 * Metodo que devuelve el idUsuario
 	 * 
 	 * @param context El contexto de la actividad
-	 * @param nobre El nombre del usuario
+	 * @param nombre El nombre del usuario
 	 * 
 	 * @return El id del usuario
 	 */
