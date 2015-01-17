@@ -45,6 +45,12 @@ public class AcercaActivity extends Activity {
 		
 		TextView textJulioAcerca = (TextView)findViewById(R.id.textJulioAcerca);
 		textJulioAcerca.setTypeface(tf);
+
+        TextView textLicenciaAcerca = (TextView)findViewById(R.id.textLicenciaAcerca);
+        textLicenciaAcerca.setTypeface(tf);
+
+        TextView textLicencia1Acerca = (TextView)findViewById(R.id.textLicencia1Acerca);
+        textLicencia1Acerca.setTypeface(tf);
 	}
 	
 }
