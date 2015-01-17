@@ -33,4 +33,16 @@
         android:layout_below="@+id/textAndreaAcerca"
         android:text="@string/dev_julio" />
 
+    <TextView
+        android:id="@+id/textLicenciaAcerca"
+        style="@style/textSubtitulo"
+        android:layout_below="@+id/textJulioAcerca"
+        android:text="@string/text_licencia" />
+
+    <TextView
+        android:id="@+id/textLicencia1Acerca"
+        style="@style/textTexto"
+        android:layout_below="@+id/textLicenciaAcerca"
+        android:text="@string/text_licencia" />
+
 </RelativeLayout>

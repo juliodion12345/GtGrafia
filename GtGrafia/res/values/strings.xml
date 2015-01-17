@@ -33,6 +33,7 @@
 
     <!-- String de AcercaActivity -->
     <string name="text_dev">Desarrolladores:</string>
+    <string name="text_licencia">Licencias:</string>
     
     <!-- String de UsuarioActivity -->
     <string name="text_nuevo_usuario">Nuevo usuario:</string>
